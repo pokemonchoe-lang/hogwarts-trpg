@@ -1,0 +1,1742 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>호그와트 연대기: 제6권 — 혼혈 왕자 (1996–1997)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #050a0c;
+    color: #e2e8f0;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .font-cinzel { font-family: 'Cinzel', serif; }
+  .font-serif-kr { font-family: 'Noto Serif KR', serif; }
+
+  /* 제6권 전용: 혼혈 왕자 에메랄드 약물 안개 & 은빛 펜시브 테마 */
+  .prince-bg {
+    background:
+      radial-gradient(circle at 18% 12%, rgba(20, 184, 166, 0.2) 0%, transparent 45%),
+      radial-gradient(circle at 84% 84%, rgba(16, 185, 129, 0.16) 0%, transparent 50%),
+      linear-gradient(180deg, #071417 0%, #05080a 100%);
+  }
+
+  .story-stage {
+    background:
+      radial-gradient(ellipse at top, rgba(17, 50, 56, 0.45) 0%, rgba(7, 13, 17, 0.96) 85%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.011) 0px, rgba(255,255,255,0.011) 1px, transparent 1px, transparent 24px);
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85);
+  }
+
+  .choice-btn {
+    background: linear-gradient(135deg, rgba(18, 42, 46, 0.9) 0%, rgba(10, 18, 24, 0.97) 100%);
+    border: 1.5px solid rgba(45, 212, 191, 0.34);
+    transition: all 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .choice-btn:hover:not(:disabled) {
+    border-color: #5eead4;
+    background: linear-gradient(135deg, rgba(15, 118, 110, 0.52) 0%, rgba(15, 29, 34, 0.98) 100%);
+    transform: translateX(4px);
+    box-shadow: 0 6px 22px rgba(20, 184, 166, 0.26);
+  }
+  .choice-btn:active:not(:disabled) { transform: scale(0.985); }
+  .choice-btn:disabled { opacity: 0.42; cursor: not-allowed; filter: grayscale(0.5); }
+
+  .teal-btn {
+    background: linear-gradient(135deg, #0f766e 0%, #115e59 50%, #1e293b 100%);
+    border: 1.5px solid #5eead4;
+    box-shadow: 0 6px 22px rgba(20, 184, 166, 0.3), inset 0 1px 2px rgba(255,255,255,0.3);
+    transition: all 0.18s ease;
+  }
+  .teal-btn:hover:not(:disabled) {
+    border-color: #ccfbf1;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(45, 212, 191, 0.45);
+  }
+  .teal-btn:active:not(:disabled) { transform: scale(0.97); }
+  .teal-btn:disabled { opacity: 0.42; cursor: not-allowed; filter: grayscale(0.5); }
+
+  .loc-card {
+    background: linear-gradient(155deg, rgba(17, 38, 42, 0.9), rgba(9, 17, 22, 0.97));
+    border: 1.5px solid rgba(45, 212, 191, 0.28);
+    transition: all 0.18s ease;
+  }
+  .loc-card:hover:not(:disabled) {
+    border-color: #5eead4;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.65), 0 0 18px rgba(45, 212, 191, 0.24);
+  }
+  .loc-card:disabled { opacity: 0.42; cursor: not-allowed; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .anim-fade-up { animation: fadeUp 0.28s ease-out forwards; }
+
+  @keyframes diceSpin {
+    0% { transform: rotate(0deg) scale(0.9); }
+    25% { transform: rotate(90deg) scale(1.14); }
+    50% { transform: rotate(180deg) scale(0.95); }
+    75% { transform: rotate(270deg) scale(1.14); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  .anim-dice { animation: diceSpin 0.2s linear infinite; }
+
+  @keyframes shakeBox {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-7px); }
+    40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+  }
+  .anim-shake { animation: shakeBox 0.38s ease-in-out; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(10, 22, 26, 0.5); }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+</style>
+</head>
+<body class="prince-bg h-[100dvh] w-screen overflow-hidden flex flex-col">
+
+  <!-- ==================== 1. 제6권 시작 및 이전 학년 계승 화면 ==================== -->
+  <div id="title-screen" class="flex-1 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="max-w-xl w-full bg-slate-950/92 backdrop-blur-md border-2 border-teal-400/50 rounded-3xl p-6 sm:p-9 text-center shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <button onclick="goLobby()" class="text-xs font-bold text-slate-400 hover:text-teal-300 flex items-center gap-1 transition">
+          ← 메인 로비로
+        </button>
+        <span class="px-3 py-1 rounded-full bg-teal-950/90 border border-teal-400/50 text-teal-200 text-[11px] font-cinzel tracking-widest">
+          BOOK VI · 1996–1997
+        </span>
+      </div>
+
+      <div class="text-4xl mb-2">🧪</div>
+      <h1 class="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-teal-100 via-teal-300 to-slate-400 font-serif-kr tracking-tight mb-1.5">
+        제6권: 혼혈 왕자
+      </h1>
+      <p class="text-teal-200/85 text-xs sm:text-sm font-bold mb-4">호그와트 연대기 6학년 · 1인용 분기형 TRPG</p>
+
+      <p class="text-slate-400 text-xs sm:text-[13px] leading-relaxed mb-5">
+        <em>"이 책은 혼혈 왕자의 소유임."</em><br>
+        전쟁의 먹구름이 성탑을 덮고, 사라지는 캐비닛과 7개의 영혼 조각이 드러나는 6학년.<br>
+        <strong>펜시브의 기억 · 펠릭스 펠리시스 · 해안 동굴과 천문대 탑의 밤</strong>이 시작됩니다.
+      </p>
+
+      <!-- 계승 프로필 미리보기 -->
+      <div id="inherit-preview-box" class="bg-slate-900/90 border border-teal-500/35 rounded-2xl p-4 mb-5 text-left"></div>
+
+      <div class="space-y-2.5">
+        <button id="btn-start-inherited" onclick="startFromMasterProfile()" class="teal-btn w-full py-3.5 px-6 rounded-2xl text-sm sm:text-base font-extrabold text-teal-50 tracking-wide">
+          🧪 이전 학년 기록 이어서 제6권 시작하기
+        </button>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <button onclick="openCodeImportModal()" class="py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-teal-400/40 text-xs font-bold text-teal-200 transition">
+            🔑 계승 코드(HC-V1) 입력
+          </button>
+          <button onclick="openSaveModal('load')" class="py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300 transition">
+            💾 제6권 저장 불러오기
+          </button>
+        </div>
+
+        <button onclick="startQuickBook6()" class="w-full py-2.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-[11.5px] font-bold text-slate-400 hover:text-slate-200 transition">
+          🎲 이전 기록 없이 바로 체험 (6학년 기본 프로필 자동 생성)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. 메인 TRPG 플레이 화면 (태블릿 최적화 2단) ==================== -->
+  <div id="game-screen" class="hidden h-[100dvh] w-full flex flex-col overflow-hidden">
+
+    <!-- 상단 바 -->
+    <header class="h-12 shrink-0 bg-slate-950/95 border-b border-teal-500/35 px-3 sm:px-5 flex items-center justify-between gap-2 z-20">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <button onclick="goLobby()" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-teal-200 px-2.5 py-1 rounded-lg text-[11px] font-bold shrink-0">
+          🏛 로비
+        </button>
+        <span class="font-serif-kr font-black text-teal-200 text-xs sm:text-sm truncate">제6권: 혼혈 왕자</span>
+        <span id="header-date-badge" class="text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-teal-950 text-teal-200 border border-teal-400/40 shrink-0">
+          1996년 8월
+        </span>
+      </div>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button onclick="toggleMobileNotebook()" class="md:hidden bg-slate-900 border border-teal-400/40 text-teal-200 px-2.5 py-1 rounded-lg text-xs font-bold">
+          📓 수첩
+        </button>
+        <button onclick="openSaveModal('save')" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-2.5 py-1 rounded-lg text-xs font-bold transition">
+          💾 저장/로드
+        </button>
+      </div>
+    </header>
+
+    <!-- 중앙 2단 영역 -->
+    <div class="flex-1 flex min-h-0 overflow-hidden">
+
+      <!-- 좌측 메인 스테이지 -->
+      <main id="main-stage" class="flex-1 story-stage flex flex-col min-w-0 min-h-0 relative">
+
+        <!-- 챕터 & 장소 헤더 -->
+        <div class="px-4 sm:px-7 pt-3.5 pb-2.5 border-b border-slate-800/80 flex items-center justify-between gap-2 shrink-0">
+          <div class="min-w-0">
+            <span id="scene-act-label" class="text-[10.5px] font-cinzel font-bold tracking-widest text-teal-400 uppercase block truncate">PROLOGUE</span>
+            <h2 id="scene-title" class="text-base sm:text-2xl font-bold font-serif-kr text-white mt-0.5 truncate">제목</h2>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span id="free-ap-badge" class="hidden px-3 py-1 rounded-xl bg-teal-950 border border-teal-400/70 text-teal-200 text-xs font-extrabold">
+              ⏳ 남은 행동: 3/3
+            </span>
+            <div id="scene-house-crest" class="hidden px-3 py-1 rounded-xl border text-xs font-extrabold"></div>
+          </div>
+        </div>
+
+        <!-- 스크롤 본문 영역 -->
+        <div id="story-scroll-area" class="flex-1 overflow-y-auto px-4 sm:px-7 py-4 space-y-4">
+          <div id="last-check-banner" class="hidden rounded-2xl p-3.5 border text-xs sm:text-sm leading-relaxed anim-fade-up"></div>
+          <div id="scene-narrative" class="font-serif-kr text-sm sm:text-[15.5px] leading-[1.88] text-slate-200 space-y-3 anim-fade-up"></div>
+          <div id="scene-dialogues" class="space-y-2.5"></div>
+          <div id="free-action-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1"></div>
+
+          <!-- TRPG 턴제 마법 전투 패널 -->
+          <div id="combat-panel" class="hidden bg-slate-950/92 border-2 border-teal-400/75 rounded-2xl p-4 shadow-2xl space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-teal-300 block">⚔️ TRPG 주문 선택형 전투</span>
+                <h3 id="combat-enemy-name" class="text-base sm:text-lg font-extrabold text-white">적 이름</h3>
+              </div>
+              <div class="text-right">
+                <span id="combat-enemy-status" class="text-[10.5px] font-bold text-amber-300 block">상태: 정상</span>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <div class="w-28 sm:w-36 h-3 bg-slate-800 rounded-full overflow-hidden border border-teal-400/40">
+                    <div id="combat-enemy-hp-bar" class="h-full bg-gradient-to-r from-teal-500 to-emerald-400 transition-all duration-300" style="width:100%"></div>
+                  </div>
+                  <span id="combat-enemy-hp-text" class="text-xs font-black text-teal-200">34/34</span>
+                </div>
+              </div>
+            </div>
+            <p id="combat-enemy-intent" class="text-xs text-teal-100/95 bg-teal-950/45 border border-teal-700/50 rounded-xl px-3 py-2"></p>
+            <div id="combat-log" class="max-h-32 overflow-y-auto bg-black/55 rounded-xl p-2.5 text-xs text-slate-300 space-y-1 border border-slate-800"></div>
+          </div>
+        </div>
+
+        <!-- 하단 선택지 패널 -->
+        <div id="choices-wrapper" class="shrink-0 bg-slate-950/95 border-t border-teal-500/35 px-4 sm:px-7 py-3 z-10">
+          <div id="choices-header" class="text-[11px] font-bold text-teal-300/90 mb-2 flex items-center justify-between">
+            <span>당신의 행동을 선택하세요</span>
+            <span class="text-slate-400 font-normal hidden sm:inline">호크룩스 조사와 말포이 추적이 천문대 탑의 밤을 바꿉니다</span>
+          </div>
+          <div id="choices-container" class="space-y-2 max-h-[34vh] overflow-y-auto pr-0.5"></div>
+        </div>
+      </main>
+
+      <!-- 우측 마법사 수첩 -->
+      <aside class="w-72 lg:w-80 shrink-0 bg-slate-950/95 border-l border-slate-800 flex-col min-h-0 hidden md:flex">
+        <div class="px-4 py-3 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between">
+          <span class="text-xs font-extrabold text-teal-300 tracking-wide">📓 6학년 마법사 수첩</span>
+          <span class="text-[10px] text-slate-400">제6권 · 1996–1997</span>
+        </div>
+        <div id="notebook-content" class="flex-1 overflow-y-auto p-3.5 space-y-3 text-xs"></div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ==================== 3. 모바일 수첩 모달 ==================== -->
+  <div id="mobile-notebook-modal" class="hidden fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this) toggleMobileNotebook()">
+    <div class="bg-slate-950 border-2 border-teal-500/50 rounded-2xl w-full max-w-md max-h-[82vh] flex flex-col p-4">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-3">
+        <span class="text-sm font-extrabold text-teal-300">📓 6학년 마법사 수첩</span>
+        <button onclick="toggleMobileNotebook()" class="text-slate-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <div id="mobile-notebook-content" class="flex-1 overflow-y-auto space-y-3 text-xs"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. 2d6 TRPG 주사위 판정 오버레이 ==================== -->
+  <div id="dice-modal" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-[80] flex items-center justify-center p-4">
+    <div class="bg-slate-950 border-2 border-teal-400 rounded-3xl p-6 max-w-sm w-full text-center shadow-[0_0_50px_rgba(20,184,166,0.45)]">
+      <span class="text-[11px] font-bold text-teal-300 tracking-widest uppercase block mb-1">TRPG 2d6 행동 판정</span>
+      <h3 id="dice-title" class="text-base sm:text-lg font-extrabold text-white mb-1">판정</h3>
+      <p id="dice-sub" class="text-xs text-slate-400 mb-4">10+ 대성공 / 7~9 부분 성공 / 6 이하 실패</p>
+      <div class="flex justify-center gap-4 my-3">
+        <div id="die-1" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-teal-600 to-emerald-900 border-2 border-teal-200 flex items-center justify-center text-3xl font-black text-white shadow-lg">🎲</div>
+        <div id="die-2" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-slate-600 to-teal-900 border-2 border-slate-200 flex items-center justify-center text-3xl font-black text-white shadow-lg">🎲</div>
+      </div>
+      <div id="dice-result-box" class="mt-4 min-h-[48px] flex flex-col items-center justify-center">
+        <span class="text-xs text-slate-300">운명의 주사위가 구르는 중...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. 계승 코드 붙여넣기 모달 ==================== -->
+  <div id="code-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[85] flex items-center justify-center p-4" onclick="if(event.target===this) closeCodeImportModal()">
+    <div class="bg-slate-900 border-2 border-teal-500/60 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-3">
+      <div class="flex justify-between items-center border-b border-slate-700 pb-2.5">
+        <h3 class="text-base font-extrabold text-teal-300">🔑 연대기 계승 코드 입력</h3>
+        <button onclick="closeCodeImportModal()" class="text-slate-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <textarea id="code-import-textarea" rows="4" placeholder="이전 권 엔딩이나 로비에서 복사한 HC-V1-... 코드를 붙여넣으세요."
+        class="w-full bg-slate-950 border border-slate-700 focus:border-teal-400 rounded-xl p-3 text-xs font-mono text-white outline-none resize-none"></textarea>
+      <button onclick="applyImportedCodeAndStart()" class="teal-btn w-full py-2.5 rounded-xl text-xs sm:text-sm font-extrabold text-teal-50">
+        📥 코드 복원 후 제6권 시작하기
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 6. 저장 / 불러오기 모달 (3슬롯) ==================== -->
+  <div id="save-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[85] flex items-center justify-center p-4" onclick="if(event.target===this) closeSaveModal()">
+    <div class="bg-slate-900 border-2 border-teal-500/60 rounded-2xl max-w-md w-full p-5 shadow-2xl">
+      <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-3">
+        <h3 id="save-modal-title" class="text-base font-extrabold text-teal-300">💾 제6권 저장 / 불러오기</h3>
+        <button onclick="closeSaveModal()" class="text-slate-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <div id="save-slots-list" class="space-y-2.5"></div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 -->
+  <div id="toast-box" class="hidden fixed top-14 left-1/2 -translate-x-1/2 bg-slate-900/95 border-2 border-teal-400 text-teal-100 px-5 py-2.5 rounded-xl shadow-2xl z-[95] text-xs sm:text-sm font-bold text-center max-w-md"></div>
+
+<script>
+/* ==========================================================================
+   호그와트 연대기 제6권: 혼혈 왕자 (year6.html)
+   ========================================================================== */
+const MASTER_STORAGE_KEY = 'HOGWARTS_CHRONICLES_MASTER_V1';
+const Y6_SAVE_PREFIX = 'hogwarts_chronicles_y6_slot_';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let toastTimer = null;
+let audioCtx = null;
+
+function goLobby() { window.location.href = 'index.html'; }
+
+function showToast(msg) {
+  const el = document.getElementById('toast-box');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.add('hidden'), 3000);
+}
+
+function playTone(type) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    if (type === 'dice') {
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(260 + Math.random() * 260, now);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+      osc.start(now); osc.stop(now + 0.07);
+    } else if (type === 'success') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523, now);
+      osc.frequency.setValueAtTime(659, now + 0.08);
+      osc.frequency.setValueAtTime(880, now + 0.16);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.36);
+      osc.start(now); osc.stop(now + 0.37);
+    } else if (type === 'fail') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(175, now);
+      osc.frequency.exponentialRampToValueAtTime(80, now + 0.28);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+      osc.start(now); osc.stop(now + 0.31);
+    } else if (type === 'spell') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(580, now);
+      osc.frequency.exponentialRampToValueAtTime(150, now + 0.22);
+      gain.gain.setValueAtTime(0.09, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+      osc.start(now); osc.stop(now + 0.25);
+    }
+  } catch (e) {}
+}
+
+/* 1~6학년 통합 주문 데이터베이스 */
+const SPELL_DB = {
+  '루미노스': { name: '루미노스', tag: '조명/시야', stat: 'insight', baseDmg: 3, desc: '섬광으로 어둠 속 적의 시선을 교란합니다.' },
+  '윙가르디움 레비오사': { name: '윙가르디움 레비오사', tag: '지형 응용', stat: 'insight', baseDmg: 5, desc: '주변 사물을 띄워 적에게 떨어뜨립니다.' },
+  '알로호모라': { name: '알로호모라', tag: '탐색 전용', stat: 'insight', baseDmg: 0, desc: '잠긴 문을 여는 해제 주문.' },
+  '인센디오': { name: '인센디오', tag: '화염 공격', stat: 'grit', baseDmg: 7, burn: true, desc: '화염을 뿜어 지속 화상 피해를 입힙니다.' },
+  '페트리피쿠스 토탈루스': { name: '페트리피쿠스 토탈루스', tag: '전신 결박', stat: 'guile', baseDmg: 5, bind: true, desc: '적을 경직시켜 다음 턴 공격을 봉쇄합니다.' },
+  '아구아멘티': { name: '아구아멘티', tag: '수류/진정', stat: 'empathy', baseDmg: 5, healSelf: 4, desc: '거센 물줄기로 밀어내며 체력 +4 회복.' },
+  '프로테고': { name: '프로테고', tag: '방어/반사', stat: 'grit', baseDmg: 4, guard: true, desc: '방패막을 전개해 이번 턴 피해를 경감합니다.' },
+  '스투페파이': { name: '스투페파이', tag: '강력 충격', stat: 'grit', baseDmg: 9, desc: '붉은 기절 광선으로 직선 피해를 입힙니다.' },
+  '엑스펠리아르무스': { name: '엑스펠리아르무스', tag: '무장 해제', stat: 'grit', baseDmg: 9, bind: true, desc: '적의 지팡이와 태세를 무너뜨립니다.' },
+  '아라니아 엑수마이': { name: '아라니아 엑수마이', tag: '생물 퇴치', stat: 'insight', baseDmg: 6, desc: '어둠의 생물들을 밀어냅니다.' },
+  '리크투셈프라': { name: '리크투셈프라', tag: '교란/결투', stat: 'guile', baseDmg: 7, desc: '은빛 섬광으로 상대의 균형을 무너뜨립니다.' },
+  '피니테 인칸타템': { name: '피니테 인칸타템', tag: '저주 해제', stat: 'empathy', baseDmg: 5, healSelf: 5, guard: true, desc: '어둠의 여파를 지우고 방어하며 체력 +5 회복.' },
+  '리디큘러스': { name: '리디큘러스', tag: '공포 극복', stat: 'empathy', baseDmg: 5, desc: '마음속 공포를 떨쳐내며 적을 교란합니다.' },
+  '익스펙토 패트로눔': { name: '익스펙토 패트로눔', tag: '수호령/회복', stat: 'empathy', baseDmg: 8, healSelf: 6, desc: '은빛 수호령을 소환해 어둠을 밀어내고 체력 +6 회복.' },
+  '임페디멘타': { name: '임페디멘타', tag: '진행 저지', stat: 'insight', baseDmg: 8, bind: true, desc: '강력한 저지 파동으로 적을 정지시킵니다.' },
+  '아레스토 모멘텀': { name: '아레스토 모멘텀', tag: '감속/방어', stat: 'insight', baseDmg: 5, guard: true, healSelf: 4, desc: '충격을 늦춰 피해를 방어하고 체력 +4 회복.' },
+  '아씨오': { name: '아씨오', tag: '소환/기습', stat: 'insight', baseDmg: 8, desc: '원거리 사물을 소환해 적의 빈틈을 찌릅니다.' },
+  '리덕토': { name: '리덕토', tag: '파쇄 극딜', stat: 'grit', baseDmg: 12, desc: '단단한 장애물과 방어를 산산조각 냅니다.' },
+  '레라시오': { name: '레라시오', tag: '열파 방출', stat: 'guile', baseDmg: 8, desc: '강렬한 열파로 적을 밀쳐냅니다.' },
+  '프로테고 호리빌리스': { name: '프로테고 호리빌리스', tag: '고급 방어막', stat: 'empathy', baseDmg: 6, guard: true, healSelf: 7, desc: '상급 방어막 전개 및 체력 +7 회복!' },
+  '스투페파이 맥시마': { name: '스투페파이 맥시마', tag: '강화 기절', stat: 'grit', baseDmg: 13, bind: true, desc: '고출력 기절 광선! 적을 강타하고 1턴 제압합니다.' },
+  '콘프링고': { name: '콘프링고', tag: '폭발 화염', stat: 'grit', baseDmg: 14, burn: true, desc: '강렬한 폭발 화염으로 막대한 피해와 지속 화상을 입힙니다!' },
+  '프로테고 토탈룸': { name: '프로테고 토탈룸', tag: '전장 결계', stat: 'empathy', baseDmg: 7, guard: true, healSelf: 9, desc: '아군 전체를 감싸는 최상급 수호 결계 및 체력 +9 회복!' },
+  '오클러먼시': { name: '오클러먼시', tag: '정신 장벽', stat: 'insight', baseDmg: 7, guard: true, healSelf: 6, desc: '정신을 닫아 어둠의 침투를 막아내고 체력 +6 회복.' },
+  /* 6학년 신규 습득 주문 (혼혈 왕자의 비기 & 덤블도어의 화염) */
+  '레비코르푸스': { name: '레비코르푸스 (무언 결박)', tag: '혼혈 왕자 · 제압', stat: 'guile', baseDmg: 11, bind: true, desc: '혼혈 왕자의 무언 주문! 적의 발목을 허공에 거꾸로 매달아 1턴 완벽 제압!' },
+  '섹툼셈프라': { name: '섹툼셈프라 (검의 저주)', tag: '혼혈 왕자 · 극딜', stat: 'grit', baseDmg: 17, burn: true, desc: '보이지 않는 검으로 적을 베어내는 금지된 극딜 주문! (지속 출혈 부여)' },
+  '불네라 사넨투르': { name: '불네라 사넨투르', tag: '고급 치유 노래', stat: 'empathy', baseDmg: 5, guard: true, healSelf: 14, desc: '깊은 저주의 상처를 노래하듯 봉합해 체력 +14 대량 회복 & 방어 태세!' },
+  '파르티스 템포루스': { name: '파르티스 템포루스', tag: '인페리우스 특효', stat: 'insight', baseDmg: 14, inferiBonus: 12, burn: true, guard: true, desc: '덤블도어의 거대한 화염 폭풍! 망자(인페리우스) 군단을 불태우며 방어막 형성!' }
+};
+
+let S = null;
+let combatState = null;
+
+function loadMaster() {
+  try {
+    const raw = localStorage.getItem(MASTER_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+
+function buildStateFromProfile(profile) {
+  const baseSpells = Array.isArray(profile.spells) && profile.spells.length
+    ? [...profile.spells]
+    : ['루미노스', '인센디오', '프로테고', '엑스펠리아르무스', '익스펙토 패트로눔', '리덕토', '스투페파이 맥시마', '프로테고 토탈룸'];
+
+  const rel = profile.relations || {};
+  const maxHp = Math.max(40, profile.maxHp || 40);
+  const hidden = profile.hidden || {
+    nature: { name: '냉소적인 관찰자', primary: 'insight', secondary: 'guile', desc: '한발 물러서서 상황의 모순을 먼저 짚어내는 기질' },
+    ivs: { grit: 24, insight: 26, guile: 22, empathy: 21 },
+    summerBonus: { grit: 5, insight: 6, guile: 4, empathy: 4 }
+  };
+
+  return {
+    playerName: profile.playerName || '아르투르 블랙번',
+    familyLabel: profile.familyLabel || '몰락한 옛 순수혈통 가문',
+    house: profile.house || 'gryffindor',
+    wand: profile.wand || '서양호랑가시나무 · 불사조 깃털 (11인치)',
+    hidden,
+    patronusForm: profile.flags?.patronusForm || '은빛 사자 (Silver Lion)',
+    hp: maxHp,
+    maxHp,
+    housePoints: 0,
+    horcruxLore: 0,   // 호크룩스 진실 파악도
+    malfoyTrack: 0,   // 말포이 & 사라지는 캐비닛 추적도
+    princeSecrets: 0, // 혼혈 왕자의 비기 숙련도
+    felixLuck: false, // 펠릭스 펠리시스 보유 여부
+    duelBonus: 0,
+    spells: baseSpells,
+    items: [...(profile.items || ['가문의 낡은 은화 주머니']), '슬러그혼의 응급 해독 영약 (체력 +18)'],
+    clues: [],
+    relations: {
+      harry: rel.harry || 0,
+      ron: rel.ron || 0,
+      hermione: rel.hermione || 0,
+      draco: rel.draco || 0,
+      snape: rel.snape || 0,
+      dumbledore: 2,
+      slughorn: 0,
+      ginny: rel.ginny || 1
+    },
+    flags: { ...(profile.flags || {}) },
+    freeWeek: { active: false, weekNum: 0, apLeft: 0, visited: [], nextScene: null, introText: '' },
+    currentScene: 'y6_prologue_alley',
+    lastCheckHtml: null,
+    endingKey: null
+  };
+}
+
+function renderTitlePreview() {
+  const box = document.getElementById('inherit-preview-box');
+  const startBtn = document.getElementById('btn-start-inherited');
+  const M = loadMaster();
+
+  if (M && M.activeProfile) {
+    const p = M.activeProfile;
+    const hNames = { gryffindor: '🦁 그리핀도르', slytherin: '🐍 슬리데린', ravenclaw: '🦅 래번클로', hufflepuff: '🦡 후플푸프' };
+    const extras = [];
+    if (p.flags?.savedCedricAtMaze) extras.push('🌟 세드릭 생존');
+    if (p.flags?.savedSiriusAtMinistry) extras.push('🌟 시리우스 생존');
+    box.innerHTML = `
+      <div class="flex items-center justify-between gap-2 mb-1.5">
+        <span class="text-[11px] font-extrabold text-teal-300">✔ 이전 학년 계승 데이터 감지됨</span>
+        <span class="text-[10.5px] font-bold px-2 py-0.5 rounded bg-teal-950 border border-teal-400/50 text-teal-200">${hNames[p.house] || '호그와트'}</span>
+      </div>
+      <div class="text-sm font-black text-white">${p.playerName} <span class="text-xs font-normal text-slate-400">(${p.familyLabel || '마법사 가문'})</span></div>
+      <p class="text-[11px] text-slate-300 mt-1">🪄 ${p.wand || '지팡이'} · 최대 체력 ${Math.max(40, p.maxHp || 40)}</p>
+      <p class="text-[11px] text-teal-200/80 mt-1">계승 주문 ${p.spells?.length || 0}개 · 나비효과 ${Object.keys(p.flags || {}).length}건${extras.length ? ' · ' + extras.join(' / ') : ''}</p>
+    `;
+    startBtn.disabled = false;
+  } else {
+    box.innerHTML = `
+      <div class="text-xs font-bold text-amber-300 mb-1">⚠ 저장된 이전 학년 기록이 없습니다</div>
+      <p class="text-[11px] text-slate-400 leading-relaxed">
+        제1~5권을 클리어하거나, 아래 <strong>[계승 코드 입력]</strong> 또는 <strong>[바로 체험(퀵 스타트)]</strong>으로 6학년을 시작할 수 있습니다.
+      </p>
+    `;
+    startBtn.disabled = true;
+  }
+}
+
+function startFromMasterProfile() {
+  const M = loadMaster();
+  if (!M || !M.activeProfile) {
+    showToast('⚠ 계승할 이전 기록이 없습니다. 계승 코드를 입력하거나 퀵 스타트를 이용해 주세요.');
+    return;
+  }
+  S = buildStateFromProfile(M.activeProfile);
+  launchBook6Screen();
+}
+
+function startQuickBook6() {
+  const houses = ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff'];
+  const randomHouse = houses[Math.floor(Math.random() * houses.length)];
+  S = buildStateFromProfile({
+    playerName: '아르투르 블랙번',
+    familyLabel: '몰락한 옛 순수혈통 가문',
+    house: randomHouse,
+    wand: '서양호랑가시나무 · 불사조 깃털 (11인치)',
+    maxHp: 40,
+    spells: ['루미노스', '인센디오', '프로테고', '엑스펠리아르무스', '익스펙토 패트로눔', '리덕토', '스투페파이 맥시마', '프로테고 토탈룸', '오클러먼시'],
+    items: ['가문의 낡은 은화 주머니', '길 잃은 부엉이의 은빛 깃털'],
+    relations: { harry: 4, ron: 3, hermione: 4, draco: 2, snape: 2 },
+    flags: { trainFriendly: true, foughtTroll: true, slayedBasilisk: true, savedBuckbeakAndSirius: true, witnessedVoldemortReturn: true, foughtMinistry: true, patronusForm: '은빛 사자 (Silver Lion)' }
+  });
+  launchBook6Screen();
+  showToast('🎲 6학년 퀵 스타트 프로필이 생성되었습니다!');
+}
+
+function launchBook6Screen() {
+  combatState = null;
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  renderScene();
+}
+
+function addSpell(name) { if (!S.spells.includes(name)) S.spells.push(name); }
+function addClue(text) { if (!S.clues.includes(text)) S.clues.push(text); }
+function addItem(text) { S.items.push(text); }
+
+function getSecretModifier(statKey) {
+  const iv = S.hidden?.ivs?.[statKey] || 20;
+  const bonus = S.hidden?.summerBonus?.[statKey] || 0;
+  const total = iv + bonus;
+  let mod = total >= 34 ? 2 : total >= 20 ? 1 : 0;
+  if (statKey === 'grit' && S.duelBonus > 0) mod += 1;
+  if (S.felixLuck) mod += 1;
+  return mod;
+}
+
+/* ==========================================================================
+   2d6 주사위 판정 오버레이
+   ========================================================================== */
+async function perform2d6Check(label, statKey, onResolve, extraMod = 0) {
+  const modal = document.getElementById('dice-modal');
+  const d1 = document.getElementById('die-1');
+  const d2 = document.getElementById('die-2');
+  const resBox = document.getElementById('dice-result-box');
+
+  document.getElementById('dice-title').textContent = label;
+  document.getElementById('dice-sub').textContent = '10+ 대성공 / 7~9 부분 성공 / 6 이하 실패';
+  resBox.innerHTML = `<span class="text-xs text-slate-300">운명의 주사위가 구르는 중...</span>`;
+  modal.classList.remove('hidden');
+  d1.classList.add('anim-dice');
+  d2.classList.add('anim-dice');
+
+  for (let i = 0; i < 7; i++) {
+    d1.textContent = Math.floor(Math.random() * 6) + 1;
+    d2.textContent = Math.floor(Math.random() * 6) + 1;
+    playTone('dice');
+    await sleep(75);
+  }
+
+  d1.classList.remove('anim-dice');
+  d2.classList.remove('anim-dice');
+
+  const r1 = Math.floor(Math.random() * 6) + 1;
+  const r2 = Math.floor(Math.random() * 6) + 1;
+  const mod = (statKey ? getSecretModifier(statKey) : 0) + extraMod;
+  const total = r1 + r2 + mod;
+
+  d1.textContent = r1;
+  d2.textContent = r2;
+
+  let outcome = 'fail';
+  let badgeHtml = '';
+  if (total >= 10) {
+    outcome = 'crit';
+    playTone('success');
+    badgeHtml = `<span class="text-sm font-black text-emerald-400">★ 대성공! (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  } else if (total >= 7) {
+    outcome = 'partial';
+    playTone('success');
+    badgeHtml = `<span class="text-sm font-black text-amber-300">✦ 부분 성공 (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  } else {
+    outcome = 'fail';
+    playTone('fail');
+    badgeHtml = `<span class="text-sm font-black text-rose-400">✖ 실패 (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  }
+
+  resBox.innerHTML = `${badgeHtml}<span class="text-[11px] text-slate-400 mt-1">결과를 반영합니다...</span>`;
+  await sleep(1050);
+  modal.classList.add('hidden');
+  await onResolve(outcome, total);
+}
+
+/* ==========================================================================
+   제6권 [자유 행동 주간] 4회 (슬러그혼/혼혈왕자 · 펜시브 · 말포이 추적 · 기숙사/동료 · 심야 첩보)
+   ========================================================================== */
+function enterFreeWeek(weekNum, nextSceneId, introText) {
+  S.freeWeek = { active: true, weekNum, apLeft: 3, visited: [], nextScene: nextSceneId, introText };
+  S.currentScene = 'free_week_hub';
+  renderScene();
+}
+
+function getFreeWeekLocations(weekNum) {
+  const hNames = {
+    gryffindor: '그리핀도르 탑 휴게실',
+    slytherin: '슬리데린 지하 휴게실',
+    ravenclaw: '래번클로 탑 서재',
+    hufflepuff: '후플푸프 지하 휴게실'
+  };
+  return [
+    {
+      id: 'slughorn_club',
+      icon: '🧪',
+      title: '슬러그혼의 마법약 교실 & 혼혈 왕자 필기',
+      sub: '혼혈 왕자 주문(레비코르푸스·섹툼셈프라·불네라 사넨투르) & 펠릭스 펠리시스',
+      action: () => runSlughornEvent(weekNum)
+    },
+    {
+      id: 'pensieve_study',
+      icon: '🌀',
+      title: '덤블도어 교장실의 펜시브 (과거 기억 탐구)',
+      sub: '볼드모트의 과거와 호크룩스 진실 · 파르티스 템포루스 습득',
+      action: () => runPensieveEvent(weekNum)
+    },
+    {
+      id: 'malfoy_watch',
+      icon: '🚪',
+      title: '7층 필요의 방 앞 & 말포이 동향 감시',
+      sub: '사라지는 캐비닛 추적 · 말포이의 고뇌 포착',
+      action: () => runMalfoyWatchEvent(weekNum)
+    },
+    {
+      id: 'common_allies',
+      icon: '🏰',
+      title: `${hNames[S.house] || '기숙사'} & 스네이프/지니/D.A. 교류`,
+      sub: '기숙사별 6학년 에피소드 · 회복약 확보 · 체력 회복',
+      action: () => runCommonAlliesEvent(weekNum)
+    },
+    {
+      id: 'night_intel',
+      icon: '🕯️',
+      title: '심야 성 외곽 & 깨뜨릴 수 없는 맹세 추적 (2d6 위험)',
+      sub: '성공 시 스네이프의 진의/죽먹자 침입 단서 · 실패 시 피해',
+      action: () => runNightIntelEvent(weekNum)
+    }
+  ];
+}
+
+function finishFreeAction(locId, type, text) {
+  S.freeWeek.visited.push(locId);
+  S.freeWeek.apLeft -= 1;
+  S.lastCheckHtml = { type, text };
+  if (S.freeWeek.apLeft <= 0) {
+    const next = S.freeWeek.nextScene;
+    S.freeWeek.active = false;
+    goScene(next);
+  } else {
+    renderScene();
+  }
+}
+
+function runSlughornEvent(weekNum) {
+  S.relations.slughorn += 1;
+  S.princeSecrets += 1;
+  if (weekNum === 1) {
+    addSpell('레비코르푸스');
+    finishFreeAction('slughorn_club', 'crit', '🧪 낡은 <상급 마법약 제조법> 여백에 적힌 혼혈 왕자의 메모를 해독해 무언 결박 주문 [레비코르푸스]를 완벽히 익혔습니다!');
+  } else if (weekNum === 2) {
+    addItem('슬러그혼이 인정한 비조아 해독석 (체력 +20)');
+    addSpell('불네라 사넨투르');
+    finishFreeAction('slughorn_club', 'crit', '🧪 독극물을 중화하는 비조아 활용법과 상처를 봉합하는 고급 치유 주문 [불네라 사넨투르]을 터득했습니다!');
+  } else if (weekNum === 3) {
+    addSpell('섹툼셈프라');
+    S.duelBonus = 1;
+    finishFreeAction('slughorn_club', 'crit', '🧪 교과서 여백에 "적에게 쓸 것"이라 적힌 혼혈 왕자의 금지된 비기 [섹툼셈프라]를 해독했습니다! 엄청난 위력이지만 조심히 다뤄야 합니다. (전투 보정 +1)');
+  } else {
+    S.felixLuck = true;
+    addItem('펠릭스 펠리시스 (액체 행운 · 모든 판정 +1 & 체력 +22)');
+    finishFreeAction('slughorn_club', 'crit', '🧪 황금빛으로 찰랑이는 소량의 [펠릭스 펠리시스]를 확보했습니다! 앞으로 모든 2d6 판정에 행운 보정(+1)이 은밀히 적용됩니다!');
+  }
+}
+
+function runPensieveEvent(weekNum) {
+  S.horcruxLore += 1;
+  S.relations.dumbledore += 1;
+  if (weekNum === 1) {
+    addClue('펜시브 기억 #1 (곤트 가문): 덤블도어의 오른손이 검게 타들어 간 이유는 마볼로 곤트의 반지에 걸린 치명적인 저주 때문이었다.');
+    finishFreeAction('pensieve_study', 'crit', '🌀 덤블도어 교장실의 은빛 펜시브 속에서 곤트 가문의 반지와 어린 톰 리들의 고아원 시절 기억을 목격했습니다. (호크룩스 조사 +1)');
+  } else if (weekNum === 2) {
+    addClue('펜시브 기억 #2 (헵지바 스미스): 젊은 톰 리들이 슬리데린의 로켓과 후플푸프의 잔을 노리고 살인을 저질렀다.');
+    finishFreeAction('pensieve_study', 'crit', '🌀 볼드모트가 호그와트 창립자들의 유물에 집착하며 영혼의 그릇으로 삼았다는 단서를 확보했습니다. (호크룩스 조사 +1)');
+  } else if (weekNum === 3) {
+    addClue('변조된 기억: 슬러그혼이 넘긴 기억은 안개로 조작되어 있었다. 진짜 기억 속에 볼드모트가 영혼을 몇 조각으로 나누었는지 답이 숨어 있다!');
+    finishFreeAction('pensieve_study', 'crit', '🌀 슬러그혼의 기억이 의도적으로 조작되었음을 간파했습니다! 그의 진짜 기억을 반드시 끌어내야 합니다. (호크룩스 조사 +1)');
+  } else {
+    addSpell('파르티스 템포루스');
+    addClue('해안 동굴의 방어: 호크룩스가 숨겨진 절벽 동굴에는 어둠의 호수와 수많은 망자(인페리우스)들이 잠들어 있으며, 오직 화염만이 그들을 막는다.');
+    finishFreeAction('pensieve_study', 'crit', '🌀 덤블도어에게 어둠의 망자를 불태우는 거대 화염 마법 [파르티스 템포루스]의 원리를 전수받았습니다!');
+  }
+}
+
+function runMalfoyWatchEvent(weekNum) {
+  S.malfoyTrack += 1;
+  if (weekNum === 1) {
+    addClue('말포이의 변화: 드레이코 말포이가 퀴디치 팀마저 그만두고 극도로 초췌해진 얼굴로 7층 복도를 배회하고 있다.');
+    finishFreeAction('malfoy_watch', 'info', '🚪 7층 복도에서 말포이가 홀로 사라지는 장면을 포착했습니다. 그는 지금 무언가 끔찍한 임무에 짓눌려 있습니다. (말포이 추적 +1)');
+  } else if (weekNum === 2) {
+    addClue('사라지는 캐비닛: 말포이는 필요의 방 안에서 망가진 [사라지는 캐비닛]을 수리해 녹턴 앨리와 호그와트를 잇는 비밀 통로를 열려 하고 있다!');
+    S.flags.knowsVanishingCabinet = true;
+    finishFreeAction('malfoy_watch', 'crit', '🚪 결정적 발견! 호그와트의 모든 방어 결계를 우회해 죽음을 먹는 자들을 성 안으로 들일 [사라지는 캐비닛]의 비밀을 알아냈습니다!');
+  } else if (weekNum === 3) {
+    S.relations.draco += 1;
+    addClue('화장실의 눈물: 모우닝 머틀의 화장실에서 말포이가 "못 해내면 아버지와 어머니를 죽인다고 했어…"라며 홀로 흐느끼는 걸 보았다.');
+    S.flags.sawMalfoyCrying = true;
+    finishFreeAction('malfoy_watch', 'info', '🚪 오만하던 말포이가 가족의 목숨을 볼모로 잡혀 공포에 떨고 있는 이면을 보았습니다. (말포이 추적 +1)');
+  } else {
+    addClue('침입 임박: 필요의 방 안에서 수리된 캐비닛에 넣은 새 한 마리가 마침내 살아서 돌아왔다! 침입은 바로 오늘 밤이다!');
+    S.flags.knowsRaidImminent = true;
+    finishFreeAction('malfoy_watch', 'crit', '🚪 사라지는 캐비닛 수리가 완료되었습니다! 죽음을 먹는 자들의 호그와트 습격이 초읽기에 들어갔습니다!');
+  }
+}
+
+function runCommonAlliesEvent(weekNum) {
+  S.hp = Math.min(S.maxHp, S.hp + 9);
+  S.housePoints += 5;
+  if (weekNum === 1) {
+    addItem('지니가 챙겨준 비상 치유 비약 (체력 +18)');
+    S.relations.ginny += 1;
+    finishFreeAction('common_allies', 'info', '🏰 기숙사에서 지니·네빌·루나와 6학년 어둠의 마법 방어술(스네이프 교수 담당!) 대비 훈련을 하며 체력을 회복했습니다.');
+  } else if (weekNum === 2) {
+    S.relations.snape += 1;
+    const hMsg = S.house === 'slytherin'
+      ? '🐍 슬리데린 지하실에서 스네이프 교수가 말포이에게 "네가 무엇을 꾸미든 내가 도울 수 있다"며 집요하게 보호하려 드는 장면을 보았습니다.'
+      : '🏰 기숙사에서 해리가 "혼혈 왕자가 누구일까" 고민하는 걸 함께 추리하며, 50년 전이 아닌 최근 세대의 필체임을 확인했습니다.';
+    finishFreeAction('common_allies', 'info', `${hMsg} (체력 +9, +5점)`);
+  } else if (weekNum === 3) {
+    addItem('D.A. 동지들이 모은 특제 위겐웰드 영약 (체력 +22)');
+    S.relations.harry += 1;
+    S.relations.hermione += 1;
+    finishFreeAction('common_allies', 'info', '🏰 해리·론·헤르미온느와 성탑 아래서 밤늦도록 대화하며, 무슨 일이 벌어져도 서로를 믿기로 약속했습니다. (체력 +9)');
+  } else {
+    S.hp = S.maxHp;
+    finishFreeAction('common_allies', 'crit', '🏰 결전을 앞두고 D.A. 동료들(네빌·루나·지니)에게 마법 갈레온 비상 호출 신호를 미리 점검해 두었습니다! (체력 완전 회복)');
+  }
+}
+
+function runNightIntelEvent(weekNum) {
+  perform2d6Check('심야 첩보 추적 & 금지된 대화 도청', 'guile', (outcome) => {
+    if (outcome === 'crit') {
+      const intel = [
+        '깨뜨릴 수 없는 맹세: 스네이프 교수가 나시사 말포이와 [드레이코가 임무에 실패하면 대신 완수한다]는 깨뜨릴 수 없는 맹세를 맺었다는 소문!',
+        '스네이프의 진의: 스네이프와 덤블도어가 어두운 숲 가장자리에서 격렬히 다투며 "교장님, 이제는 저도 더 이상 못 하겠습니다!"라고 외치는 걸 들었다!',
+        '혼혈 왕자의 정체: 낡은 교과서의 필체가 지하실 칠판에 적힌 스네이프 교수의 필체와 100% 일치한다! 혼혈 왕자는 세베루스 스네이프다!',
+        '덤블도어의 밀약: 덤블도어의 검은 손은 이미 시한부이며, 스네이프에게 자신의 최후를 부탁하는 듯한 서늘한 대화를 엿들었다!'
+      ];
+      addClue(intel[weekNum - 1]);
+      if (weekNum === 3) S.flags.knowsPrinceIsSnape = true;
+      if (weekNum === 4) { S.flags.knowsSnapePact = true; S.relations.snape += 2; }
+      addItem('심야 정찰 중 확보한 상급 강장제 (체력 +20)');
+      finishFreeAction('night_intel', 'crit', `🕯️ 엄청난 1급 기밀을 포착했습니다! — ${intel[weekNum - 1]}`);
+    } else if (outcome === 'partial') {
+      addClue(`심야 첩보 #${weekNum}: 어둠 속에서 늑대인간 펜리르 그레이백이 호그스미드 외곽을 어슬렁거린다는 기사단 경고를 접했다.`);
+      S.housePoints -= 5;
+      finishFreeAction('night_intel', 'partial', '🕯️ 단서는 챙겼지만 순찰 중이던 오러들에게 들켜 기숙사 5점이 감점되었습니다.');
+    } else {
+      S.hp = Math.max(10, S.hp - 6);
+      S.housePoints -= 10;
+      finishFreeAction('night_intel', 'fail', '🕯️ 어둠 속 저주 함정에 스치며 체력 -6 및 기숙사 10점이 감점되었습니다.');
+    }
+  });
+}
+
+/* ==========================================================================
+   제6권: 혼혈 왕자 전체 스토리 시나리오 트리
+   ========================================================================== */
+const SCENES = {
+  /* -------------------- [프롤로그] 1996년 8월 다이애건 앨리 & 녹턴 앨리 -------------------- */
+  y6_prologue_alley: {
+    date: '1996년 8월 · 다이애건 앨리 & 위즐리 장난감 가게',
+    act: 'PROLOGUE · BORGINS AND BURKES',
+    title: '전쟁의 여름과 보긴 앤 버크스의 검은 캐비닛',
+    narrative: () => {
+      const allyNote = S.flags.savedSiriusAtMinistry
+        ? `미스터리 부서에서 살아남은 <strong>시리우스 블랙</strong>이 오러들과 함께 다이애건 앨리 외곽을 은밀히 경호하며 당신에게 든든한 눈인사를 보냅니다.`
+        : `어둠의 마왕의 귀환이 공식화된 뒤, 다이애건 앨리는 올리밴더마저 실종된 채 을씨년스러운 공포에 잠겼습니다.`;
+      return [
+        `1996년 8월, 유일하게 활기가 넘치는 프레드·조지의 <strong>위즐리 형제의 신기한 장난감 가게</strong>. ${allyNote}`,
+        `가게 창밖으로 창백한 얼굴의 <strong>드레이코 말포이</strong>가 어머니와 떨어져 어두운 <strong>녹턴 앨리</strong>의 [보긴 앤 버크스] 상점으로 몰래 들어가는 모습이 보입니다. 지붕 위에서 내려다본 상점 안에서 말포이는 거대한 <strong>검은 옷장(사라지는 캐비닛)</strong>을 만지며 보긴을 협박하고 있습니다.`
+      ];
+    },
+    dialogues: () => [
+      { speaker: '드레이코 말포이', role: '6학년 슬리데린', text: '"그 물건 수리하는 법을 정확히 알려 줘, 보긴. 그리고 이 짝이 되는 물건을 절대 팔지 마. 내 팔에 무엇이 새겨져 있는지 똑똑히 봤겠지?"' },
+      { speaker: '해리 포터', role: '6학년 동급생', text: '"봤어? 말포이가 죽음을 먹는 자가 된 거야! 볼드모트가 말포이에게 호그와트 안에서 할 임무를 맡긴 게 틀림없어!"' }
+    ],
+    choices: [
+      {
+        text: '[통찰 판정] 말포이가 만진 검은 캐비닛의 문양과 보긴이 꺼낸 [오팔 목걸이]까지 꼼꼼히 기억해 둔다.',
+        check: { label: '보긴 앤 버크스 은밀 관찰', stat: 'insight' },
+        onCheck: (outcome) => {
+          if (outcome !== 'fail') {
+            S.malfoyTrack += 1;
+            addClue('녹턴 앨리 목격: 말포이는 보긴 앤 버크스의 [사라지는 캐비닛]과 [저주받은 오팔 목걸이]에 관심을 보였다!');
+            S.lastCheckHtml = { type: 'crit', text: '말포이가 노리는 두 가지 물건의 정체를 정확히 포착했습니다! (말포이 추적 +1)' };
+          } else {
+            S.lastCheckHtml = { type: 'info', text: '페루산 암흑 가루 연기 때문에 세부는 놓쳤지만, 말포이가 위험한 일에 발을 들였다는 건 확실해졌습니다.' };
+          }
+          goScene('y6_act1_slughorn');
+        }
+      },
+      {
+        text: '"단정 짓기 전에 말포이가 뭘 하려는지 6학년 내내 조용히 지켜보자."라며 해리와 론을 진정시킨다.',
+        action: () => {
+          S.relations.hermione += 2;
+          S.relations.harry += 1;
+          S.lastCheckHtml = { type: 'info', text: '헤르미온느가 "맞아, 증거 없이 섣불리 움직이면 위험해."라며 당신의 냉철한 판단에 동의했습니다.' };
+          goScene('y6_act1_slughorn');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [1막] 슬러그혼의 마법약 수업 & 혼혈 왕자의 교과서 -------------------- */
+  y6_act1_slughorn: {
+    date: '1996년 9월 첫 주 · 지하 마법약 교실',
+    act: 'ACT I · THE HALF-BLOOD PRINCE',
+    title: '[제1대분기] 액체 행운과 혼혈 왕자의 낡은 교과서',
+    narrative: () => [
+      `새 학기, 스네이프 교수가 마침내 숙원이던 어둠의 마법 방어술 자리를 맡고, 은퇴했던 노교수 <strong>호레이스 슬러그혼</strong>이 마법약 교수로 부임했습니다.`,
+      `첫 수업에서 슬러그혼은 황금빛으로 반짝이는 작은 유리병—마시는 이에게 완벽한 행운을 가져다주는 <strong>펠릭스 펠리시스(액체 행운)</strong>—을 상품으로 걸고 [살아있는 죽음의 약]을 끓이게 합니다. 그 순간, 보관함에서 꺼낸 낡은 교과서 여백마다 누군가 천재적인 수정법과 정체불명의 주문을 빼곡히 적어 둔 <strong>"혼혈 왕자의 소유임"</strong>이라는 서명이 눈에 띕니다!`
+    ],
+    dialogues: () => [
+      { speaker: '호레이스 슬러그혼', role: '마법약 교수', text: '"오, 놀랍군! 완벽한 진주빛이야! 자네, 내 슬러그 클럽 만찬에 꼭 초대하고 싶군!"' }
+    ],
+    choices: [
+      {
+        text: '혼혈 왕자의 천재적인 수정법(소포포러스 콩은 자르지 말고 은칼로 으깰 것!)을 따라 완벽한 약을 끓여 낸다.',
+        action: () => {
+          S.princeSecrets += 1;
+          S.relations.slughorn += 2;
+          S.felixLuck = true;
+          S.housePoints += 15;
+          enterFreeWeek(1, 'y6_act2_necklace', '슬러그혼의 극찬과 함께 [펠릭스 펠리시스] 행운 보정(+1)을 얻었습니다! 이제 9월 첫 자유 행동 주간(3 AP)입니다.');
+        }
+      },
+      {
+        text: '수상한 낡은 책의 비법에 의존하지 않고 정석 이론과 5년간의 경험만으로 당당히 실력을 겨룬다.',
+        action: () => {
+          S.relations.hermione += 3;
+          S.relations.dumbledore += 1;
+          S.housePoints += 10;
+          enterFreeWeek(1, 'y6_act2_necklace', '헤르미온느가 당신의 원칙을 높이 샀습니다! 이제 9월 첫 자유 행동 주간(3 AP)이 시작됩니다.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [2막] 호그스미드의 저주받은 오팔 목걸이 사건 -------------------- */
+  y6_act2_necklace: {
+    date: '1996년 10월 · 눈보라 치는 호그스미드 길',
+    act: 'ACT II · THE CURSED NECKLACE',
+    title: '허공으로 떠오른 케이티 벨과 어둠의 저주',
+    narrative: () => [
+      `진눈깨비가 몰아치는 10월의 호그스미드 외출 날. 스리 브룸스틱스에서 돌아오던 길, 그리핀도르 추격꾼 <strong>케이티 벨</strong>이 누군가에게 덤블도어에게 전해 달라는 소포를 건네받아 실수로 포장지를 찢는 순간, 그녀가 비명을 지르며 허공으로 2미터나 떠올라 몸을 뒤틀기 시작합니다!`,
+      `눈밭에 굴러떨어진 것은 녹턴 앨리 보긴 앤 버크스에 있던 바로 그 <strong>저주받은 오팔 목걸이</strong>입니다!`
+    ],
+    choices: [
+      {
+        text: '[통찰 판정] 절대 맨손으로 만지지 말고 두꺼운 망토로 목걸이를 감싼 뒤, [피니테 인칸타템]으로 케이티의 저주 확산을 즉시 늦춘다.',
+        check: { label: '오팔 목걸이 저주 긴급 응급 처치', stat: 'insight' },
+        onCheck: (outcome) => {
+          S.malfoyTrack += 1;
+          S.relations.snape += 2;
+          if (outcome === 'fail') {
+            S.hp = Math.max(12, S.hp - 5);
+            S.lastCheckHtml = { type: 'fail', text: '저주의 잔여 파동에 손을 스쳐 체력 -5를 입었지만, 해그리드와 스네이프 교수가 제때 도착해 케이티의 목숨을 구했습니다.' };
+          } else {
+            S.housePoints += 20;
+            S.lastCheckHtml = { type: 'crit', text: '완벽한 응급 처치로 케이티 벨의 목숨을 살렸습니다! 스네이프 교수가 현장을 수습하며 당신에게 깊은 인상을 받았습니다. (기숙사 +20점)' };
+          }
+          enterFreeWeek(2, 'y6_act3_burrow', '11~12월 두 번째 자유 행동 주간(3 AP)입니다! 덤블도어의 펜시브 기억과 필요의 방의 비밀을 추적하세요.');
+        }
+      },
+      {
+        text: '케이티를 해그리드에게 맡기고, 스리 브룸스틱스 뒷문 쪽으로 빠져나가는 수상한 발자국을 즉시 추격한다.',
+        action: () => {
+          S.malfoyTrack += 2;
+          addClue('로즈메르타 부인의 눈빛: 스리 브룸스틱스의 주인 로즈메르타 부인이 누군가의 [임페리우스 저주]에 걸려 조종당하고 있다!');
+          S.lastCheckHtml = { type: 'crit', text: '로즈메르타 부인이 임페리우스 저주에 조종당해 목걸이를 건넸다는 결정적 사실을 포착했습니다! (말포이 추적 +2)' };
+          enterFreeWeek(2, 'y6_act3_burrow', '두 번째 자유 행동 주간(3 AP)이 시작됩니다.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [3막] 크리스마스 버로우 습격 (TRPG 전투 1) -------------------- */
+  y6_act3_burrow: {
+    date: '1996년 12월 25일 밤 · 갈대밭의 버로우',
+    act: 'ACT III · FIRE IN THE REEDS',
+    title: '[제2대분기] 갈대밭의 불길 — 벨라트릭스와 그레이백의 습격',
+    narrative: () => [
+      `크리스마스 연휴, 위즐리 가족의 집 버로우에 초대되어 모처럼 따뜻한 저녁을 보내던 밤. 갑자기 바깥 갈대밭 주위로 거대한 <strong>화염의 고리</strong>가 치솟으며 미친 듯한 웃음소리가 밤하늘을 찢습니다!`,
+      `<strong>벨라트릭스 레스트랭</strong>과 가장 잔혹한 늑대인간 <strong>펜리르 그레이백</strong>이 해리를 유인하기 위해 기습을 감행한 것입니다! 지니와 아서, 루핀, 통스가 지팡이를 빼어 들고 불길 속으로 뛰어듭니다!`
+    ],
+    choices: [
+      {
+        text: '불타는 갈대밭 속으로 뛰어들어 해리·지니와 함께 벨라트릭스와 그레이백을 격퇴한다! (TRPG 전투)',
+        action: () => {
+          startCombat({
+            name: '벨라트릭스 레스트랭 & 펜리르 그레이백',
+            hp: 32, maxHp: 32,
+            atkMin: 5, atkMax: 8,
+            intent: '벨라트릭스의 저주와 그레이백의 야수 같은 발톱이 갈대밭 어둠 속에서 덮쳐옵니다!',
+            allyAssist: {
+              name: S.flags.savedSiriusAtMinistry ? '시리우스 블랙 & 리무스 루핀' : '리무스 루핀 & 님파도라 통스',
+              msg: S.flags.savedSiriusAtMinistry
+                ? '시리우스와 루핀이 합동 마법으로 벨라트릭스를 몰아붙이며 13 피해를 가하고 체력을 +7 회복시켰습니다!'
+                : '루핀과 통스가 불길을 뚫고 합류해 그레이백을 밀쳐내며 11 피해를 가하고 체력을 +6 회복시켰습니다!',
+              dmg: S.flags.savedSiriusAtMinistry ? 13 : 11,
+              heal: S.flags.savedSiriusAtMinistry ? 7 : 6
+            },
+            onWin: () => {
+              S.flags.defendedBurrow = true;
+              S.relations.harry += 2;
+              S.relations.ginny += 2;
+              S.housePoints += 25;
+              S.lastCheckHtml = { type: 'crit', text: '벨라트릭스와 그레이백을 어둠 속으로 쫓아내고 위즐리 가족을 지켜냈습니다! 이제 전쟁은 더 이상 피할 수 없습니다.' };
+              enterFreeWeek(3, 'y6_act4_memory', '봄 학기 세 번째 자유 행동 주간(3 AP)입니다! 슬러그혼의 진짜 기억을 얻고 [섹툼셈프라]와 [파르티스 템포루스]를 준비하세요.');
+            }
+          });
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [4막] 슬러그혼의 진짜 기억 (7개의 호크룩스) & 화장실 결투 -------------------- */
+  y6_act4_memory: {
+    date: '1997년 4월 · 해그리드의 오두막 & 6층 화장실',
+    act: 'ACT IV · HORCRUXES',
+    title: '[제3대분기] 일곱 조각으로 찢긴 영혼과 말포이와의 대치',
+    narrative: () => [
+      `아라고그의 장례식이 열린 밤, 마침내 슬러그혼 교수로부터 <strong>변조되지 않은 진짜 기억</strong>을 얻어냈습니다! 16세의 톰 리들이 물었던 금단의 마법—살인을 통해 영혼을 찢어 사물에 숨기는 불멸의 장치, <strong>호크룩스(Horcrux)</strong>. 볼드모트는 자신의 영혼을 무려 <strong>일곱 조각</strong>으로 나누었던 것입니다!`,
+      `며칠 뒤, 론을 죽일 뻔한 독이 든 벌꿀주 사건의 배후를 추궁하던 중, 6층 화장실에서 눈물을 흘리고 있던 <strong>드레이코 말포이</strong>와 정면으로 마주쳤습니다. 공포와 절박함에 휩싸인 말포이가 지팡이를 들어 올립니다!`
+    ],
+    dialogues: () => [
+      { speaker: '드레이코 말포이', role: '궁지에 몰린 6학년', text: '"다가오지 마! 넌 아무것도 몰라… 내가 실패하면 그자가 우리 가족을 다 죽일 거란 말이야!"' }
+    ],
+    choices: [
+      {
+        text: '[설득·구원 분기] 지팡이를 낮추고 "드레이코, 멈춰. 덤블도어 교장님은 네 가족을 숨겨 줄 수 있어. 살인자가 되지 마."라고 말한다.',
+        disabled: () => !(S.flags.sawMalfoyCrying || S.relations.draco >= 3),
+        disabledHint: '(말포이의 눈물 목격 또는 말포이 호감도 3+ 필요)',
+        action: () => {
+          S.flags.showedMercyToMalfoy = true;
+          S.relations.draco += 4;
+          S.lastCheckHtml = { type: 'crit', text: '말포이의 지팡이가 덜덜 떨리다 아래로 내려갔습니다. 비록 그는 도망쳤지만, 당신의 말은 그의 마음속에 깊은 균열을 남겼습니다.' };
+          enterFreeWeek(4, 'y6_act5_crossroads', '운명의 밤 직전 마지막 자유 행동 주간(3 AP)입니다! 동굴과 천문대 탑 결전을 위해 모든 주문과 회복약을 점검하세요.');
+        }
+      },
+      {
+        text: '[주문: 엑스펠리아르무스] 치명적인 어둠의 주문 대신 무장 해제 주문으로 말포이의 지팡이만 깔끔히 날려 제압한다.',
+        action: () => {
+          S.relations.dumbledore += 2;
+          S.housePoints += 15;
+          S.lastCheckHtml = { type: 'info', text: '피 한 방울 흘리지 않고 말포이를 제압했습니다. 하지만 달려온 스네이프가 말포이를 급히 데리고 사라졌습니다.' };
+          enterFreeWeek(4, 'y6_act5_crossroads', '운명의 밤 직전 마지막 자유 행동 주간(3 AP)입니다!');
+        }
+      },
+      {
+        text: '[혼혈 왕자의 비기] 본능적으로 [섹툼셈프라]를 외쳐 말포이를 쓰러뜨리고, 달려온 스네이프의 [불네라 사넨투르]를 목격한다.',
+        disabled: () => !S.spells.includes('섹툼셈프라'),
+        disabledHint: '(섹툼셈프라 미습득)',
+        action: () => {
+          S.flags.usedSectumsempra = true;
+          S.flags.knowsPrinceIsSnape = true;
+          S.relations.snape -= 1;
+          addClue('혼혈 왕자의 정체: 스네이프 교수는 섹툼셈프라의 전용 해독 주문(불네라 사넨투르)을 즉시 외웠다. 그가 바로 혼혈 왕자다!');
+          S.lastCheckHtml = { type: 'partial', text: '끔찍한 위력에 스스로도 충격을 받았습니다. 스네이프가 상처를 치유하며 싸늘하게 교과서를 압수했습니다.' };
+          enterFreeWeek(4, 'y6_act5_crossroads', '운명의 밤 직전 마지막 자유 행동 주간(3 AP)입니다!');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [5막] 클라이맥스: 해안 동굴 OR 호그와트 천문대 탑 공방전 -------------------- */
+  y6_act5_crossroads: {
+    date: '1997년 6월 30일 밤 · 호그와트 성탑',
+    act: 'ACT V · THE LIGHTNING-STRUCK TOWER',
+    title: '[제4대분기] 해안 동굴의 호크룩스, 그리고 성탑 위의 어둠의 표식',
+    narrative: () => [
+      `1997년 6월 30일 밤. 덤블도어 교장이 마침내 볼드모트의 호크룩스 중 하나(슬리데린의 로켓)가 숨겨진 <strong>바닷가 절벽 동굴</strong>의 위치를 찾아냈습니다. 덤블도어는 해리(그리고 원한다면 당신)와 함께 동굴로 순간이동하려 합니다.`,
+      `하지만 바로 오늘 밤, 호그와트 성 안에서는 <strong>사라지는 캐비닛을 통한 죽음을 먹는 자들의 대규모 침입</strong>이 벌어질 것이 분명합니다! 당신은 어디에 서기로 결심합니까?`
+    ],
+    choices: [
+      {
+        text: '[동굴 원정 루트] 덤블도어 교장과 해리를 따라 바닷가 절벽 동굴로 향해 호크룩스를 회수한다! (인페리우스 전투)',
+        action: () => {
+          S.flags.y6Route = 'cave_expedition';
+          goScene('y6_act5_cave');
+        }
+      },
+      {
+        text: '[호그와트 방어 루트] 성에 남아 D.A. 동료들(네빌·루나·지니)과 기사단을 지휘해 사라지는 캐비닛의 죽먹자 침입을 정면 저지한다!',
+        action: () => {
+          S.flags.y6Route = 'castle_defense';
+          goScene('y6_act5_tower');
+        }
+      },
+      {
+        text: '[히든 · 스네이프의 그림자 루트] 스네이프 교수의 밀약과 혼혈 왕자의 진의를 꿰뚫고, 천문대 탑 계단에서 그의 진짜 임무를 직접 확인한다.',
+        disabled: () => !(S.flags.knowsSnapePact || (S.flags.knowsPrinceIsSnape && S.relations.snape >= 3)),
+        disabledHint: '(스네이프 밀약 단서 또는 혼혈 왕자 정체 & 스네이프 신뢰 3+ 필요)',
+        action: () => {
+          S.flags.y6Route = 'snape_confidant';
+          S.flags.knowsSnapeLoyal = true;
+          S.housePoints += 60;
+          triggerEnding('y6_snape_confidant');
+        }
+      }
+    ]
+  },
+
+  /* --- 해안 동굴: 인페리우스 군단 전투 --- */
+  y6_act5_cave: {
+    date: '1997년 6월 30일 심야 · 바닷가 절벽 동굴',
+    act: 'ACT V · THE CAVE OF INFERI',
+    title: '에메랄드빛 독약과 깨어난 망자(인페리우스) 군단',
+    narrative: () => [
+      `차가운 검은 호수 한가운데 작은 바위섬. 덤블도어 교장이 슬리데린의 로켓을 꺼내기 위해 끔찍한 고통의 에메랄드빛 독약을 모두 마시고 탈진한 순간, 호수 수면 아래에서 수백 구의 창백한 망자—<strong>인페리우스(Inferi) 군단</strong>—이 일제히 기어 올라와 당신과 해리, 덤블도어를 덮쳐옵니다!`
+    ],
+    choices: [
+      {
+        text: '지팡이에서 거대한 화염을 일으켜 덤블도어와 해리를 지키며 인페리우스 군단을 돌파한다! (TRPG 전투)',
+        action: () => {
+          startCombat({
+            name: '검은 호수의 인페리우스 군단',
+            hp: 34, maxHp: 34,
+            atkMin: 5, atkMax: 8,
+            isInferi: true,
+            intent: '수십 개의 차가운 손이 발목을 잡아 호수 속으로 끌어내리려 합니다! ([파르티스 템포루스]/[인센디오]/[콘프링고] 화염 특효!)',
+            allyAssist: {
+              name: '알버스 덤블도어 (최후의 화염 회오리)',
+              msg: '기력을 쥐어짠 덤블도어가 거대한 불꽃 고리를 휘둘러 인페리우스 수십 구를 한 번에 태워버리며 15 피해 & 체력 +8 회복!',
+              dmg: 15,
+              heal: 8
+            },
+            onWin: () => {
+              S.flags.survivedCave = true;
+              S.horcruxLore += 1;
+              S.lastCheckHtml = { type: 'crit', text: '로켓을 챙겨 호그스미드로 순간이동해 돌아오자, 호그와트 천문대 탑 꼭대기에 거대한 에메랄드빛 [어둠의 표식]이 떠 있습니다!' };
+              goScene('y6_act5_tower');
+            }
+          });
+        }
+      }
+    ]
+  },
+
+  /* --- 천문대 탑 최후의 밤 (최종 보스전) --- */
+  y6_act5_tower: {
+    date: '1997년 6월 30일 자정 · 호그와트 천문대 탑',
+    act: 'ACT V · THE ASTRONOMY TOWER',
+    title: '[최종 보스전] 천문대 탑의 밤과 혼혈 왕자의 정체',
+    narrative: () => {
+      const malfoyNote = S.flags.showedMercyToMalfoy
+        ? `탑 꼭대기에서 덤블도어를 무장 해제시킨 드레이코 말포이는, 당신이 건넸던 말을 떠올리며 끝내 살인 저주를 쏘지 못하고 지팡이를 내립니다.`
+        : `사라지는 캐비닛을 통해 침입한 죽음을 먹는 자들과 펜리르 그레이백이 천문대 탑 아래 계단에서 불사조 기사단·D.A. 학생들과 격렬한 마법전을 벌이고 있습니다!`;
+      return [
+        `밤하늘에 녹색 해골(어둠의 표식)이 섬뜩하게 빛나는 <strong>호그와트 천문대 탑</strong>. ${malfoyNote}`,
+        `그때 <strong>세베루스 스네이프</strong>가 계단을 올라와 덤블도어를 향해 차가운 눈빛으로 지팡이를 들며, 호그와트 역사상 가장 충격적인 비극이 벌어집니다. 뒤이어 도주하는 죽음을 먹는 자 선봉대(카로우 남매와 펜리르 그레이백)가 천문대 탑 아래에서 당신의 앞길을 막아섭니다!`
+      ];
+    },
+    dialogues: () => [
+      { speaker: '세베루스 스네이프', role: '혼혈 왕자', text: '"감히 내게 내가 만든 주문을 쓰려 들다니… 그래, 내가 바로 혼혈 왕자다!"' }
+    ],
+    choices: [
+      {
+        text: '슬픔과 분노를 삼키고 호그와트 동료들을 지키기 위해 죽음을 먹는 자 선봉대와 최후의 결전을 벌인다! (최종 보스전)',
+        action: () => {
+          startCombat({
+            name: '펜리르 그레이백 & 카로우 남매 (죽먹자 침입대)',
+            hp: 36, maxHp: 36,
+            atkMin: 6, atkMax: 9,
+            intent: '죽음을 먹는 자들이 천문대 탑을 무너뜨릴 기세로 어둠의 저주를 퍼붓습니다!',
+            allyAssist: {
+              name: (S.flags.savedCedricAtMaze || S.flags.savedSiriusAtMinistry) ? '불사조 기사단 & 살아남은 전우들' : '미네르바 맥고나걸 & D.A. 결사대',
+              msg: (S.flags.savedCedricAtMaze || S.flags.savedSiriusAtMinistry)
+                ? '기사단과 살아남은 전우들이 총공세를 펼쳐 죽먹자 진형을 무너뜨리며 15 피해 & 체력 +10 회복!'
+                : '맥고나걸 교수와 네빌·지니·루나가 합동 주문으로 적을 밀어붙이며 13 피해 & 체력 +8 회복!',
+              dmg: (S.flags.savedCedricAtMaze || S.flags.savedSiriusAtMinistry) ? 15 : 13,
+              heal: (S.flags.savedCedricAtMaze || S.flags.savedSiriusAtMinistry) ? 10 : 8
+            },
+            onWin: () => {
+              S.flags.foughtAstronomyTower = true;
+              S.housePoints += 75;
+              if (S.flags.showedMercyToMalfoy && S.malfoyTrack >= 3) {
+                triggerEnding('y6_malfoy_mercy');
+              } else if (S.flags.survivedCave && S.horcruxLore >= 3) {
+                triggerEnding('y6_horcrux_vanguard');
+              } else if (S.princeSecrets >= 3 && S.spells.includes('섹툼셈프라')) {
+                triggerEnding('y6_prince_heir');
+              } else if (S.felixLuck && S.flags.defendedBurrow) {
+                triggerEnding('y6_felix_miracle');
+              } else if (S.flags.savedCedricAtMaze || S.flags.savedSiriusAtMinistry) {
+                triggerEnding('y6_order_bastion');
+              } else {
+                triggerEnding('y6_tower_defender');
+              }
+            }
+          });
+        }
+      },
+      {
+        text: '부상당한 친구들과 빌 위즐리를 부축해 병동으로 후송하며 호그와트 성 내부의 피해를 최소화한다.',
+        action: () => {
+          S.flags.foughtAstronomyTower = true;
+          triggerEnding('y6_dark_fall');
+        }
+      }
+    ]
+  }
+};
+
+/* ==========================================================================
+   주문 선택형 TRPG 전투 엔진 (인페리우스 화염 특효 + 화상/결박/방어 + 동료 지원)
+   ========================================================================== */
+function startCombat(config) {
+  combatState = {
+    ...config,
+    guarding: false,
+    enemyBurn: 0,
+    enemyBound: false,
+    allyUsed: false,
+    logs: [`⚔️ ${config.name}와(과)의 결투가 시작되었습니다!`]
+  };
+  renderScene();
+}
+
+async function castCombatSpell(spellName) {
+  if (!combatState) return;
+  const sp = SPELL_DB[spellName];
+  if (!sp) return;
+  const c = combatState;
+
+  await perform2d6Check(`주문 시전: ${sp.name}`, sp.stat, (outcome) => {
+    playTone('spell');
+    const mult = outcome === 'crit' ? 1.4 : outcome === 'partial' ? 1.0 : 0.45;
+    let dmg = Math.max(1, Math.round(sp.baseDmg * mult));
+
+    if (c.isInferi && (sp.inferiBonus || sp.burn)) {
+      const fireAdd = sp.inferiBonus || 6;
+      dmg += fireAdd;
+      c.logs.push(`🔥 [인페리우스 화염 특효!] 타오르는 불꽃이 망자 군단을 휩쓸었습니다! (+${fireAdd} 추가 피해)`);
+    }
+
+    c.hp = Math.max(0, c.hp - dmg);
+    c.logs.push(`⚡ [${sp.name}] 적중! 적에게 ${dmg} 피해!`);
+
+    if (sp.burn && outcome !== 'fail') {
+      c.enemyBurn = 2;
+      c.logs.push(`🔥 화상/출혈 효과가 부여되어 적이 2턴간 지속 피해를 입습니다!`);
+    }
+    if (sp.bind && outcome !== 'fail') {
+      c.enemyBound = true;
+      c.logs.push(`⛓️ 제압/무언 결박 성공! 적의 이번 턴 공격이 봉쇄됩니다!`);
+    }
+    if (sp.guard) {
+      c.guarding = true;
+      c.logs.push(`🛡️ 수호 방어막 전개! 이번 턴 받는 피해가 대폭 경감됩니다.`);
+    }
+    if (sp.healSelf) {
+      S.hp = Math.min(S.maxHp, S.hp + sp.healSelf);
+      c.logs.push(`✨ 치유 마법으로 체력 +${sp.healSelf} 회복!`);
+    }
+
+    finishEnemyCombatTurn();
+  });
+}
+
+function useCombatAllyAssist() {
+  if (!combatState || !combatState.allyAssist || combatState.allyUsed) return;
+  const c = combatState;
+  const a = c.allyAssist;
+  c.allyUsed = true;
+  playTone('success');
+  c.hp = Math.max(0, c.hp - a.dmg);
+  if (a.heal) S.hp = Math.min(S.maxHp, S.hp + a.heal);
+  c.logs.push(`🤝 [동료 지원 · ${a.name}] ${a.msg}`);
+  finishEnemyCombatTurn();
+}
+
+function useCombatPotion() {
+  if (!combatState) return;
+  const idx = S.items.findIndex(it => it.includes('체력'));
+  if (idx === -1) return;
+  const used = S.items.splice(idx, 1)[0];
+  const match = used.match(/\+(\d+)/);
+  const healVal = match ? parseInt(match[1], 10) : 18;
+  S.hp = Math.min(S.maxHp, S.hp + healVal);
+  playTone('success');
+  combatState.logs.push(`🧪 [${used}] 사용! 체력 +${healVal} 회복.`);
+  finishEnemyCombatTurn();
+}
+
+function finishEnemyCombatTurn() {
+  const c = combatState;
+  if (!c) return;
+
+  if (c.enemyBurn > 0 && c.hp > 0) {
+    c.hp = Math.max(0, c.hp - 3);
+    c.enemyBurn -= 1;
+    c.logs.push(`🔥 지속 화상/출혈 피해로 적 체력 -3!`);
+  }
+
+  if (c.hp <= 0) {
+    const winCb = c.onWin;
+    combatState = null;
+    playTone('success');
+    winCb();
+    return;
+  }
+
+  if (c.enemyBound) {
+    c.enemyBound = false;
+    c.logs.push(`⛓️ 적이 제압되어 이번 턴 공격하지 못했습니다!`);
+    renderScene();
+    return;
+  }
+
+  let eDmg = Math.floor(Math.random() * (c.atkMax - c.atkMin + 1)) + c.atkMin;
+  if (c.guarding) {
+    eDmg = Math.max(1, eDmg - 6);
+    c.guarding = false;
+    c.logs.push(`🛡️ 수호 방어막으로 충격을 막아내어 피해가 ${eDmg}로 줄었습니다!`);
+  } else {
+    c.logs.push(`💥 적의 반격! 체력이 ${eDmg} 감소했습니다.`);
+  }
+  S.hp = Math.max(1, S.hp - eDmg);
+
+  const stageEl = document.getElementById('main-stage');
+  stageEl.classList.remove('anim-shake');
+  void stageEl.offsetWidth;
+  stageEl.classList.add('anim-shake');
+  renderScene();
+}
+
+/* ==========================================================================
+   제6권 8종 멀티 엔딩 & 메인 로비(index.html) 마스터 자동 동기화
+   ========================================================================== */
+const ENDINGS = {
+  y6_horcrux_vanguard: {
+    badge: 'BOOK VI ENDING 1/8 · 정통 진엔딩 (호크룩스 원정)',
+    title: '호크룩스 원정대의 선봉장',
+    summary: '해안 동굴의 인페리우스를 뚫고 천문대 탑의 밤을 지켜낸 당신. 비록 가짜 로켓(R.A.B.의 쪽지)이었지만, 이제 볼드모트를 끝장낼 유일한 열쇠가 당신들의 손에 있습니다. 덤블도어의 백색 무덤 앞에서, 당신은 7학년 호크룩스 추적에 함께하기로 맹세합니다.'
+  },
+  y6_snape_confidant: {
+    badge: 'BOOK VI ENDING 2/8 · 히든 진엔딩 (이중첩자의 진실)',
+    title: '혼혈 왕자의 진의를 꿰뚫은 그림자',
+    summary: '온 세상이 세베루스 스네이프를 배신자라 저주할 때, 오직 당신만은 그의 고통스러운 밀약과 진의를 꿰뚫어 보았습니다. 스네이프가 남긴 짧은 눈빛을 가슴에 품고, 당신은 제7권 최후의 전쟁에서 가장 결정적인 숨은 열쇠가 됩니다.'
+  },
+  y6_malfoy_mercy: {
+    badge: 'BOOK VI ENDING 3/8 · 히든 구원 루트',
+    title: '흔들리는 말포이의 지팡이를 멈춘 자',
+    summary: '공포에 짓눌린 드레이코 말포이에게 증오 대신 손을 내밀었던 당신. 천문대 탑에서 끝내 살인자가 되지 않았던 말포이는, 다가올 7학년 가장 절체절명의 순간 당신의 자비에 반드시 보답할 것입니다.'
+  },
+  y6_tower_defender: {
+    badge: 'BOOK VI ENDING 4/8 · 성탑 방어 루트',
+    title: '천문대 탑을 지켜낸 호그와트의 검',
+    summary: '사라지는 캐비닛으로 쏟아져 들어온 죽음을 먹는 자들을 성탑 아래에서 끝까지 막아낸 당신. 호그와트가 어둠에 함락되지 않고 버텨낸 그 밤의 용기는 7학년 저항군의 전설이 되었습니다.'
+  },
+  y6_prince_heir: {
+    badge: 'BOOK VI ENDING 5/8 · 비기 마스터 루트',
+    title: '혼혈 왕자의 비기를 완성한 결투가',
+    summary: '레비코르푸스부터 섹툼셈프라, 불네라 사넨투르까지—혼혈 왕자의 모든 비기를 자기 것으로 승화시킨 당신은, 이제 6학년의 한계를 넘어선 최상급 전투 마법사로 각성했습니다.'
+  },
+  y6_felix_miracle: {
+    badge: 'BOOK VI ENDING 6/8 · 행운의 기적 루트',
+    title: '액체 행운이 이끈 기적의 생존자',
+    summary: '펠릭스 펠리시스의 축복 속에서 버로우의 불길과 천문대 탑의 저주 사이를 기적처럼 뚫고 살아남은 당신. 모든 저주가 당신을 스쳐 지나간 그 밤, 최후의 7학년을 향한 희망의 불씨가 살아남았습니다.'
+  },
+  y6_order_bastion: {
+    badge: 'BOOK VI ENDING 7/8 · 나비효과 기사단 루트',
+    title: '불사조 기사단의 젊은 방패',
+    summary: '당신이 지난 학년들에서 지켜낸 소중한 전우들과 함께 천문대 탑의 공세를 꺾어낸 밤. 덤블도어의 빈자리를 채우며, 당신과 전우들은 이제 마지막 7권 [죽음의 성물]을 향해 나아갑니다.'
+  },
+  y6_dark_fall: {
+    badge: 'BOOK VI ENDING 8/8 · 위기/생존 분기',
+    title: '어둠의 표식이 뜬 밤의 생존자',
+    summary: '위대한 교장이 쓰러지고 호그와트 위로 어둠의 표식이 떠오른 절망의 밤. 부상당한 친구들을 지켜낸 당신은, 무너진 세상 속에서 최후의 반격을 준비하며 7학년의 문턱에 섭니다.'
+  }
+};
+
+function syncToMasterStorage(endingKey) {
+  let master = loadMaster() || {
+    version: 'HC-V1',
+    updatedAt: null,
+    activeProfile: null,
+    completedYears: [],
+    unlockedEndings: {}
+  };
+
+  master.updatedAt = new Date().toLocaleString('ko-KR');
+  master.activeProfile = {
+    playerName: S.playerName,
+    familyLabel: S.familyLabel,
+    house: S.house,
+    wand: S.wand,
+    currentYear: 7,
+    maxHp: S.maxHp + 4, // 7학년 최종 결전 진급 보너스 (44+)
+    spells: [...S.spells],
+    items: S.items.filter(it => !it.includes('체력')),
+    relations: { ...S.relations },
+    flags: { ...S.flags, patronusForm: S.patronusForm },
+    hidden: S.hidden
+  };
+
+  [1, 2, 3, 4, 5, 6].forEach(y => { if (!master.completedYears.includes(y)) master.completedYears.push(y); });
+  if (endingKey && ENDINGS[endingKey]) {
+    master.unlockedEndings[endingKey] = {
+      year: 6,
+      title: ENDINGS[endingKey].title,
+      unlockedAt: new Date().toLocaleDateString('ko-KR')
+    };
+  }
+
+  localStorage.setItem(MASTER_STORAGE_KEY, JSON.stringify(master));
+  return master;
+}
+
+function encodeMasterCode(obj) {
+  const json = JSON.stringify(obj);
+  const bytes = new TextEncoder().encode(json);
+  let bin = '';
+  bytes.forEach(b => bin += String.fromCharCode(b));
+  return 'HC-V1-' + btoa(bin);
+}
+
+function decodeMasterCode(codeStr) {
+  const clean = codeStr.trim();
+  if (!clean.startsWith('HC-V1-')) throw new Error('invalid');
+  const bin = atob(clean.slice(6));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+function copyChronicleCodeFromEnding() {
+  const M = loadMaster();
+  if (!M) return;
+  const code = encodeMasterCode(M);
+  navigator.clipboard?.writeText(code).then(() => {
+    showToast('📋 7학년 계승 코드(HC-V1-...)가 복사되었습니다!');
+  }).catch(() => prompt('아래 계승 코드를 복사해 보관하세요:', code));
+}
+
+function openCodeImportModal() {
+  document.getElementById('code-import-textarea').value = '';
+  document.getElementById('code-modal').classList.remove('hidden');
+}
+function closeCodeImportModal() { document.getElementById('code-modal').classList.add('hidden'); }
+
+function applyImportedCodeAndStart() {
+  const raw = document.getElementById('code-import-textarea').value;
+  try {
+    const parsed = decodeMasterCode(raw);
+    if (!parsed || !parsed.activeProfile) throw new Error('no profile');
+    localStorage.setItem(MASTER_STORAGE_KEY, JSON.stringify(parsed));
+    closeCodeImportModal();
+    S = buildStateFromProfile(parsed.activeProfile);
+    launchBook6Screen();
+    showToast('✨ 계승 코드에서 캐릭터를 성공적으로 복원했습니다!');
+  } catch (e) {
+    showToast('❌ 유효하지 않은 계승 코드입니다. 코드 전체가 맞는지 확인해 주세요.');
+  }
+}
+
+function triggerEnding(endingKey) {
+  S.endingKey = endingKey;
+  S.currentScene = 'ending_screen';
+  syncToMasterStorage(endingKey);
+  playTone('success');
+  renderScene();
+}
+
+/* ==========================================================================
+   메인 화면 렌더링
+   ========================================================================== */
+function goScene(sceneId) {
+  S.currentScene = sceneId;
+  renderScene();
+}
+
+function renderScene() {
+  if (!S) return;
+  renderNotebook();
+
+  const headerDate = document.getElementById('header-date-badge');
+  const actLabel = document.getElementById('scene-act-label');
+  const titleEl = document.getElementById('scene-title');
+  const narEl = document.getElementById('scene-narrative');
+  const dlgEl = document.getElementById('scene-dialogues');
+  const freeGrid = document.getElementById('free-action-grid');
+  const freeApBadge = document.getElementById('free-ap-badge');
+  const checkBanner = document.getElementById('last-check-banner');
+  const combatPanel = document.getElementById('combat-panel');
+  const choicesBox = document.getElementById('choices-container');
+  const choicesHeader = document.getElementById('choices-header');
+  const crestEl = document.getElementById('scene-house-crest');
+
+  const hs = {
+    gryffindor: ['🦁 그리핀도르', 'bg-red-950 border-amber-400 text-amber-200'],
+    slytherin: ['🐍 슬리데린', 'bg-emerald-950 border-emerald-400 text-emerald-200'],
+    ravenclaw: ['🦅 래번클로', 'bg-blue-950 border-blue-400 text-blue-200'],
+    hufflepuff: ['🦡 후플푸프', 'bg-amber-950 border-yellow-400 text-yellow-200']
+  }[S.house] || ['🦉 호그와트', 'bg-slate-800 border-slate-600 text-slate-200'];
+  crestEl.textContent = hs[0];
+  crestEl.className = `px-3 py-1 rounded-xl border text-xs font-extrabold ${hs[1]}`;
+  crestEl.classList.remove('hidden');
+
+  if (S.lastCheckHtml) {
+    const styles = {
+      crit: 'bg-teal-950/60 border-teal-400/70 text-teal-100',
+      partial: 'bg-amber-950/60 border-amber-400/70 text-amber-200',
+      fail: 'bg-rose-950/70 border-rose-500/70 text-rose-200',
+      info: 'bg-slate-900/90 border-teal-400/45 text-teal-100'
+    };
+    checkBanner.className = `rounded-2xl p-3.5 border text-xs sm:text-sm leading-relaxed anim-fade-up ${styles[S.lastCheckHtml.type] || styles.info}`;
+    checkBanner.innerHTML = S.lastCheckHtml.text;
+    checkBanner.classList.remove('hidden');
+    S.lastCheckHtml = null;
+  } else {
+    checkBanner.classList.add('hidden');
+  }
+
+  /* 1) 엔딩 화면 */
+  if (S.currentScene === 'ending_screen' && S.endingKey) {
+    const endObj = ENDINGS[S.endingKey];
+    combatPanel.classList.add('hidden');
+    freeGrid.classList.add('hidden');
+    freeApBadge.classList.add('hidden');
+    dlgEl.innerHTML = '';
+
+    headerDate.textContent = '1997년 6월 · 제6권 수료';
+    actLabel.textContent = endObj.badge;
+    titleEl.textContent = endObj.title;
+
+    narEl.innerHTML = `
+      <p>${endObj.summary}</p>
+      <div class="bg-slate-950/92 border-2 border-teal-400/60 rounded-2xl p-4 mt-4 space-y-2 font-sans">
+        <div class="text-xs font-extrabold text-teal-300 tracking-wider uppercase">🧪 제6권 수료 &amp; 최종장 제7권 [죽음의 성물] 계승 완료</div>
+        <p class="text-xs text-slate-300">6년간 쌓아 올린 주문(<strong>${S.spells.length}개</strong>)과 모든 나비효과가 최종장 제7권으로 계승됩니다. 7학년 시작 시 최대 체력이 <strong>${S.maxHp + 4}</strong>로 성장합니다!</p>
+        <p class="text-[11px] text-emerald-300 font-bold">✔ 메인 로비(index.html) 마스터 저장소에 자동 동기화되었습니다.</p>
+      </div>
+    `;
+
+    choicesHeader.innerHTML = `<span>제6권: 혼혈 왕자 완결</span><span>최종장 7권 [죽음의 성물] 계승 준비 완료</span>`;
+    choicesBox.innerHTML = `
+      <button onclick="goLobby()" class="teal-btn w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-teal-50 text-left">
+        🏛 메인 로비(서가 &amp; 도감)로 돌아가 기록 확인하기
+      </button>
+      <button onclick="copyChronicleCodeFromEnding()" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-teal-200 text-left">
+        📋 7학년 계승 코드(HC-V1-...) 복사하기
+      </button>
+      <button onclick="document.getElementById('game-screen').classList.add('hidden'); document.getElementById('title-screen').classList.remove('hidden'); renderTitlePreview();" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-300 text-left">
+        🔄 제6권 다른 분기 및 엔딩 도전하기
+      </button>
+    `;
+    document.getElementById('story-scroll-area').scrollTop = 0;
+    return;
+  }
+
+  /* 2) 자유 행동 주간 허브 */
+  if (S.currentScene === 'free_week_hub' && S.freeWeek.active) {
+    combatPanel.classList.add('hidden');
+    dlgEl.innerHTML = '';
+    freeApBadge.textContent = `⏳ 남은 행동: ${S.freeWeek.apLeft}/3`;
+    freeApBadge.classList.remove('hidden');
+
+    const weekLabels = ['9월 학기 초', '11~12월 펜시브 탐구', '봄 학기 호크룩스 추적', '천문대 탑 결전 직전'];
+    headerDate.textContent = `자유 주간 ${S.freeWeek.weekNum}/4 · ${weekLabels[S.freeWeek.weekNum - 1]}`;
+    actLabel.textContent = `YEAR 6 FREE WEEK ${S.freeWeek.weekNum} OF 4`;
+    titleEl.textContent = `호그와트 비밀 조사 — ${weekLabels[S.freeWeek.weekNum - 1]}`;
+    narEl.innerHTML = `<p>${S.freeWeek.introText}</p><p class="text-xs text-slate-400 font-sans">아래 장소 중 원하는 곳을 선택해 행동하세요. (같은 주간에 동일 장소는 1회만 방문 가능)</p>`;
+
+    freeGrid.innerHTML = '';
+    freeGrid.classList.remove('hidden');
+    getFreeWeekLocations(S.freeWeek.weekNum).forEach(loc => {
+      const done = S.freeWeek.visited.includes(loc.id);
+      const card = document.createElement('button');
+      card.disabled = done;
+      card.className = 'loc-card rounded-2xl p-3.5 text-left flex items-start gap-3';
+      card.innerHTML = `
+        <div class="w-11 h-11 rounded-xl bg-black/45 border border-teal-400/35 flex items-center justify-center text-2xl shrink-0">${loc.icon}</div>
+        <div class="min-w-0">
+          <div class="text-xs sm:text-sm font-extrabold text-teal-100 flex items-center gap-1.5">
+            <span class="truncate">${loc.title}</span>
+            ${done ? '<span class="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">방문 완료</span>' : ''}
+          </div>
+          <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">${loc.sub}</p>
+        </div>
+      `;
+      card.onclick = loc.action;
+      freeGrid.appendChild(card);
+    });
+
+    choicesHeader.innerHTML = `<span>6학년 자유 행동 주간</span><span>남은 행동을 모두 쓰거나 바로 다음 사건으로 넘어갈 수 있습니다</span>`;
+    choicesBox.innerHTML = `
+      <button onclick="S.freeWeek.active=false; goScene(S.freeWeek.nextScene);" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-300 text-left">
+        ⏭ 남은 행동을 쉬고 다음 사건으로 바로 넘어가기
+      </button>
+    `;
+    document.getElementById('story-scroll-area').scrollTop = 0;
+    return;
+  }
+
+  /* 3) 일반 스토리 & 전투 화면 */
+  freeGrid.classList.add('hidden');
+  freeApBadge.classList.add('hidden');
+  const scene = SCENES[S.currentScene];
+  headerDate.textContent = scene.date;
+  actLabel.textContent = scene.act;
+  titleEl.textContent = scene.title;
+  narEl.innerHTML = scene.narrative().map(p => `<p>${p}</p>`).join('');
+
+  dlgEl.innerHTML = '';
+  if (scene.dialogues) {
+    scene.dialogues().forEach(d => {
+      const box = document.createElement('div');
+      box.className = 'bg-slate-950/85 border-l-4 border-teal-400 rounded-r-xl px-4 py-2.5 shadow';
+      box.innerHTML = `
+        <div class="flex items-center gap-2 mb-0.5">
+          <span class="text-xs font-extrabold text-teal-300">${d.speaker}</span>
+          <span class="text-[10px] text-slate-400">${d.role}</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-100 leading-relaxed">${d.text}</p>
+      `;
+      dlgEl.appendChild(box);
+    });
+  }
+
+  if (combatState) {
+    combatPanel.classList.remove('hidden');
+    document.getElementById('combat-enemy-name').textContent = combatState.name;
+    document.getElementById('combat-enemy-hp-text').textContent = `${combatState.hp}/${combatState.maxHp}`;
+    document.getElementById('combat-enemy-hp-bar').style.width = `${Math.max(0, (combatState.hp / combatState.maxHp) * 100)}%`;
+    document.getElementById('combat-enemy-intent').textContent = `⚠️ ${combatState.intent}`;
+    const st = [];
+    if (combatState.enemyBurn > 0) st.push(`🔥 화상/출혈(${combatState.enemyBurn}턴)`);
+    if (combatState.enemyBound) st.push(`⛓️ 제압됨`);
+    document.getElementById('combat-enemy-status').textContent = st.length ? st.join(' · ') : '상태: 정상';
+    document.getElementById('combat-log').innerHTML = combatState.logs.map(l => `<div>${l}</div>`).join('');
+    document.getElementById('combat-log').scrollTop = 9999;
+
+    choicesHeader.innerHTML = `<span class="text-teal-300">⚔️ 보유 주문을 선택해 시전하세요</span><span>2d6 + 숨은 기질 판정${S.felixLuck ? ' (🍀 행운 +1)' : ''}</span>`;
+    choicesBox.innerHTML = '';
+
+    const usable = S.spells.filter(sp => SPELL_DB[sp] && SPELL_DB[sp].baseDmg > 0);
+    usable.forEach(spName => {
+      const sp = SPELL_DB[spName];
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-bold text-slate-100 text-left flex items-center justify-between gap-2';
+      btn.innerHTML = `
+        <div><span class="text-teal-200">⚡ ${sp.name}</span> <span class="text-[11px] font-normal text-slate-300">— ${sp.desc}</span></div>
+        <span class="text-[10px] font-extrabold bg-teal-950 border border-teal-400/50 text-teal-200 px-2 py-0.5 rounded shrink-0">${sp.tag}</span>
+      `;
+      btn.onclick = () => castCombatSpell(spName);
+      choicesBox.appendChild(btn);
+    });
+
+    if (combatState.allyAssist && !combatState.allyUsed) {
+      const allyBtn = document.createElement('button');
+      allyBtn.className = 'teal-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-extrabold text-teal-50 text-left';
+      allyBtn.textContent = `🤝 동료 지원 요청: ${combatState.allyAssist.name} (전투당 1회)`;
+      allyBtn.onclick = useCombatAllyAssist;
+      choicesBox.appendChild(allyBtn);
+    }
+
+    if (S.items.some(it => it.includes('체력'))) {
+      const potBtn = document.createElement('button');
+      potBtn.className = 'choice-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-bold text-amber-200 text-left';
+      potBtn.textContent = '🧪 보유한 치유 영약 / 비조아 / 펠릭스 사용하기';
+      potBtn.onclick = useCombatPotion;
+      choicesBox.appendChild(potBtn);
+    }
+  } else {
+    combatPanel.classList.add('hidden');
+    choicesHeader.innerHTML = `<span>당신의 행동을 선택하세요</span><span>호크룩스 단서와 말포이·스네이프 관계가 분기를 엽니다</span>`;
+    choicesBox.innerHTML = '';
+
+    scene.choices.forEach((ch, idx) => {
+      const isDisabled = ch.disabled ? ch.disabled() : false;
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-100 text-left flex items-center justify-between gap-2';
+      btn.disabled = isDisabled;
+      btn.innerHTML = `
+        <span>${idx + 1}. ${ch.text} ${isDisabled && ch.disabledHint ? `<span class="text-rose-400 text-xs">${ch.disabledHint}</span>` : ''}</span>
+        ${ch.check ? `<span class="text-[10px] font-extrabold bg-teal-950 border border-teal-400/50 text-teal-300 px-2 py-0.5 rounded shrink-0">🎲 2d6</span>` : ''}
+      `;
+      btn.onclick = () => {
+        if (ch.check) {
+          perform2d6Check(ch.check.label, ch.check.stat, ch.onCheck);
+        } else {
+          ch.action();
+        }
+      };
+      choicesBox.appendChild(btn);
+    });
+  }
+
+  document.getElementById('story-scroll-area').scrollTop = 0;
+}
+
+/* 우측 마법사 수첩 */
+function renderNotebook() {
+  if (!S) return;
+  const relLabel = v => v >= 4 ? '깊은 유대' : v >= 2 ? '신뢰함' : v >= 1 ? '우호적' : v < 0 ? '경계함' : '보통';
+  const html = `
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 space-y-1.5">
+      <div class="flex justify-between items-center">
+        <span class="text-sm font-black text-white">${S.playerName}</span>
+        <span class="text-[11px] font-bold text-emerald-300">♥ 체력 ${S.hp}/${S.maxHp}</span>
+      </div>
+      <p class="text-[11px] text-teal-300/90">${S.felixLuck ? '🍀 펠릭스 펠리시스 행운 활성 (+1)' : '🦌 수호령: ' + S.patronusForm}</p>
+      <div class="flex justify-between text-[11px] text-slate-400 pt-0.5">
+        <span>🌀 호크룩스: <strong class="text-teal-200">${S.horcruxLore}</strong></span>
+        <span>🚪 캐비닛 추적: <strong class="text-emerald-300">${S.malfoyTrack}</strong></span>
+      </div>
+      <div class="flex justify-between text-[11px] text-slate-400">
+        <span>🧪 혼혈 왕자 비기: <strong class="text-amber-300">${S.princeSecrets}</strong></span>
+        <span>🏆 점수: <strong class="text-amber-200">${S.housePoints}</strong></span>
+      </div>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-teal-300 block mb-1.5">✨ 보유 주문 (${S.spells.length})</span>
+      <div class="flex flex-wrap gap-1.5">
+        ${S.spells.map(sp => `<span class="text-[10.5px] bg-teal-950/80 border border-teal-400/40 text-teal-200 px-2 py-0.5 rounded-md">${sp}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-amber-300 block mb-1.5">🔍 6학년 기밀 단서 (${S.clues.length})</span>
+      ${S.clues.length === 0
+        ? `<p class="text-[11px] text-slate-500">아직 확보한 단서가 없습니다.</p>`
+        : `<ul class="space-y-1 text-[11px] text-slate-300 list-disc pl-4">${S.clues.map(c => `<li>${c}</li>`).join('')}</ul>`}
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-emerald-300 block mb-1.5">🎒 소지품 (${S.items.length})</span>
+      <ul class="space-y-1 text-[11px] text-slate-300 list-disc pl-4">
+        ${S.items.map(it => `<li>${it}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-purple-300 block mb-1.5">🤝 주요 인물 관계도</span>
+      <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>해리</span><strong class="text-teal-200">${relLabel(S.relations.harry)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>헤르미온느</span><strong class="text-teal-200">${relLabel(S.relations.hermione)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>덤블도어</span><strong class="text-amber-300">${relLabel(S.relations.dumbledore)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>스네이프</span><strong class="text-teal-300">${relLabel(S.relations.snape)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>말포이</span><strong class="text-emerald-300">${relLabel(S.relations.draco)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>슬러그혼</span><strong class="text-teal-200">${relLabel(S.relations.slughorn)}</strong></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('notebook-content').innerHTML = html;
+  document.getElementById('mobile-notebook-content').innerHTML = html;
+}
+
+function toggleMobileNotebook() { document.getElementById('mobile-notebook-modal').classList.toggle('hidden'); }
+
+/* ==========================================================================
+   3슬롯 저장 / 불러오기
+   ========================================================================== */
+function openSaveModal(mode) {
+  const modal = document.getElementById('save-modal');
+  const list = document.getElementById('save-slots-list');
+  document.getElementById('save-modal-title').textContent = mode === 'save' ? '💾 제6권 진행 상황 저장' : '📂 제6권 저장 기록 불러오기';
+  list.innerHTML = '';
+
+  for (let slot = 1; slot <= 3; slot++) {
+    const raw = localStorage.getItem(Y6_SAVE_PREFIX + slot);
+    const data = raw ? JSON.parse(raw) : null;
+    const card = document.createElement('div');
+    card.className = 'bg-slate-950 border border-slate-700 rounded-xl p-3.5 flex items-center justify-between gap-2';
+
+    if (data) {
+      const label = data.endingKey ? `[완결] ${ENDINGS[data.endingKey]?.title}` : (data.currentScene === 'free_week_hub' ? `자유 행동 주간 ${data.freeWeek.weekNum}/4` : (SCENES[data.currentScene]?.title || '진행 중'));
+      card.innerHTML = `
+        <div class="min-w-0">
+          <span class="text-xs font-extrabold text-teal-300 block">슬롯 ${slot} · ${data.playerName}</span>
+          <span class="text-[11px] text-slate-300 block truncate">${label}</span>
+          <span class="text-[10px] text-slate-500">${data.savedAt}</span>
+        </div>
+        <div class="flex gap-1.5 shrink-0">
+          ${S ? `<button onclick="saveToSlot(${slot})" class="bg-amber-800 hover:bg-amber-700 text-amber-100 px-2.5 py-1.5 rounded-lg text-xs font-bold">덮어쓰기</button>` : ''}
+          <button onclick="loadFromSlot(${slot})" class="bg-teal-700 hover:bg-teal-600 text-teal-50 px-2.5 py-1.5 rounded-lg text-xs font-bold">불러오기</button>
+        </div>
+      `;
+    } else {
+      card.innerHTML = `
+        <div>
+          <span class="text-xs font-bold text-slate-400 block">슬롯 ${slot} · 비어 있음</span>
+          <span class="text-[10.5px] text-slate-500">저장된 기록이 없습니다.</span>
+        </div>
+        ${S ? `<button onclick="saveToSlot(${slot})" class="teal-btn text-teal-50 px-3 py-1.5 rounded-lg text-xs font-bold">여기에 저장</button>` : ''}
+      `;
+    }
+    list.appendChild(card);
+  }
+  modal.classList.remove('hidden');
+}
+
+function closeSaveModal() { document.getElementById('save-modal').classList.add('hidden'); }
+
+function saveToSlot(slot) {
+  if (!S) return;
+  localStorage.setItem(Y6_SAVE_PREFIX + slot, JSON.stringify({ ...S, savedAt: new Date().toLocaleString('ko-KR') }));
+  showToast(`💾 제6권 슬롯 ${slot}에 안전하게 저장되었습니다!`);
+  openSaveModal('save');
+}
+
+function loadFromSlot(slot) {
+  const raw = localStorage.getItem(Y6_SAVE_PREFIX + slot);
+  if (!raw) return;
+  S = JSON.parse(raw);
+  combatState = null;
+  closeSaveModal();
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  renderScene();
+  showToast(`📂 제6권 슬롯 ${slot}의 기록을 불러왔습니다.`);
+}
+
+renderTitlePreview();
+</script>
+</body>
+</html>

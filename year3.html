@@ -1,0 +1,1743 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>호그와트 연대기: 제3권 — 아즈카반의 죄수 (1993–1994)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #050811;
+    color: #e2e8f0;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .font-cinzel { font-family: 'Cinzel', serif; }
+  .font-serif-kr { font-family: 'Noto Serif KR', serif; }
+
+  /* 제3권 전용: 아즈카반의 밤 & 은빛 패트로누스 테마 */
+  .azkaban-bg {
+    background:
+      radial-gradient(circle at 20% 12%, rgba(99, 102, 241, 0.22) 0%, transparent 45%),
+      radial-gradient(circle at 82% 84%, rgba(56, 189, 248, 0.16) 0%, transparent 50%),
+      linear-gradient(180deg, #090e1d 0%, #05070e 100%);
+  }
+
+  .story-stage {
+    background:
+      radial-gradient(ellipse at top, rgba(30, 41, 82, 0.45) 0%, rgba(8, 12, 24, 0.96) 85%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.011) 0px, rgba(255,255,255,0.011) 1px, transparent 1px, transparent 24px);
+    box-shadow: inset 0 0 60px rgba(0, 0, 0, 0.85);
+  }
+
+  .choice-btn {
+    background: linear-gradient(135deg, rgba(23, 32, 62, 0.9) 0%, rgba(11, 16, 32, 0.97) 100%);
+    border: 1.5px solid rgba(129, 140, 248, 0.35);
+    transition: all 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .choice-btn:hover:not(:disabled) {
+    border-color: #93c5fd;
+    background: linear-gradient(135deg, rgba(49, 46, 129, 0.58) 0%, rgba(15, 23, 42, 0.98) 100%);
+    transform: translateX(4px);
+    box-shadow: 0 6px 22px rgba(99, 102, 241, 0.25);
+  }
+  .choice-btn:active:not(:disabled) { transform: scale(0.985); }
+  .choice-btn:disabled { opacity: 0.42; cursor: not-allowed; filter: grayscale(0.5); }
+
+  .patronus-btn {
+    background: linear-gradient(135deg, #3730a3 0%, #1e1b4b 55%, #0369a1 100%);
+    border: 1.5px solid #bae6fd;
+    box-shadow: 0 6px 22px rgba(56, 189, 248, 0.28), inset 0 1px 2px rgba(255,255,255,0.35);
+    transition: all 0.18s ease;
+  }
+  .patronus-btn:hover:not(:disabled) {
+    border-color: #f0f9ff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 28px rgba(125, 211, 252, 0.48);
+  }
+  .patronus-btn:active:not(:disabled) { transform: scale(0.97); }
+  .patronus-btn:disabled { opacity: 0.42; cursor: not-allowed; filter: grayscale(0.5); }
+
+  .loc-card {
+    background: linear-gradient(155deg, rgba(22, 30, 56, 0.9), rgba(10, 14, 28, 0.97));
+    border: 1.5px solid rgba(129, 140, 248, 0.28);
+    transition: all 0.18s ease;
+  }
+  .loc-card:hover:not(:disabled) {
+    border-color: #93c5fd;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 24px rgba(0,0,0,0.65), 0 0 18px rgba(147, 197, 253, 0.25);
+  }
+  .loc-card:disabled { opacity: 0.42; cursor: not-allowed; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .anim-fade-up { animation: fadeUp 0.28s ease-out forwards; }
+
+  @keyframes diceSpin {
+    0% { transform: rotate(0deg) scale(0.9); }
+    25% { transform: rotate(90deg) scale(1.14); }
+    50% { transform: rotate(180deg) scale(0.95); }
+    75% { transform: rotate(270deg) scale(1.14); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  .anim-dice { animation: diceSpin 0.2s linear infinite; }
+
+  @keyframes shakeBox {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-7px); }
+    40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+  }
+  .anim-shake { animation: shakeBox 0.38s ease-in-out; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(12, 18, 36, 0.5); }
+  ::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+</style>
+</head>
+<body class="azkaban-bg h-[100dvh] w-screen overflow-hidden flex flex-col">
+
+  <!-- ==================== 1. 제3권 시작 및 이전 학년 계승 화면 ==================== -->
+  <div id="title-screen" class="flex-1 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="max-w-xl w-full bg-slate-950/92 backdrop-blur-md border-2 border-indigo-400/50 rounded-3xl p-6 sm:p-9 text-center shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <button onclick="goLobby()" class="text-xs font-bold text-slate-400 hover:text-sky-300 flex items-center gap-1 transition">
+          ← 메인 로비로
+        </button>
+        <span class="px-3 py-1 rounded-full bg-indigo-950/90 border border-indigo-400/50 text-sky-200 text-[11px] font-cinzel tracking-widest">
+          BOOK III · 1993–1994
+        </span>
+      </div>
+
+      <div class="text-4xl mb-2">🦌</div>
+      <h1 class="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-sky-100 via-indigo-200 to-indigo-500 font-serif-kr tracking-tight mb-1.5">
+        제3권: 아즈카반의 죄수
+      </h1>
+      <p class="text-sky-200/85 text-xs sm:text-sm font-bold mb-4">호그와트 연대기 3학년 · 1인용 분기형 TRPG</p>
+
+      <p class="text-slate-400 text-xs sm:text-[13px] leading-relaxed mb-5">
+        <em>"행복은 가장 어두운 시간에도 찾을 수 있단다. 불을 켜는 것만 기억한다면."</em><br>
+        아즈카반의 탈옥수 시리우스 블랙과 성을 뒤덮은 디멘터의 한기.<br>
+        <strong>호그스미드 탐색 · 보가트 &amp; 패트로누스 · 비명 지르는 오두막 · 시간 여행</strong>이 시작됩니다.
+      </p>
+
+      <!-- 계승 프로필 미리보기 -->
+      <div id="inherit-preview-box" class="bg-slate-900/90 border border-indigo-500/35 rounded-2xl p-4 mb-5 text-left"></div>
+
+      <div class="space-y-2.5">
+        <button id="btn-start-inherited" onclick="startFromMasterProfile()" class="patronus-btn w-full py-3.5 px-6 rounded-2xl text-sm sm:text-base font-extrabold text-sky-50 tracking-wide">
+          🦌 이전 학년 기록 이어서 제3권 시작하기
+        </button>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <button onclick="openCodeImportModal()" class="py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-indigo-400/40 text-xs font-bold text-sky-200 transition">
+            🔑 계승 코드(HC-V1) 입력
+          </button>
+          <button onclick="openSaveModal('load')" class="py-2.5 px-4 rounded-xl bg-slate-900 hover:bg-slate-800 border border-slate-700 text-xs font-bold text-slate-300 transition">
+            💾 제3권 저장 불러오기
+          </button>
+        </div>
+
+        <button onclick="startQuickBook3()" class="w-full py-2.5 px-4 rounded-xl bg-slate-950 hover:bg-slate-900 border border-slate-800 text-[11.5px] font-bold text-slate-400 hover:text-slate-200 transition">
+          🎲 이전 기록 없이 바로 체험 (3학년 기본 프로필 자동 생성)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. 메인 TRPG 플레이 화면 (태블릿 최적화 2단) ==================== -->
+  <div id="game-screen" class="hidden h-[100dvh] w-full flex flex-col overflow-hidden">
+
+    <!-- 상단 바 -->
+    <header class="h-12 shrink-0 bg-slate-950/95 border-b border-indigo-400/35 px-3 sm:px-5 flex items-center justify-between gap-2 z-20">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <button onclick="goLobby()" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-300 hover:text-sky-200 px-2.5 py-1 rounded-lg text-[11px] font-bold shrink-0">
+          🏛 로비
+        </button>
+        <span class="font-serif-kr font-black text-sky-200 text-xs sm:text-sm truncate">제3권: 아즈카반의 죄수</span>
+        <span id="header-date-badge" class="text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-indigo-950 text-sky-200 border border-indigo-400/40 shrink-0">
+          1993년 9월
+        </span>
+      </div>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button onclick="toggleMobileNotebook()" class="md:hidden bg-slate-900 border border-indigo-400/40 text-sky-200 px-2.5 py-1 rounded-lg text-xs font-bold">
+          📓 수첩
+        </button>
+        <button onclick="openSaveModal('save')" class="bg-slate-900 hover:bg-slate-800 border border-slate-700 text-slate-200 px-2.5 py-1 rounded-lg text-xs font-bold transition">
+          💾 저장/로드
+        </button>
+      </div>
+    </header>
+
+    <!-- 중앙 2단 영역 -->
+    <div class="flex-1 flex min-h-0 overflow-hidden">
+
+      <!-- 좌측 메인 스테이지 -->
+      <main id="main-stage" class="flex-1 story-stage flex flex-col min-w-0 min-h-0 relative">
+
+        <!-- 챕터 & 장소 헤더 -->
+        <div class="px-4 sm:px-7 pt-3.5 pb-2.5 border-b border-slate-800/80 flex items-center justify-between gap-2 shrink-0">
+          <div class="min-w-0">
+            <span id="scene-act-label" class="text-[10.5px] font-cinzel font-bold tracking-widest text-indigo-300 uppercase block truncate">PROLOGUE</span>
+            <h2 id="scene-title" class="text-base sm:text-2xl font-bold font-serif-kr text-white mt-0.5 truncate">제목</h2>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span id="free-ap-badge" class="hidden px-3 py-1 rounded-xl bg-indigo-950 border border-sky-400/70 text-sky-200 text-xs font-extrabold">
+              ⏳ 남은 행동: 3/3
+            </span>
+            <div id="scene-house-crest" class="hidden px-3 py-1 rounded-xl border text-xs font-extrabold"></div>
+          </div>
+        </div>
+
+        <!-- 스크롤 본문 영역 -->
+        <div id="story-scroll-area" class="flex-1 overflow-y-auto px-4 sm:px-7 py-4 space-y-4">
+          <div id="last-check-banner" class="hidden rounded-2xl p-3.5 border text-xs sm:text-sm leading-relaxed anim-fade-up"></div>
+          <div id="scene-narrative" class="font-serif-kr text-sm sm:text-[15.5px] leading-[1.88] text-slate-200 space-y-3 anim-fade-up"></div>
+          <div id="scene-dialogues" class="space-y-2.5"></div>
+          <div id="free-action-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1"></div>
+
+          <!-- TRPG 턴제 마법 전투 패널 -->
+          <div id="combat-panel" class="hidden bg-slate-950/92 border-2 border-indigo-400/75 rounded-2xl p-4 shadow-2xl space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-slate-800 pb-2.5">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-sky-300 block">⚔️ TRPG 주문 선택형 전투</span>
+                <h3 id="combat-enemy-name" class="text-base sm:text-lg font-extrabold text-white">적 이름</h3>
+              </div>
+              <div class="text-right">
+                <span id="combat-enemy-status" class="text-[10.5px] font-bold text-amber-300 block">상태: 정상</span>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <div class="w-28 sm:w-36 h-3 bg-slate-800 rounded-full overflow-hidden border border-indigo-400/40">
+                    <div id="combat-enemy-hp-bar" class="h-full bg-gradient-to-r from-indigo-500 to-sky-300 transition-all duration-300" style="width:100%"></div>
+                  </div>
+                  <span id="combat-enemy-hp-text" class="text-xs font-black text-sky-200">24/24</span>
+                </div>
+              </div>
+            </div>
+            <p id="combat-enemy-intent" class="text-xs text-sky-100/95 bg-indigo-950/45 border border-indigo-700/50 rounded-xl px-3 py-2"></p>
+            <div id="combat-log" class="max-h-32 overflow-y-auto bg-black/55 rounded-xl p-2.5 text-xs text-slate-300 space-y-1 border border-slate-800"></div>
+          </div>
+        </div>
+
+        <!-- 하단 선택지 패널 -->
+        <div id="choices-wrapper" class="shrink-0 bg-slate-950/95 border-t border-indigo-400/35 px-4 sm:px-7 py-3 z-10">
+          <div id="choices-header" class="text-[11px] font-bold text-sky-300/90 mb-2 flex items-center justify-between">
+            <span>당신의 행동을 선택하세요</span>
+            <span class="text-slate-400 font-normal hidden sm:inline">패트로누스 숙련도와 진실 단서가 3학년 결말을 가릅니다</span>
+          </div>
+          <div id="choices-container" class="space-y-2 max-h-[34vh] overflow-y-auto pr-0.5"></div>
+        </div>
+      </main>
+
+      <!-- 우측 마법사 수첩 -->
+      <aside class="w-72 lg:w-80 shrink-0 bg-slate-950/95 border-l border-slate-800 flex-col min-h-0 hidden md:flex">
+        <div class="px-4 py-3 border-b border-slate-800 bg-slate-900/60 flex items-center justify-between">
+          <span class="text-xs font-extrabold text-sky-300 tracking-wide">📓 3학년 마법사 수첩</span>
+          <span class="text-[10px] text-slate-400">제3권 · 1993–1994</span>
+        </div>
+        <div id="notebook-content" class="flex-1 overflow-y-auto p-3.5 space-y-3 text-xs"></div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ==================== 3. 모바일 수첩 모달 ==================== -->
+  <div id="mobile-notebook-modal" class="hidden fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this) toggleMobileNotebook()">
+    <div class="bg-slate-950 border-2 border-indigo-400/50 rounded-2xl w-full max-w-md max-h-[82vh] flex flex-col p-4">
+      <div class="flex justify-between items-center border-b border-slate-800 pb-2.5 mb-3">
+        <span class="text-sm font-extrabold text-sky-300">📓 3학년 마법사 수첩</span>
+        <button onclick="toggleMobileNotebook()" class="text-slate-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <div id="mobile-notebook-content" class="flex-1 overflow-y-auto space-y-3 text-xs"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. 2d6 TRPG 주사위 판정 오버레이 ==================== -->
+  <div id="dice-modal" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-[80] flex items-center justify-center p-4">
+    <div class="bg-slate-950 border-2 border-sky-300 rounded-3xl p-6 max-w-sm w-full text-center shadow-[0_0_50px_rgba(56,189,248,0.4)]">
+      <span class="text-[11px] font-bold text-sky-300 tracking-widest uppercase block mb-1">TRPG 2d6 행동 판정</span>
+      <h3 id="dice-title" class="text-base sm:text-lg font-extrabold text-white mb-1">판정</h3>
+      <p id="dice-sub" class="text-xs text-slate-400 mb-4">10+ 대성공 / 7~9 부분 성공 / 6 이하 실패</p>
+      <div class="flex justify-center gap-4 my-3">
+        <div id="die-1" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-900 border-2 border-sky-200 flex items-center justify-center text-3xl font-black text-white shadow-lg">🎲</div>
+        <div id="die-2" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-indigo-600 to-sky-900 border-2 border-sky-200 flex items-center justify-center text-3xl font-black text-white shadow-lg">🎲</div>
+      </div>
+      <div id="dice-result-box" class="mt-4 min-h-[48px] flex flex-col items-center justify-center">
+        <span class="text-xs text-slate-300">운명의 주사위가 구르는 중...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. 계승 코드 붙여넣기 모달 ==================== -->
+  <div id="code-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[85] flex items-center justify-center p-4" onclick="if(event.target===this) closeCodeImportModal()">
+    <div class="bg-slate-900 border-2 border-indigo-400/60 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-3">
+      <div class="flex justify-between items-center border-b border-slate-700 pb-2.5">
+        <h3 class="text-base font-extrabold text-sky-300">🔑 연대기 계승 코드 입력</h3>
+        <button onclick="closeCodeImportModal()" class="text-slate-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <textarea id="code-import-textarea" rows="4" placeholder="이전 권 엔딩이나 로비에서 복사한 HC-V1-... 코드를 붙여넣으세요."
+        class="w-full bg-slate-950 border border-slate-700 focus:border-sky-400 rounded-xl p-3 text-xs font-mono text-white outline-none resize-none"></textarea>
+      <button onclick="applyImportedCodeAndStart()" class="patronus-btn w-full py-2.5 rounded-xl text-xs sm:text-sm font-extrabold text-sky-50">
+        📥 코드 복원 후 제3권 시작하기
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 6. 저장 / 불러오기 모달 (3슬롯) ==================== -->
+  <div id="save-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[85] flex items-center justify-center p-4" onclick="if(event.target===this) closeSaveModal()">
+    <div class="bg-slate-900 border-2 border-indigo-400/60 rounded-2xl max-w-md w-full p-5 shadow-2xl">
+      <div class="flex justify-between items-center border-b border-slate-700 pb-3 mb-3">
+        <h3 id="save-modal-title" class="text-base font-extrabold text-sky-300">💾 제3권 저장 / 불러오기</h3>
+        <button onclick="closeSaveModal()" class="text-slate-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <div id="save-slots-list" class="space-y-2.5"></div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 -->
+  <div id="toast-box" class="hidden fixed top-14 left-1/2 -translate-x-1/2 bg-slate-900/95 border-2 border-sky-300 text-sky-100 px-5 py-2.5 rounded-xl shadow-2xl z-[95] text-xs sm:text-sm font-bold text-center max-w-md"></div>
+
+<script>
+/* ==========================================================================
+   호그와트 연대기 제3권: 아즈카반의 죄수 (year3.html)
+   ========================================================================== */
+const MASTER_STORAGE_KEY = 'HOGWARTS_CHRONICLES_MASTER_V1';
+const Y3_SAVE_PREFIX = 'hogwarts_chronicles_y3_slot_';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let toastTimer = null;
+let audioCtx = null;
+
+function goLobby() { window.location.href = 'index.html'; }
+
+function showToast(msg) {
+  const el = document.getElementById('toast-box');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.add('hidden'), 3000);
+}
+
+function playTone(type) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    if (type === 'dice') {
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(260 + Math.random() * 240, now);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+      osc.start(now); osc.stop(now + 0.07);
+    } else if (type === 'success') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523, now);
+      osc.frequency.setValueAtTime(659, now + 0.08);
+      osc.frequency.setValueAtTime(880, now + 0.16);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.36);
+      osc.start(now); osc.stop(now + 0.37);
+    } else if (type === 'fail') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(175, now);
+      osc.frequency.exponentialRampToValueAtTime(80, now + 0.28);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.3);
+      osc.start(now); osc.stop(now + 0.31);
+    } else if (type === 'spell') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(560, now);
+      osc.frequency.exponentialRampToValueAtTime(180, now + 0.22);
+      gain.gain.setValueAtTime(0.09, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.24);
+      osc.start(now); osc.stop(now + 0.25);
+    }
+  } catch (e) {}
+}
+
+/* 1~3학년 통합 주문 데이터베이스 */
+const SPELL_DB = {
+  '루미노스': { name: '루미노스', tag: '조명/시야', stat: 'insight', baseDmg: 3, desc: '어둠을 밝히는 빛으로 적의 시선을 교란합니다.' },
+  '윙가르디움 레비오사': { name: '윙가르디움 레비오사', tag: '지형 응용', stat: 'insight', baseDmg: 5, desc: '주변 사물을 공중에 띄워 적에게 떨어뜨립니다.' },
+  '알로호모라': { name: '알로호모라', tag: '탐색 전용', stat: 'insight', baseDmg: 0, desc: '잠긴 문을 여는 해제 주문.' },
+  '인센디오': { name: '인센디오', tag: '화염 공격', stat: 'grit', baseDmg: 7, burn: true, desc: '화염을 뿜어 적에게 지속 화상 피해를 입힙니다.' },
+  '페트리피쿠스 토탈루스': { name: '페트리피쿠스 토탈루스', tag: '전신 결박', stat: 'guile', baseDmg: 4, bind: true, desc: '적을 경직시켜 다음 턴 공격을 봉쇄합니다.' },
+  '아구아멘티': { name: '아구아멘티', tag: '수류/진정', stat: 'empathy', baseDmg: 5, healSelf: 4, desc: '거센 물줄기로 밀어내며 호흡을 가다듬습니다(체력 +4).' },
+  '프로테고': { name: '프로테고', tag: '방어/반사', stat: 'grit', baseDmg: 4, guard: true, desc: '방패막을 전개해 이번 턴 피해를 대폭 막아냅니다.' },
+  '스투페파이': { name: '스투페파이', tag: '강력 충격', stat: 'grit', baseDmg: 9, desc: '붉은 기절 광선으로 강력한 직선 피해를 입힙니다.' },
+  '엑스펠리아르무스': { name: '엑스펠리아르무스', tag: '무장 해제', stat: 'grit', baseDmg: 8, bind: true, desc: '강력한 충격과 함께 적의 태세를 무너뜨립니다.' },
+  '아라니아 엑수마이': { name: '아라니아 엑수마이', tag: '생물 퇴치', stat: 'insight', baseDmg: 6, desc: '거미 및 어둠의 생물을 뒤로 밀어냅니다.' },
+  '리크투셈프라': { name: '리크투셈프라', tag: '교란/결투', stat: 'guile', baseDmg: 7, desc: '은빛 섬광으로 상대의 균형을 무너뜨립니다.' },
+  '피니테 인칸타템': { name: '피니테 인칸타템', tag: '저주 해제', stat: 'empathy', baseDmg: 5, healSelf: 5, guard: true, desc: '어둠의 여파를 지우고 방어하며 체력 +5 회복.' },
+  /* 3학년 신규 습득 주문 */
+  '리디큘러스': { name: '리디큘러스', tag: '보가트 특효', stat: 'empathy', baseDmg: 5, boggartBonus: 11, desc: '공포의 형상을 우스꽝스럽게 바꿔 보가트에게 치명타를 입힙니다.' },
+  '익스펙토 패트로눔': { name: '익스펙토 패트로눔', tag: '디멘터 특효', stat: 'empathy', baseDmg: 8, dementorBonus: 12, healSelf: 5, desc: '가장 행복한 기억으로 은빛 수호령을 소환! 디멘터를 몰아내고 체력 +5 회복.' },
+  '임페디멘타': { name: '임페디멘타', tag: '진행 저지', stat: 'insight', baseDmg: 7, bind: true, desc: '강력한 저지 파동으로 돌진하는 맹수나 적을 얼어붙게 만듭니다.' },
+  '아레스토 모멘텀': { name: '아레스토 모멘텀', tag: '감속/방어', stat: 'insight', baseDmg: 5, guard: true, healSelf: 4, desc: '충격과 낙하 속도를 늦춰 이번 턴 피해를 방어하고 체력 +4 회복.' }
+};
+
+let S = null;
+let combatState = null;
+
+function loadMaster() {
+  try {
+    const raw = localStorage.getItem(MASTER_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+
+function getPatronusForm(hidden) {
+  const ivs = hidden?.ivs || { grit: 20, insight: 20, guile: 20, empathy: 20 };
+  const max = Math.max(ivs.grit, ivs.insight, ivs.guile, ivs.empathy);
+  if (max === ivs.grit) return '은빛 사자 (Silver Lion)';
+  if (max === ivs.insight) return '은빛 올빼미 (Silver Owl)';
+  if (max === ivs.guile) return '은빛 여우 (Silver Fox)';
+  return '은빛 늑대 (Silver Wolf)';
+}
+
+function buildStateFromProfile(profile) {
+  const baseSpells = Array.isArray(profile.spells) && profile.spells.length
+    ? [...profile.spells]
+    : ['루미노스', '윙가르디움 레비오사', '인센디오', '프로테고', '엑스펠리아르무스'];
+
+  const rel = profile.relations || {};
+  const maxHp = Math.max(28, profile.maxHp || 28);
+  const hidden = profile.hidden || {
+    nature: { name: '신중한 기록자', primary: 'insight', secondary: 'grit', desc: '작은 단서 하나도 놓치지 않고 정리하는 기질' },
+    ivs: { grit: 22, insight: 25, guile: 18, empathy: 20 },
+    summerBonus: { grit: 4, insight: 6, guile: 2, empathy: 4 }
+  };
+
+  return {
+    playerName: profile.playerName || '아르투르 블랙번',
+    familyLabel: profile.familyLabel || '몰락한 옛 순수혈통 가문',
+    house: profile.house || 'gryffindor',
+    wand: profile.wand || '서양호랑가시나무 · 불사조 깃털 (11인치)',
+    hidden,
+    patronusForm: getPatronusForm(hidden),
+    hp: maxHp,
+    maxHp,
+    housePoints: 0,
+    patronusMastery: 0, // 0~3 단계
+    dementorChill: 0,   // 디멘터 한기 누적
+    duelBonus: 0,
+    spells: baseSpells,
+    items: [...(profile.items || ['가문의 낡은 은화 주머니']), '허니듀크 비상용 초콜릿 (체력 +10)'],
+    clues: [],
+    relations: {
+      harry: rel.harry || 0,
+      ron: rel.ron || 0,
+      hermione: rel.hermione || 0,
+      draco: rel.draco || 0,
+      snape: rel.snape || 0,
+      hagrid: rel.hagrid || 0,
+      lupin: 0,
+      sirius: 0
+    },
+    flags: { ...(profile.flags || {}) },
+    freeWeek: { active: false, weekNum: 0, apLeft: 0, visited: [], nextScene: null, introText: '' },
+    currentScene: 'y3_prologue_train',
+    lastCheckHtml: null,
+    endingKey: null
+  };
+}
+
+function renderTitlePreview() {
+  const box = document.getElementById('inherit-preview-box');
+  const startBtn = document.getElementById('btn-start-inherited');
+  const M = loadMaster();
+
+  if (M && M.activeProfile) {
+    const p = M.activeProfile;
+    const hNames = { gryffindor: '🦁 그리핀도르', slytherin: '🐍 슬리데린', ravenclaw: '🦅 래번클로', hufflepuff: '🦡 후플푸프' };
+    box.innerHTML = `
+      <div class="flex items-center justify-between gap-2 mb-1.5">
+        <span class="text-[11px] font-extrabold text-sky-300">✔ 이전 학년 계승 데이터 감지됨</span>
+        <span class="text-[10.5px] font-bold px-2 py-0.5 rounded bg-indigo-950 border border-indigo-400/50 text-sky-200">${hNames[p.house] || '호그와트'}</span>
+      </div>
+      <div class="text-sm font-black text-white">${p.playerName} <span class="text-xs font-normal text-slate-400">(${p.familyLabel || '마법사 가문'})</span></div>
+      <p class="text-[11px] text-slate-300 mt-1">🪄 ${p.wand || '지팡이'} · 최대 체력 ${Math.max(28, p.maxHp || 28)}</p>
+      <p class="text-[11px] text-sky-200/80 mt-1">계승 주문 ${p.spells?.length || 0}개 · 누적 나비효과 ${Object.keys(p.flags || {}).length}건 연동 준비 완료</p>
+    `;
+    startBtn.disabled = false;
+  } else {
+    box.innerHTML = `
+      <div class="text-xs font-bold text-amber-300 mb-1">⚠ 저장된 이전 학년 기록이 없습니다</div>
+      <p class="text-[11px] text-slate-400 leading-relaxed">
+        제1~2권을 클리어하거나, 아래 <strong>[계승 코드 입력]</strong> 또는 <strong>[바로 체험(퀵 스타트)]</strong>으로 3학년을 시작할 수 있습니다.
+      </p>
+    `;
+    startBtn.disabled = true;
+  }
+}
+
+function startFromMasterProfile() {
+  const M = loadMaster();
+  if (!M || !M.activeProfile) {
+    showToast('⚠ 계승할 이전 기록이 없습니다. 계승 코드를 입력하거나 퀵 스타트를 이용해 주세요.');
+    return;
+  }
+  S = buildStateFromProfile(M.activeProfile);
+  launchBook3Screen();
+}
+
+function startQuickBook3() {
+  const houses = ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff'];
+  const randomHouse = houses[Math.floor(Math.random() * houses.length)];
+  S = buildStateFromProfile({
+    playerName: '아르투르 블랙번',
+    familyLabel: '몰락한 옛 순수혈통 가문',
+    house: randomHouse,
+    wand: '서양호랑가시나무 · 불사조 깃털 (11인치)',
+    maxHp: 28,
+    spells: ['루미노스', '윙가르디움 레비오사', '인센디오', '프로테고', '엑스펠리아르무스'],
+    items: ['가문의 낡은 은화 주머니', '길 잃은 부엉이의 은빛 깃털'],
+    relations: { harry: 3, ron: 2, hermione: 3, draco: 1, snape: 1, hagrid: 2 },
+    flags: { trainFriendly: true, foughtTroll: true, slayedBasilisk: true }
+  });
+  launchBook3Screen();
+  showToast('🎲 3학년 퀵 스타트 프로필이 생성되었습니다!');
+}
+
+function launchBook3Screen() {
+  combatState = null;
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  renderScene();
+}
+
+function addSpell(name) { if (!S.spells.includes(name)) S.spells.push(name); }
+function addClue(text) { if (!S.clues.includes(text)) S.clues.push(text); }
+function addItem(text) { S.items.push(text); }
+
+function getSecretModifier(statKey) {
+  const iv = S.hidden?.ivs?.[statKey] || 18;
+  const bonus = S.hidden?.summerBonus?.[statKey] || 0;
+  const total = iv + bonus;
+  let mod = total >= 34 ? 2 : total >= 20 ? 1 : 0;
+  if (statKey === 'grit' && S.duelBonus > 0) mod += 1;
+  return mod;
+}
+
+/* ==========================================================================
+   2d6 주사위 판정 오버레이
+   ========================================================================== */
+async function perform2d6Check(label, statKey, onResolve, extraMod = 0) {
+  const modal = document.getElementById('dice-modal');
+  const d1 = document.getElementById('die-1');
+  const d2 = document.getElementById('die-2');
+  const resBox = document.getElementById('dice-result-box');
+
+  document.getElementById('dice-title').textContent = label;
+  document.getElementById('dice-sub').textContent = '10+ 대성공 / 7~9 부분 성공 / 6 이하 실패';
+  resBox.innerHTML = `<span class="text-xs text-slate-300">운명의 주사위가 구르는 중...</span>`;
+  modal.classList.remove('hidden');
+  d1.classList.add('anim-dice');
+  d2.classList.add('anim-dice');
+
+  for (let i = 0; i < 7; i++) {
+    d1.textContent = Math.floor(Math.random() * 6) + 1;
+    d2.textContent = Math.floor(Math.random() * 6) + 1;
+    playTone('dice');
+    await sleep(75);
+  }
+
+  d1.classList.remove('anim-dice');
+  d2.classList.remove('anim-dice');
+
+  const r1 = Math.floor(Math.random() * 6) + 1;
+  const r2 = Math.floor(Math.random() * 6) + 1;
+  const mod = (statKey ? getSecretModifier(statKey) : 0) + extraMod;
+  const total = r1 + r2 + mod;
+
+  d1.textContent = r1;
+  d2.textContent = r2;
+
+  let outcome = 'fail';
+  let badgeHtml = '';
+  if (total >= 10) {
+    outcome = 'crit';
+    playTone('success');
+    badgeHtml = `<span class="text-sm font-black text-emerald-400">★ 대성공! (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  } else if (total >= 7) {
+    outcome = 'partial';
+    playTone('success');
+    badgeHtml = `<span class="text-sm font-black text-amber-300">✦ 부분 성공 (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  } else {
+    outcome = 'fail';
+    playTone('fail');
+    badgeHtml = `<span class="text-sm font-black text-rose-400">✖ 실패 (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  }
+
+  resBox.innerHTML = `${badgeHtml}<span class="text-[11px] text-slate-400 mt-1">결과를 반영합니다...</span>`;
+  await sleep(1050);
+  modal.classList.add('hidden');
+  await onResolve(outcome, total);
+}
+
+/* ==========================================================================
+   제3권 [자유 행동 주간] 4회 (호그스미드 · 루핀 연구실 · 기숙사 · 벅빅/수업 · 심야 지도)
+   ========================================================================== */
+function enterFreeWeek(weekNum, nextSceneId, introText) {
+  S.freeWeek = { active: true, weekNum, apLeft: 3, visited: [], nextScene: nextSceneId, introText };
+  S.currentScene = 'free_week_hub';
+  renderScene();
+}
+
+function getFreeWeekLocations(weekNum) {
+  const hNames = {
+    gryffindor: '그리핀도르 탑 휴게실',
+    slytherin: '슬리데린 지하 휴게실',
+    ravenclaw: '래번클로 탑 서재',
+    hufflepuff: '후플푸프 지하 휴게실'
+  };
+  return [
+    {
+      id: 'lupin_office',
+      icon: '🦌',
+      title: '루핀 교수의 연구실 (개별 마법 훈련)',
+      sub: '익스펙토 패트로눔 · 임페디멘타 습득 및 루핀과의 신뢰',
+      action: () => runLupinOfficeEvent(weekNum)
+    },
+    {
+      id: 'hogsmeade',
+      icon: '🍺',
+      title: '호그스미드 마을 (허니듀크 & 스리 브룸스틱스)',
+      sub: '초콜릿 구입 · 시리우스 블랙의 과거 소문 수집',
+      action: () => runHogsmeadeEvent(weekNum)
+    },
+    {
+      id: 'common_room',
+      icon: '🏰',
+      title: hNames[S.house] || '기숙사 휴게실',
+      sub: '3학년 기숙사 전용 에피소드 · 동료 교류 · 체력 회복',
+      action: () => runCommonRoomEvent(weekNum)
+    },
+    {
+      id: 'classes_buckbeak',
+      icon: '🦅',
+      title: '해그리드의 벅빅 우리 & 점술/고대 룬 교실',
+      sub: '벅빅 교감 · 헤르미온느의 시간표 모순 포착 · 회복약',
+      action: () => runClassesEvent(weekNum)
+    },
+    {
+      id: 'midnight_map',
+      icon: '🗺️',
+      title: '한밤의 성 복도 & 비밀 지도 추적 (2d6 위험)',
+      sub: '성공 시 페티그루/늑대투구약 진실 · 실패 시 스네이프 발각',
+      action: () => runMidnightMapEvent(weekNum)
+    }
+  ];
+}
+
+function finishFreeAction(locId, type, text) {
+  S.freeWeek.visited.push(locId);
+  S.freeWeek.apLeft -= 1;
+  S.lastCheckHtml = { type, text };
+  if (S.freeWeek.apLeft <= 0) {
+    const next = S.freeWeek.nextScene;
+    S.freeWeek.active = false;
+    goScene(next);
+  } else {
+    renderScene();
+  }
+}
+
+function runLupinOfficeEvent(weekNum) {
+  S.relations.lupin += 1;
+  if (weekNum === 1) {
+    addSpell('임페디멘타');
+    finishFreeAction('lupin_office', 'crit', '🦌 루핀 교수의 연구실에서 차를 마시며 어둠의 생물을 멈춰 세우는 [임페디멘타]를 익혔습니다. 책상 위에서 김이 모락모락 나는 수상한 마법약 잔을 보았습니다.');
+  } else if (weekNum === 2) {
+    addSpell('익스펙토 패트로눔');
+    S.patronusMastery += 1;
+    finishFreeAction('lupin_office', 'crit', '🦌 루핀 교수에게 고난도 수호령 마법 [익스펙토 패트로눔]의 기초를 전수받았습니다! 지팡이 끝에서 희미한 은빛 안개가 피어올랐습니다. (패트로누스 숙련 1)');
+  } else if (weekNum === 3) {
+    addSpell('익스펙토 패트로눔');
+    S.patronusMastery += 1;
+    S.duelBonus = 1;
+    finishFreeAction('lupin_office', 'crit', '🦌 가장 행복한 기억을 집중시켜 은빛 방패막을 형성하는 데 성공했습니다! 루핀 교수가 감탄하며 미소 지었습니다. (패트로누스 숙련 +1, 전투 보정 +1)');
+  } else {
+    addSpell('익스펙토 패트로눔');
+    addSpell('아레스토 모멘텀');
+    S.patronusMastery += 1;
+    finishFreeAction('lupin_office', 'crit', `🦌 마침내 지팡이 끝에서 완전한 형상의 [${S.patronusForm}] 패트로누스가 빛나며 연구실을 밝혔습니다! [아레스토 모멘텀]도 함께 터득했습니다!`);
+  }
+}
+
+function runHogsmeadeEvent(weekNum) {
+  if (weekNum === 1) {
+    addItem('허니듀크 특제 다크 초콜릿 (체력 +12)');
+    S.relations.ron += 1;
+    finishFreeAction('hogsmeade', 'info', '🍬 허니듀크 사탕 가게에서 디멘터 한기를 녹여주는 [특제 다크 초콜릿(체력 +12)]을 챙겼습니다.');
+  } else if (weekNum === 2) {
+    addClue('호그스미드 소문: 12년 전 시리우스 블랙이 폭발을 일으켰을 때, 피터 페티그루는 손가락 하나만 남기고 사라졌다.');
+    finishFreeAction('hogsmeade', 'crit', '🍺 스리 브룸스틱스에서 따뜻한 버터맥주를 마시며 12년 전 고드릭 골짜기와 페티그루 사건의 세부 증언을 들었습니다.');
+  } else if (weekNum === 3) {
+    addItem('스리 브룸스틱스 따뜻한 버터맥주 (체력 +14)');
+    addClue('비명 지르는 오두막의 진실: 마을 사람들은 귀신이 나온다고 믿지만, 사실 호그와트 교내 커다란 버드나무 아래 비밀 통로와 이어져 있다.');
+    finishFreeAction('hogsmeade', 'crit', '🍺 비명 지르는 오두막이 호그와트 성내와 연결되어 있다는 소문을 확인하고 [따뜻한 버터맥주(체력 +14)]를 챙겼습니다.');
+  } else {
+    addItem('허니듀크 최상급 초콜릿 바 (체력 +16)');
+    S.hp = S.maxHp;
+    finishFreeAction('hogsmeade', 'info', '🍬 호그스미드에서 체력을 완전히 회복하고 최종 결전에 대비한 최상급 초콜릿을 준비했습니다.');
+  }
+}
+
+function runCommonRoomEvent(weekNum) {
+  S.hp = Math.min(S.maxHp, S.hp + 6);
+  S.housePoints += 5;
+  if (S.house === 'gryffindor') {
+    S.relations.harry += 1;
+    S.relations.ron += 1;
+    const msgs = [
+      '🦁 그리핀도르 휴게실에서 론의 늙은 쥐 스캐버스를 헤르미온느의 고양이 크룩생크가 집요하게 노리는 걸 보았습니다. (체력 +6)',
+      '🦁 론이 스캐버스의 앞발가락이 하나 없다는 이야기를 무심코 흘렸습니다! 어딘가 이상하게 걸리는 단서입니다. (단서 획득)',
+      '🦁 프레드와 조지가 "호그와트 비밀 지도(마루더즈 맵)"의 존재를 슬쩍 귀띔해 주었습니다. (체력 +6)',
+      '🦁 보름달이 차오르는 밤을 앞두고 해리·론·헤르미온느와 끝까지 함께하겠다고 다짐했습니다. (체력 +6)'
+    ];
+    if (weekNum === 2) addClue('스캐버스의 비밀: 론의 쥐 스캐버스는 보통 쥐보다 훨씬 오래 살았으며, 앞발가락이 하나 없다!');
+    finishFreeAction('common_room', 'info', msgs[weekNum - 1]);
+  } else if (S.house === 'slytherin') {
+    S.relations.draco += 1;
+    S.relations.snape += 1;
+    const msgs = [
+      '🐍 슬리데린 지하실에서 말포이가 벅빅에게 긁힌 팔을 과장하며 해그리드를 쫓아낼 궁리를 하고 있습니다. (체력 +6)',
+      '🐍 스네이프 교수가 매달 보름달 무렵 극도로 까다로운 [늑대투구 마법약]을 직접 끓인다는 사실을 알게 되었습니다! (단서 획득)',
+      '🐍 지하 휴게실의 마법부 신문에서 시리우스 블랙이 재판도 없이 아즈카반에 수감되었다는 짧은 각주를 발견했습니다. (체력 +6)',
+      '🐍 스네이프 교수가 루핀을 경계하는 이유를 추론하며 어둠의 방어 태세를 가다듬었습니다. (체력 +6)'
+    ];
+    if (weekNum === 2) addClue('스네이프의 마법약: 스네이프 교수는 매달 보름달마다 루핀 교수에게 늑대투구 마법약을 만들어 보내고 있다. 루핀은 늑대인간이다!');
+    finishFreeAction('common_room', 'info', msgs[weekNum - 1]);
+  } else if (S.house === 'ravenclaw') {
+    if (weekNum === 2) addClue('래번클로의 추론: 헤르미온느는 물리적으로 불가능한 동시간대 수업을 모두 듣고 있다. 시간 조작 유물(모래시계)을 쓰고 있음이 틀림없다!');
+    finishFreeAction('common_room', 'crit', '🦅 래번클로 탑에서 천문표와 보름달 주기, 그리고 헤르미온느의 시간표 모순을 정밀하게 분석했습니다. (체력 +6, +5점)');
+  } else {
+    S.relations.hagrid += 1;
+    addItem('세드릭 디고리가 건넨 따뜻한 차 (체력 +10)');
+    finishFreeAction('common_room', 'info', '🦡 후플푸프의 수색꾼 세드릭 디고리와 친해졌습니다. 폭우 속 퀴디치 경기에서 해리를 걱정해 준 공정한 선배와 우정을 쌓았습니다. (체력 +6)');
+  }
+}
+
+function runClassesEvent(weekNum) {
+  if (weekNum === 1) {
+    S.relations.hagrid += 2;
+    S.flags.bondedBuckbeak = true;
+    finishFreeAction('classes_buckbeak', 'crit', '🦅 해그리드의 수업에서 히포그리프 [벅빅]에게 깊이 허리를 숙여 인사하자 벅빅이 등을 내어 주었습니다! 하늘을 가르는 짜릿한 비행을 경험했습니다.');
+  } else if (weekNum === 2) {
+    S.relations.hermione += 2;
+    addClue('시간표의 비밀: 고대 룬 수업이 끝나자마자 방금까지 머글 연구 교실에 있던 헤르미온느가 목에 황금 모래시계 목걸이를 숨기는 걸 보았다.');
+    S.flags.knowsTimeTurner = true;
+    finishFreeAction('classes_buckbeak', 'crit', '⏳ 헤르미온느의 목에 걸린 황금빛 [시간을 돌리는 모래시계]의 비밀을 눈치챘습니다!');
+  } else if (weekNum === 3) {
+    addItem('트릴로니 교실 옆에서 구한 안정 약초차 (체력 +12)');
+    addClue('트릴로니의 진짜 예언: "오늘 밤 자정 전, 십이 년 동안 묶여 있던 종복이 탈출해 주인에게 돌아가리라…"');
+    finishFreeAction('classes_buckbeak', 'info', '🔮 평소 허풍만 떨던 트릴로니 교수가 갑자기 쉰 목소리로 소름 돋는 진짜 예언을 읊는 장면을 목격했습니다!');
+  } else {
+    S.relations.hagrid += 1;
+    addItem('해그리드의 비상용 회복 연고 (체력 +14)');
+    finishFreeAction('classes_buckbeak', 'info', '🦅 처형을 앞둔 벅빅을 쓰다듬어 주며 해그리드를 위로했습니다. 해그리드가 고맙다며 비상 연고를 건넸습니다.');
+  }
+}
+
+function runMidnightMapEvent(weekNum) {
+  perform2d6Check('한밤의 성 복도 & 마루더즈 맵 추적', 'guile', (outcome) => {
+    if (outcome === 'crit') {
+      addClue(`심야 지도 추적 #${weekNum}: 죽은 줄 알았던 이름 "피터 페티그루"가 성 복도 위를 발자국으로 걸어 다니고 있다!`);
+      S.flags.sawPettigrewOnMap = true;
+      addItem('비밀 통로에서 챙긴 마력 회복 비약 (체력 +12)');
+      finishFreeAction('midnight_map', 'crit', '🗺️ 완벽한 은신으로 성 복도를 추적하던 중, 12년 전 죽었다던 "피터 페티그루"가 살아있다는 충격적인 증거를 잡았습니다!');
+    } else if (outcome === 'partial') {
+      addClue(`심야 추적 #${weekNum}: 스네이프 교수가 보름달 밤 루핀 교수의 연구실로 김이 나는 잔을 들고 들어가는 모습을 보았다.`);
+      S.housePoints -= 5;
+      finishFreeAction('midnight_map', 'partial', '🗺️ 중요한 장면을 목격했지만 복도 초상화에게 들켜 기숙사 5점이 감점되었습니다.');
+    } else {
+      S.hp = Math.max(6, S.hp - 5);
+      S.housePoints -= 15;
+      S.relations.snape -= 1;
+      finishFreeAction('midnight_map', 'fail', '🗺️ 한밤중 복도에서 스네이프 교수와 정면으로 마주쳤습니다! 기숙사 -15점, 체력 -5.');
+    }
+  });
+}
+
+/* ==========================================================================
+   제3권: 아즈카반의 죄수 전체 스토리 시나리오 트리
+   ========================================================================== */
+const SCENES = {
+  /* -------------------- [프롤로그] 호그와트 급행열차의 디멘터 -------------------- */
+  y3_prologue_train: {
+    date: '1993년 9월 1일 · 호그와트 급행열차',
+    act: 'PROLOGUE · THE DEMENTOR ON THE TRAIN',
+    title: '폭풍우 속 멈춰 선 열차와 얼어붙는 어둠',
+    narrative: () => [
+      `1993년 9월 1일, 폭우가 창문을 두드리는 호그와트 급행열차 안. 마법 세계 전체가 아즈카반에서 탈옥한 흉악범 <strong>시리우스 블랙</strong>의 소식으로 술렁이고 있습니다.`,
+      `갑자기 열차가 끼익 소리를 내며 어둠 속에 멈춰 서고, 객실 불빛이 꺼지며 창문에 하얀 서리가 얼어붙습니다. 복도 너머에서 검은 망토를 두른 채 썩은 손을 내민 <strong>아즈카반의 간수 디멘터</strong>가 미끄러지듯 다가오자, 세상의 모든 행복이 빨려 나가는 듯한 극심한 한기가 덮쳐옵니다.`
+    ],
+    dialogues: () => [
+      { speaker: '리무스 루핀', role: '새 어둠의 마법 방어술 교수', text: '"물러서거라! — 익스펙토 패트로눔!"' },
+      { speaker: '해리 포터', role: '3학년 동급생', text: S.flags.slayedBasilisk ? `"콜록… ${S.playerName}, 너도 괜찮아? 방금 그건 대체 뭐였지…"` : `"으으… 방금 비명 소리 들었어?"` }
+    ],
+    choices: [
+      {
+        text: '[배짱 판정] 한기를 이겨내고 쓰러진 해리를 부축하며 루핀 교수가 쏜 은빛 주문의 동작을 눈에 새긴다.',
+        check: { label: '디멘터의 한기 저항', stat: 'grit' },
+        onCheck: (outcome) => {
+          S.relations.lupin += 2;
+          S.relations.harry += 2;
+          if (outcome === 'fail') {
+            S.dementorChill += 1;
+            S.hp = Math.max(8, S.hp - 4);
+            S.lastCheckHtml = { type: 'fail', text: '한기에 정신이 아찔해져 체력 -4를 입었지만, 루핀 교수가 건넨 초콜릿 덕분에 곧 기운을 차렸습니다.' };
+          } else {
+            S.patronusMastery += 1;
+            S.lastCheckHtml = { type: 'crit', text: '디멘터의 공포를 끝까지 버텨냈습니다! 루핀 교수가 감탄하며 초콜릿을 건넸고, 패트로누스의 첫 영감을 얻었습니다. (패트로누스 숙련 +1)' };
+          }
+          goScene('y3_act1_boggart');
+        }
+      },
+      {
+        text: '객실 문을 닫고 떨고 있는 저학년 학생들을 진정시키며 가지고 있던 비상 초콜릿을 나누어 준다.',
+        action: () => {
+          S.relations.lupin += 1;
+          S.relations.hermione += 1;
+          S.housePoints += 5;
+          S.lastCheckHtml = { type: 'info', text: '침착하게 주변을 챙긴 당신을 루핀 교수가 따뜻한 눈빛으로 바라보았습니다.' };
+          goScene('y3_act1_boggart');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [1막] 루핀 교수의 보가트 수업 (TRPG 전투 1) -------------------- */
+  y3_act1_boggart: {
+    date: '1993년 9월 둘째 주 · 어둠의 마법 방어술 교실',
+    act: 'ACT I · THE BOGGART IN THE WARDROBE',
+    title: '옷장 속의 보가트와 [리디큘러스]',
+    narrative: () => [
+      `새 교수 <strong>리무스 루핀</strong>의 첫 실기 수업. 교실 한가운데서 덜컹거리는 낡은 옷장 안에는 보는 이가 가장 두려워하는 모습으로 변신하는 어둠의 생물 <strong>보가트(Boggart)</strong>가 숨어 있습니다.`,
+      `루핀 교수는 <em>"보가트를 물리치는 주문은 '리디큘러스'다. 두려운 대상을 우스꽝스럽게 상상하며 웃어넘겨라!"</em>라고 가르칩니다. 네빌에 이어 마침내 당신의 차례가 돌아왔습니다. 옷장 문이 열리며 당신 마음속 가장 깊은 공포가 형체를 드러냅니다!`
+    ],
+    choices: [
+      {
+        text: '방금 배운 [리디큘러스]를 외치며 보가트와 정면으로 맞선다! (TRPG 전투)',
+        action: () => {
+          addSpell('리디큘러스');
+          startCombat({
+            name: '형체를 바꾼 보가트 (두려움의 화신)',
+            hp: 18, maxHp: 18,
+            atkMin: 3, atkMax: 5,
+            isBoggart: true,
+            intent: '차가운 그림자로 변해 당신을 압도하려 합니다! ([리디큘러스] 특효!)',
+            allyAssist: { name: '리무스 루핀 교수', msg: '루핀 교수가 "잘하고 있어, 웃음거리를 떠올려 보렴!"이라며 힘을 북돋아 주었습니다! (보가트 5 피해, 체력 +4)', dmg: 5, heal: 4 },
+            onWin: () => {
+              S.housePoints += 15;
+              S.relations.lupin += 2;
+              S.lastCheckHtml = { type: 'crit', text: '보가트가 우스꽝스러운 모습으로 터져 사라지자 교실이 웃음바다가 되었습니다! [리디큘러스] 완전 습득, 기숙사 +15점!' };
+              enterFreeWeek(1, 'y3_act2_storm', '9월의 첫 자유 행동 주간(3 AP)입니다. 루핀 교수의 연구실, 호그스미드, 벅빅 우리를 자유롭게 방문해 보세요.');
+            }
+          });
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [2막] 할로윈 뚱보 여인 습격 & 폭우 속 퀴디치 -------------------- */
+  y3_act2_storm: {
+    date: '1993년 11월 · 할로윈과 폭풍우의 퀴디치 경기장',
+    act: 'ACT II · GRIM DEFEAT',
+    title: '[제1대분기] 난도질당한 초상화와 경기장의 디멘터',
+    narrative: () => [
+      `할로윈 밤, 그리핀도르 탑 입구의 뚱보 여인 초상화가 날카로운 칼날에 찢겨 버렸습니다. <strong>시리우스 블랙이 호그와트 성 안으로 침입</strong>한 것입니다! 학생들은 대연회장 침낭 속에서 밤을 지새워야 했습니다.`,
+      `며칠 뒤, 번개와 폭우가 쏟아지는 퀴디치 경기장. 수십 미터 상공에서 스니치를 쫓던 해리 포터 앞에 <strong>수십 마리의 디멘터</strong>가 안개처럼 몰려들며 해리가 빗자루에서 의식을 잃고 추락하기 시작합니다!`
+    ],
+    choices: [
+      {
+        text: '[배짱 판정] 관중석 난간으로 뛰어나가 지팡이를 치켜들고 감속 주문으로 해리의 추락 충격을 줄이려 시도한다.',
+        check: { label: '폭풍 속 긴급 구조 시전', stat: 'grit' },
+        onCheck: (outcome) => {
+          S.relations.harry += 2;
+          addSpell('아레스토 모멘텀');
+          if (outcome === 'fail') {
+            S.dementorChill += 1;
+            S.lastCheckHtml = { type: 'partial', text: '폭우 때문에 주문이 빗나갔지만, 곧장 덤블도어 교장이 달려 나와 [아레스토 모멘텀]으로 해리를 구해냈습니다.' };
+          } else {
+            S.housePoints += 10;
+            S.lastCheckHtml = { type: 'crit', text: '덤블도어 교장과 동시에 감속 주문 [아레스토 모멘텀]을 발동해 해리의 추락을 완벽히 받아냈습니다! (기숙사 +10점)' };
+          }
+          enterFreeWeek(2, 'y3_act3_hogsmeade_truth', '11~12월 두 번째 자유 행동 주간(3 AP)입니다. 디멘터에 맞설 패트로누스 훈련을 시작하세요!');
+        }
+      },
+      {
+        text: '경기장 외곽 관중석 높은 곳에 조용히 앉아 해리를 지켜보던 거대한 [검은 들개]의 행방을 눈으로 쫓는다.',
+        action: () => {
+          addClue('목격담: 퀴디치 경기장 어둠 속에서 거대한 검은 개가 해리를 해치기는커녕 걱정스러운 눈으로 지켜보고 있었다.');
+          S.flags.noticedBlackDog = true;
+          S.lastCheckHtml = { type: 'crit', text: '모두가 하늘을 올려다볼 때, 당신은 경기장 어둠 속으로 사라지는 거대한 검은 개의 지적인 눈빛을 포착했습니다.' };
+          enterFreeWeek(2, 'y3_act3_hogsmeade_truth', '두 번째 자유 행동 주간(3 AP)이 시작됩니다.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [3막] 겨울 호그스미드의 진실 & 마루더즈 맵 -------------------- */
+  y3_act3_hogsmeade_truth: {
+    date: '1993년 12월 · 눈 내리는 호그스미드',
+    act: 'ACT III · THE SECRET KEEPER',
+    title: '[제2대분기] 스리 브룸스틱스의 비밀 대화',
+    narrative: () => [
+      `눈보라가 몰아치는 12월의 호그스미드 주점 <strong>스리 브룸스틱스</strong>. 구석 자리에서 마법부 장관 퍼지, 맥고나걸 교수, 플리트윅 교수가 나누는 충격적인 대화가 들려옵니다.`,
+      `<em>"시리우스 블랙은 제임스 포터의 가장 친한 친구이자 해리의 대부였네. 그런데 제임스 부부의 은신처를 볼드모트에게 밀고하고, 뒤쫓아 온 피터 페티그루마저 폭사시켜 버렸지…"</em>`,
+      `충격에 휩싸인 해리가 주점을 뛰쳐나가는 가운데, 당신은 그동안 모아 온 단서들을 머릿속에서 맞춰 보기 시작합니다.`
+    ],
+    choices: [
+      {
+        text: '눈밭으로 뛰쳐나간 해리의 뒤를 따라가 곁을 지키며 "섣불리 복수에 나서면 안 된다"고 진정시킨다.',
+        action: () => {
+          S.relations.harry += 3;
+          S.relations.hermione += 2;
+          S.lastCheckHtml = { type: 'info', text: '분노에 떨던 해리가 당신과 친구들의 진심 어린 위로 덕분에 조금씩 이성을 되찾았습니다.' };
+          enterFreeWeek(3, 'y3_act4_willow', '봄 학기 세 번째 자유 행동 주간(3 AP)입니다. 보름달이 다가오기 전 패트로누스 숙련도와 진실 단서를 모아 두세요.');
+        }
+      },
+      {
+        text: '[통찰 판정] 마법부 장관의 말 속 모순(재판 생략, 페티그루의 손가락, 검은 개)을 조용히 정리해 반박 가설을 세운다.',
+        check: { label: '12년 전 사건의 모순 추론', stat: 'insight' },
+        onCheck: (outcome) => {
+          if (outcome !== 'fail') {
+            addClue('진실의 가설: 만약 비밀 파수꾼이 시리우스 블랙이 아니라 피터 페티그루였다면? 블랙은 배신자가 아니라 억울한 누명을 쓴 것이다!');
+            S.flags.deducedSiriusInnocent = true;
+            S.lastCheckHtml = { type: 'crit', text: '✨ 소름 돋는 진실에 도달했습니다! 시리우스 블랙이 아니라 피터 페티그루가 진짜 배신자일 가능성이 높습니다!' };
+          } else {
+            S.lastCheckHtml = { type: 'info', text: '아직 조각이 부족하지만, 12년 전 사건에 무언가 거대한 거짓이 숨어 있다는 의심이 깊어졌습니다.' };
+          }
+          enterFreeWeek(3, 'y3_act4_willow', '봄 학기 세 번째 자유 행동 주간(3 AP)이 시작됩니다.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [4막] 벅빅의 처형 선고 & 커다란 버드나무 -------------------- */
+  y3_act4_willow: {
+    date: '1994년 6월 6일 해질녘 · 해그리드의 오두막',
+    act: 'ACT IV · THE WHOMPING WILLOW',
+    title: '[제3대분기] 벅빅의 선고와 거대한 검은 개',
+    narrative: () => [
+      `루시우스 말포이의 압력으로 마법부 처형인이 해그리드의 히포그리프 <strong>벅빅</strong>을 처형하기 위해 호그와트에 도착했습니다. 오두막에서 슬픔에 잠긴 해그리드를 위로하고 나오던 중, 론이 품에서 잃어버렸던 쥐 <strong>스캐버스</strong>를 발견합니다.`,
+      `바로 그 순간, 어둠 속에서 튀어나온 <strong>거대한 검은 개</strong>가 스캐버스를 쥔 론의 다리를 물고 성 외곽의 <strong>커다란 버드나무(Whomping Willow)</strong> 뿌리 밑 비밀 구멍으로 끌고 들어가 버립니다!`
+    ],
+    choices: [
+      {
+        text: '해리·헤르미온느와 함께 미친 듯이 휘두르는 버드나무 가지를 뚫고 뿌리 밑 비밀 통로로 뛰어든다!',
+        check: { label: '커다란 버드나무 가지 돌파', stat: 'grit' },
+        onCheck: (outcome) => {
+          if (outcome === 'fail') {
+            S.hp = Math.max(8, S.hp - 5);
+            S.lastCheckHtml = { type: 'fail', text: '거대한 나뭇가지에 어깨를 맞아 체력 -5를 입었지만, 옹이를 눌러 나무를 멈추고 통로 안으로 진입했습니다!' };
+          } else {
+            S.lastCheckHtml = { type: 'crit', text: '크룩생크의 안내로 버드나무 줄기의 옹이를 정확히 눌러 멈춘 뒤, 상처 없이 비밀 통로로 진입했습니다!' };
+          }
+          enterFreeWeek(4, 'y3_act5_shack', '최후의 준비 시간(자유 주간 4 · 3 AP)입니다! 비명 지르는 오두막과 보름달의 밤을 앞두고 패트로누스와 초콜릿을 최종 점검하세요.');
+        }
+      },
+      {
+        text: '버드나무로 뛰어들기 전, 혹시 모를 사태를 대비해 스네이프 교수와 루핀 교수에게 급히 위치를 알린 뒤 뒤따라간다.',
+        action: () => {
+          S.relations.snape += 2;
+          S.flags.alertedSnapeShack = true;
+          S.lastCheckHtml = { type: 'info', text: '교수진에게 긴급 상황을 알린 뒤 버드나무 통로로 향했습니다.' };
+          enterFreeWeek(4, 'y3_act5_shack', '최후의 자유 행동 주간(3 AP)입니다. 결전 전 마지막 준비를 마치세요.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [5막] 클라이맥스: 비명 지르는 오두막 & 보름달 & 디멘터 100마리 & 시간 여행 -------------------- */
+  y3_act5_shack: {
+    date: '1994년 6월 6일 밤 · 비명 지르는 오두막',
+    act: 'ACT V · THE SHRIEKING SHACK',
+    title: '마루더즈의 재회와 스캐버스의 진짜 정체',
+    narrative: () => [
+      `비밀 통로 끝에 나타난 낡은 폐가, <strong>비명 지르는 오두막</strong>. 거대한 검은 개는 불법 애니마구스였던 <strong>시리우스 블랙</strong>이었습니다! 곧이어 뒤따라온 루핀 교수가 시리우스를 공격하는 대신 포옹하며 12년 만의 진실이 폭로됩니다.`,
+      `시리우스 블랙은 무고했습니다! 해리의 부모님을 볼드모트에게 팔아넘긴 진짜 배신자는 바로 12년 동안 론의 애완 쥐로 숨어 살아온 애니마구스 <strong>피터 페티그루(웜테일)</strong>였습니다. 루핀과 시리우스의 주문에 의해 쥐가 비굴한 작은 사내로 변신하며 모든 진실이 드러납니다.`
+    ],
+    dialogues: () => [
+      { speaker: '시리우스 블랙', role: '해리의 대부 · 무고한 탈옥수', text: '"12년을 기다렸다! 아즈카반에서! 네 녀석이 내 친구 제임스와 릴리를 팔아넘긴 대가를 치르게 해주마!"' },
+      { speaker: '피터 페티그루 (웜테일)', role: '진짜 배신자', text: '"제발, 해리! 네 아버지라면 날 살려주었을 거야! 자비를 베풀어 줘!"' }
+    ],
+    choices: [
+      {
+        text: '해리와 함께 "죽이지 마세요! 페티그루를 호그와트로 데려가 디멘터에게 넘겨야 시리우스님의 누명이 벗겨집니다!"라고 설득한다.',
+        action: () => {
+          S.relations.sirius += 3;
+          S.relations.lupin += 2;
+          S.flags.sparedPettigrew = true;
+          S.lastCheckHtml = { type: 'crit', text: '시리우스가 깊은 숨을 내쉬며 지팡이를 내렸습니다. 페티그루를 묶어 성으로 호송하기 위해 오두막 밖으로 나섭니다.' };
+          goScene('y3_act5_fullmoon');
+        }
+      },
+      {
+        text: '[주문: 페트리피쿠스 토탈루스] "절대 놓치면 안 돼!" 페티그루에게 이중 전신 결박 주문을 걸어 도주 가능성을 원천 차단한다!',
+        disabled: () => !S.spells.includes('페트리피쿠스 토탈루스') && S.clues.length < 3,
+        disabledHint: '(전신 결박 주문 또는 단서 3개 이상 필요)',
+        action: () => {
+          S.flags.boundPettigrewTight = true;
+          S.relations.sirius += 4;
+          S.housePoints += 25;
+          S.lastCheckHtml = { type: 'crit', text: '⛓️ 페티그루에게 완벽한 이중 결박을 걸어 두었습니다! 이 선택이 오늘 밤의 역사를 바꿀지도 모릅니다.' };
+          goScene('y3_act5_fullmoon');
+        }
+      },
+      {
+        text: '[질서 루트] 뒤늦게 들이닥친 스네이프 교수의 편에 서서 "모든 판단은 마법부와 덤블도어 교장께 맡겨야 합니다"라고 선언한다.',
+        disabled: () => S.house !== 'slytherin' && S.relations.snape < 2,
+        disabledHint: '(슬리데린 또는 스네이프 신뢰 필요)',
+        action: () => {
+          S.relations.snape += 3;
+          S.housePoints += 40;
+          triggerEnding('y3_slytherin_order');
+        }
+      }
+    ]
+  },
+
+  y3_act5_fullmoon: {
+    date: '1994년 6월 6일 자정 · 버드나무 앞 들판',
+    act: 'ACT V · THE FULL MOON',
+    title: '구름 사이로 드러난 보름달과 늑대인간',
+    narrative: () => [
+      `오두막을 빠져나와 성으로 향하던 순간, 먹구름이 걷히며 찬란한 <strong>보름달</strong>이 하늘에 떠오릅니다! 오늘 밤 늑대투구 마법약을 마시지 못한 루핀 교수가 고통스러운 비명과 함께 거대한 <strong>늑대인간</strong>으로 변하기 시작합니다!`,
+      `아수라장 속에서 검은 개로 변한 시리우스가 친구들을 지키기 위해 늑대인간과 맞붙지만, 늑대인간이 당신과 해리·헤르미온느 쪽으로 날카로운 발톱을 휘두르며 덮쳐옵니다!`
+    ],
+    choices: [
+      {
+        text: '지팡이를 들어 친구들을 등 뒤로 숨기고 늑대인간의 돌진을 저지한다! (TRPG 전투)',
+        action: () => {
+          startCombat({
+            name: '이성을 잃은 늑대인간 (루핀)',
+            hp: 24, maxHp: 24,
+            atkMin: 4, atkMax: 7,
+            intent: '보름달의 광기에 휩싸인 늑대인간이 울부짖으며 덮쳐옵니다! (살상이 아닌 제압·방어 중심!)',
+            allyAssist: { name: '검은 개 시리우스 블랙', msg: '시리우스가 몸을 날려 늑대인간의 목덜미를 물어뜯어 8 피해를 입히고 숲 쪽으로 시선을 돌렸습니다!', dmg: 8 },
+            onWin: () => {
+              S.flags.fendedWerewolf = true;
+              S.relations.sirius += 2;
+              S.relations.hermione += 2;
+              S.lastCheckHtml = { type: 'crit', text: '시리우스와 함께 늑대인간을 숲 깊숙한 곳으로 유인해 모두의 목숨을 지켜냈습니다! 하지만 검은 호숫가에서 차가운 안개가 몰려옵니다…' };
+              goScene('y3_act5_dementors');
+            }
+          });
+        }
+      }
+    ]
+  },
+
+  y3_act5_dementors: {
+    date: '1994년 6월 6일 심야 · 검은 호숫가',
+    act: 'ACT V · A HUNDRED DEMENTORS',
+    title: '[최종 보스전] 검은 호수를 뒤덮은 100마리의 디멘터',
+    narrative: () => [
+      `부상당한 시리우스 블랙이 쓰러진 검은 호숫가. 수면이 순식간에 얼어붙으며 밤하늘을 새까맣게 뒤덮은 <strong>100마리의 디멘터 군단</strong>이 '디멘터의 키스'를 내리기 위해 일제히 하강합니다!`,
+      `숨결이 하얗게 얼어붙고 해리마저 무릎을 꿇는 절체절명의 순간. 이제 당신이 1년 동안 갈고닦은 <strong>가장 행복한 기억과 은빛 수호령</strong>을 깨울 시간입니다!`
+    ],
+    choices: [
+      {
+        text: '지팡이를 하늘로 치켜들고 혼신의 힘을 담아 [익스펙토 패트로눔]으로 디멘터 군단에 맞선다! (최종 보스전)',
+        action: () => {
+          if (!S.spells.includes('익스펙토 패트로눔')) addSpell('익스펙토 패트로눔');
+          const hpVal = S.patronusMastery >= 2 ? 26 : 32;
+          startCombat({
+            name: '검은 호수의 디멘터 군단 (100체)',
+            hp: hpVal, maxHp: hpVal,
+            atkMin: 5, atkMax: 7,
+            isDementor: true,
+            intent: '수십 개의 어둠이 영혼을 빨아들이려 쏟아져 내립니다! ([익스펙토 패트로눔] 치명타 특효!)',
+            allyAssist: {
+              name: '호수 건너편 은빛 수사슴 패트로누스',
+              msg: '호수 건너편에서 눈부신 은빛 수사슴이 달려 나와 디멘터 무리를 휩쓸며 12 피해를 입히고 당신의 체력을 +6 회복시켰습니다!',
+              dmg: 12,
+              heal: 6
+            },
+            onWin: () => {
+              S.flags.repelledDementors = true;
+              S.housePoints += 60;
+              goScene('y3_act5_timeturner');
+            }
+          });
+        }
+      },
+      {
+        text: '한기를 견디지 못하고 쓰러지는 해리를 끌어안은 채, 호수 건너편의 구원을 기다리며 버틴다.',
+        action: () => {
+          S.dementorChill += 2;
+          triggerEnding('y3_dementor_scar');
+        }
+      }
+    ]
+  },
+
+  y3_act5_timeturner: {
+    date: '1994년 6월 7일 새벽 · 병동과 시간을 돌리는 모래시계',
+    act: 'ACT V · THREE TURNS SHOULD DO IT',
+    title: '[제4대분기] 모래시계 세 바퀴 — 3시간 전으로',
+    narrative: () => [
+      `병동에서 깨어났을 때, 스네이프의 보고로 인해 시리우스 블랙은 어둠의 탑에 갇혀 곧 디멘터의 키스를 받을 위기에 처했고, 해그리드의 벅빅 역시 처형 직전입니다.`,
+      `그 순간 덤블도어 교장이 눈을 반짝이며 의미심장한 말을 남깁니다. <em>"무고한 생명 둘을 구할 수 있단다. 세 바퀴면 충분할 게야."</em> 헤르미온느가 목에서 황금빛 <strong>시간을 돌리는 모래시계</strong>를 꺼내 듭니다!`
+    ],
+    choices: [
+      {
+        text: '[진엔딩 루트] 모래시계를 세 바퀴 돌려 3시간 전으로 돌아가 벅빅을 풀어주고, 벅빅을 타고 시리우스 블랙을 구출한다!',
+        action: () => {
+          S.flags.savedBuckbeakAndSirius = true;
+          S.relations.sirius += 4;
+          if (S.flags.boundPettigrewTight && S.clues.length >= 3) {
+            triggerEnding('y3_pettigrew_captured');
+          } else if (S.flags.knowsTimeTurner && S.flags.deducedSiriusInnocent) {
+            triggerEnding('y3_time_weaver');
+          } else if (S.flags.sawPettigrewOnMap && S.relations.lupin >= 3) {
+            triggerEnding('y3_marauder_heir');
+          } else {
+            triggerEnding('y3_patronus_savior');
+          }
+        }
+      },
+      {
+        text: '[수호자 루트] 시간 여행은 해리와 헤르미온느에게 맡기고, 당신은 병동과 복도에서 스네이프와 퍼지 장관의 시선을 완벽히 묶어 둔다.',
+        action: () => {
+          S.flags.savedBuckbeakAndSirius = true;
+          S.housePoints += 30;
+          if (S.flags.fendedWerewolf) triggerEnding('y3_wolf_shield');
+          else triggerEnding('y3_quiet_third');
+        }
+      }
+    ]
+  }
+};
+
+/* ==========================================================================
+   주문 선택형 TRPG 전투 엔진 (보가트/디멘터 특효 + 동료 지원)
+   ========================================================================== */
+function startCombat(config) {
+  combatState = {
+    ...config,
+    guarding: false,
+    enemyBurn: 0,
+    enemyBound: false,
+    allyUsed: false,
+    logs: [`⚔️ ${config.name}와(과)의 결투가 시작되었습니다!`]
+  };
+  renderScene();
+}
+
+async function castCombatSpell(spellName) {
+  if (!combatState) return;
+  const sp = SPELL_DB[spellName];
+  if (!sp) return;
+  const c = combatState;
+
+  await perform2d6Check(`주문 시전: ${sp.name}`, sp.stat, (outcome) => {
+    playTone('spell');
+    const mult = outcome === 'crit' ? 1.4 : outcome === 'partial' ? 1.0 : 0.45;
+    let dmg = Math.max(1, Math.round(sp.baseDmg * mult));
+
+    if (sp.boggartBonus && c.isBoggart) {
+      dmg += sp.boggartBonus;
+      c.logs.push(`😂 [보가트 특효!] 우스꽝스러운 형상에 보가트가 크게 흔들렸습니다!`);
+    }
+    if (sp.dementorBonus && c.isDementor) {
+      const masteryBonus = S.patronusMastery * 2;
+      dmg += sp.dementorBonus + masteryBonus;
+      c.logs.push(`🦌 [은빛 수호령 발현!] ${S.patronusForm}이(가) 찬란한 빛으로 디멘터를 몰아냈습니다!`);
+    }
+
+    c.hp = Math.max(0, c.hp - dmg);
+    c.logs.push(`⚡ [${sp.name}] 적중! 적에게 ${dmg} 피해!`);
+
+    if (sp.burn && outcome !== 'fail') {
+      c.enemyBurn = 2;
+      c.logs.push(`🔥 화염이 옮겨붙어 적이 2턴간 화상 피해를 입습니다!`);
+    }
+    if (sp.bind && outcome !== 'fail') {
+      c.enemyBound = true;
+      c.logs.push(`⛓️ 저지 성공! 적의 이번 턴 공격이 봉쇄됩니다!`);
+    }
+    if (sp.guard) {
+      c.guarding = true;
+      c.logs.push(`🛡️ 방어막 전개! 이번 턴 받는 피해가 크게 줄어듭니다.`);
+    }
+    if (sp.healSelf) {
+      S.hp = Math.min(S.maxHp, S.hp + sp.healSelf);
+      c.logs.push(`✨ 정신력을 회복해 체력 +${sp.healSelf}!`);
+    }
+
+    finishEnemyCombatTurn();
+  });
+}
+
+function useCombatAllyAssist() {
+  if (!combatState || !combatState.allyAssist || combatState.allyUsed) return;
+  const c = combatState;
+  const a = c.allyAssist;
+  c.allyUsed = true;
+  playTone('success');
+  c.hp = Math.max(0, c.hp - a.dmg);
+  if (a.heal) S.hp = Math.min(S.maxHp, S.hp + a.heal);
+  c.logs.push(`🤝 [동료 지원 · ${a.name}] ${a.msg}`);
+  finishEnemyCombatTurn();
+}
+
+function useCombatPotion() {
+  if (!combatState) return;
+  const idx = S.items.findIndex(it => it.includes('체력'));
+  if (idx === -1) return;
+  const used = S.items.splice(idx, 1)[0];
+  const match = used.match(/\+(\d+)/);
+  const healVal = match ? parseInt(match[1], 10) : 10;
+  S.hp = Math.min(S.maxHp, S.hp + healVal);
+  playTone('success');
+  combatState.logs.push(`🍫 [${used}] 복용! 체력 +${healVal} 회복.`);
+  finishEnemyCombatTurn();
+}
+
+function finishEnemyCombatTurn() {
+  const c = combatState;
+  if (!c) return;
+
+  if (c.enemyBurn > 0 && c.hp > 0) {
+    c.hp = Math.max(0, c.hp - 2);
+    c.enemyBurn -= 1;
+    c.logs.push(`🔥 화상 지속 피해로 적 체력 -2!`);
+  }
+
+  if (c.hp <= 0) {
+    const winCb = c.onWin;
+    combatState = null;
+    playTone('success');
+    winCb();
+    return;
+  }
+
+  if (c.enemyBound) {
+    c.enemyBound = false;
+    c.logs.push(`⛓️ 적이 제압되어 이번 턴 공격하지 못했습니다!`);
+    renderScene();
+    return;
+  }
+
+  let eDmg = Math.floor(Math.random() * (c.atkMax - c.atkMin + 1)) + c.atkMin;
+  if (c.guarding) {
+    eDmg = Math.max(1, eDmg - 4);
+    c.guarding = false;
+    c.logs.push(`🛡️ 방어 태세로 충격을 흘려내어 피해가 ${eDmg}로 줄었습니다!`);
+  } else {
+    c.logs.push(`💥 적의 반격! 체력이 ${eDmg} 감소했습니다.`);
+  }
+  S.hp = Math.max(1, S.hp - eDmg);
+
+  const stageEl = document.getElementById('main-stage');
+  stageEl.classList.remove('anim-shake');
+  void stageEl.offsetWidth;
+  stageEl.classList.add('anim-shake');
+  renderScene();
+}
+
+/* ==========================================================================
+   제3권 8종 멀티 엔딩 & 메인 로비(index.html) 마스터 자동 동기화
+   ========================================================================== */
+const ENDINGS = {
+  y3_patronus_savior: {
+    badge: 'BOOK III ENDING 1/8 · 정통 진엔딩',
+    title: '은빛 수호령의 수호자',
+    summary: '가장 어두운 밤, 당신의 지팡이에서 피어난 은빛 수호령은 100마리의 디멘터를 몰아냈습니다. 시간을 세 바퀴 되돌려 벅빅과 시리우스 블랙을 자유의 하늘로 떠나보낸 당신은, 한층 단단해진 마법사로 4학년을 맞이합니다.'
+  },
+  y3_pettigrew_captured: {
+    badge: 'BOOK III ENDING 2/8 · 히든 진엔딩 (역사 개변)',
+    title: '배신자를 붙잡은 진실의 증인',
+    summary: '비명 지르는 오두막에서 걸어 둔 이중 결박 주문 덕분에 웜테일은 끝내 도망치지 못했습니다! 12년 만의 재심을 통해 시리우스 블랙은 무죄를 선고받았고, 어둠의 마왕의 부활 계획은 큰 차질을 빚게 되었습니다.'
+  },
+  y3_time_weaver: {
+    badge: 'BOOK III ENDING 3/8 · 시간 여행 지략 루트',
+    title: '시간을 엮은 그림자 조력자',
+    summary: '헤르미온느의 모래시계와 12년 전 사건의 모순을 완벽히 꿰뚫어 본 당신은, 단 한 번의 시간선 충돌도 없이 두 무고한 생명을 구출해 냈습니다. 덤블도어 교장이 당신의 통찰에 깊은 경의를 표했습니다.'
+  },
+  y3_marauder_heir: {
+    badge: 'BOOK III ENDING 4/8 · 마루더즈 유대 루트',
+    title: '마루더즈의 숨은 후계자',
+    summary: '호그와트 비밀 지도의 비밀을 파악하고 루핀 교수와 시리우스 블랙 모두의 깊은 신뢰를 얻은 당신. 떠나기 전 루핀 교수는 당신에게 마법사로서의 진정한 용기를 담은 편지를 남겼습니다.'
+  },
+  y3_slytherin_order: {
+    badge: 'BOOK III ENDING 5/8 · 슬리데린·질서 루트',
+    title: '마법부의 신임을 얻은 냉철한 질서 수호자',
+    summary: '감정에 휩쓸리지 않고 스네이프 교수와 마법부의 절차를 지켜낸 당신. 퍼지 장관은 당신의 침착한 보고를 높이 평가했으며, 슬리데린과 마법부 양쪽에서 당신의 이름이 주목받기 시작했습니다.'
+  },
+  y3_wolf_shield: {
+    badge: 'BOOK III ENDING 6/8 · 수호자 루트',
+    title: '보름달 아래 동료를 지킨 방패',
+    summary: '보름달 아래 이성을 잃은 늑대인간 앞에서도 한 걸음도 물러서지 않았던 당신. 시간 여행이 진행되는 동안 성 안의 모든 혼란을 홀로 막아내며 동료들의 안전한 귀환을 지켜냈습니다.'
+  },
+  y3_quiet_third: {
+    badge: 'BOOK III ENDING 7/8 · 일상·생존 루트',
+    title: '폭풍 속 평온을 지킨 3학년',
+    summary: '디멘터가 교정을 에워싼 흉흉한 한 해 동안, 당신은 호그스미드의 추억과 수업에 집중하며 무사히 3학년을 마쳤습니다. 여름 방학이 시작되자, 전 세계 마법사들이 기다리는 퀴디치 월드컵 소식이 들려옵니다.'
+  },
+  y3_dementor_scar: {
+    badge: 'BOOK III ENDING 8/8 · 위기 분기',
+    title: '차가운 안개가 남긴 상처',
+    summary: '100마리 디멘터의 압도적인 한기 앞에 쓰러졌지만, 호수 건너편의 눈부신 은빛 빛줄기가 당신과 해리를 구해냈습니다. 병동에서 초콜릿을 삼키며, 당신은 다시는 공포에 굴복하지 않겠다고 맹세했습니다.'
+  }
+};
+
+function syncToMasterStorage(endingKey) {
+  let master = loadMaster() || {
+    version: 'HC-V1',
+    updatedAt: null,
+    activeProfile: null,
+    completedYears: [],
+    unlockedEndings: {}
+  };
+
+  master.updatedAt = new Date().toLocaleString('ko-KR');
+  master.activeProfile = {
+    playerName: S.playerName,
+    familyLabel: S.familyLabel,
+    house: S.house,
+    wand: S.wand,
+    currentYear: 4,
+    maxHp: S.maxHp + 4, // 4학년 진급 보너스!
+    spells: [...S.spells],
+    items: S.items.filter(it => !it.includes('체력')),
+    relations: { ...S.relations },
+    flags: { ...S.flags, patronusForm: S.patronusForm },
+    hidden: S.hidden
+  };
+
+  [1, 2, 3].forEach(y => { if (!master.completedYears.includes(y)) master.completedYears.push(y); });
+  if (endingKey && ENDINGS[endingKey]) {
+    master.unlockedEndings[endingKey] = {
+      year: 3,
+      title: ENDINGS[endingKey].title,
+      unlockedAt: new Date().toLocaleDateString('ko-KR')
+    };
+  }
+
+  localStorage.setItem(MASTER_STORAGE_KEY, JSON.stringify(master));
+  return master;
+}
+
+function encodeMasterCode(obj) {
+  const json = JSON.stringify(obj);
+  const bytes = new TextEncoder().encode(json);
+  let bin = '';
+  bytes.forEach(b => bin += String.fromCharCode(b));
+  return 'HC-V1-' + btoa(bin);
+}
+
+function decodeMasterCode(codeStr) {
+  const clean = codeStr.trim();
+  if (!clean.startsWith('HC-V1-')) throw new Error('invalid');
+  const bin = atob(clean.slice(6));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+function copyChronicleCodeFromEnding() {
+  const M = loadMaster();
+  if (!M) return;
+  const code = encodeMasterCode(M);
+  navigator.clipboard?.writeText(code).then(() => {
+    showToast('📋 4학년 계승 코드(HC-V1-...)가 복사되었습니다!');
+  }).catch(() => prompt('아래 계승 코드를 복사해 보관하세요:', code));
+}
+
+function openCodeImportModal() {
+  document.getElementById('code-import-textarea').value = '';
+  document.getElementById('code-modal').classList.remove('hidden');
+}
+function closeCodeImportModal() { document.getElementById('code-modal').classList.add('hidden'); }
+
+function applyImportedCodeAndStart() {
+  const raw = document.getElementById('code-import-textarea').value;
+  try {
+    const parsed = decodeMasterCode(raw);
+    if (!parsed || !parsed.activeProfile) throw new Error('no profile');
+    localStorage.setItem(MASTER_STORAGE_KEY, JSON.stringify(parsed));
+    closeCodeImportModal();
+    S = buildStateFromProfile(parsed.activeProfile);
+    launchBook3Screen();
+    showToast('✨ 계승 코드에서 캐릭터를 성공적으로 복원했습니다!');
+  } catch (e) {
+    showToast('❌ 유효하지 않은 계승 코드입니다. 코드 전체가 맞는지 확인해 주세요.');
+  }
+}
+
+function triggerEnding(endingKey) {
+  S.endingKey = endingKey;
+  S.currentScene = 'ending_screen';
+  syncToMasterStorage(endingKey);
+  playTone('success');
+  renderScene();
+}
+
+/* ==========================================================================
+   메인 화면 렌더링
+   ========================================================================== */
+function goScene(sceneId) {
+  S.currentScene = sceneId;
+  renderScene();
+}
+
+function renderScene() {
+  if (!S) return;
+  renderNotebook();
+
+  const headerDate = document.getElementById('header-date-badge');
+  const actLabel = document.getElementById('scene-act-label');
+  const titleEl = document.getElementById('scene-title');
+  const narEl = document.getElementById('scene-narrative');
+  const dlgEl = document.getElementById('scene-dialogues');
+  const freeGrid = document.getElementById('free-action-grid');
+  const freeApBadge = document.getElementById('free-ap-badge');
+  const checkBanner = document.getElementById('last-check-banner');
+  const combatPanel = document.getElementById('combat-panel');
+  const choicesBox = document.getElementById('choices-container');
+  const choicesHeader = document.getElementById('choices-header');
+  const crestEl = document.getElementById('scene-house-crest');
+
+  const hs = {
+    gryffindor: ['🦁 그리핀도르', 'bg-red-950 border-amber-400 text-amber-200'],
+    slytherin: ['🐍 슬리데린', 'bg-emerald-950 border-emerald-400 text-emerald-200'],
+    ravenclaw: ['🦅 래번클로', 'bg-blue-950 border-blue-400 text-blue-200'],
+    hufflepuff: ['🦡 후플푸프', 'bg-amber-950 border-yellow-400 text-yellow-200']
+  }[S.house] || ['🦉 호그와트', 'bg-slate-800 border-slate-600 text-slate-200'];
+  crestEl.textContent = hs[0];
+  crestEl.className = `px-3 py-1 rounded-xl border text-xs font-extrabold ${hs[1]}`;
+  crestEl.classList.remove('hidden');
+
+  if (S.lastCheckHtml) {
+    const styles = {
+      crit: 'bg-sky-950/60 border-sky-400/70 text-sky-100',
+      partial: 'bg-amber-950/60 border-amber-400/70 text-amber-200',
+      fail: 'bg-rose-950/60 border-rose-400/70 text-rose-200',
+      info: 'bg-slate-900/90 border-indigo-400/45 text-indigo-100'
+    };
+    checkBanner.className = `rounded-2xl p-3.5 border text-xs sm:text-sm leading-relaxed anim-fade-up ${styles[S.lastCheckHtml.type] || styles.info}`;
+    checkBanner.innerHTML = S.lastCheckHtml.text;
+    checkBanner.classList.remove('hidden');
+    S.lastCheckHtml = null;
+  } else {
+    checkBanner.classList.add('hidden');
+  }
+
+  /* 1) 엔딩 화면 */
+  if (S.currentScene === 'ending_screen' && S.endingKey) {
+    const endObj = ENDINGS[S.endingKey];
+    combatPanel.classList.add('hidden');
+    freeGrid.classList.add('hidden');
+    freeApBadge.classList.add('hidden');
+    dlgEl.innerHTML = '';
+
+    headerDate.textContent = '1994년 6월 · 제3권 수료';
+    actLabel.textContent = endObj.badge;
+    titleEl.textContent = endObj.title;
+
+    narEl.innerHTML = `
+      <p>${endObj.summary}</p>
+      <div class="bg-slate-950/92 border-2 border-sky-400/60 rounded-2xl p-4 mt-4 space-y-2 font-sans">
+        <div class="text-xs font-extrabold text-sky-300 tracking-wider uppercase">🦌 제3권 수료 &amp; 제4권 [불의 잔] 계승 완료</div>
+        <p class="text-xs text-slate-300">당신의 수호령 <strong class="text-sky-200">[${S.patronusForm}]</strong>과 3년간 익힌 주문(<strong>${S.spells.length}개</strong>), 그리고 아즈카반의 밤이 남긴 나비효과가 모두 저장되었습니다. 4학년 시작 시 최대 체력이 <strong>${S.maxHp + 4}</strong>로 성장합니다!</p>
+        <p class="text-[11px] text-emerald-300 font-bold">✔ 메인 로비(index.html) 마스터 저장소에 자동 동기화되었습니다.</p>
+      </div>
+    `;
+
+    choicesHeader.innerHTML = `<span>제3권: 아즈카반의 죄수 완결</span><span>4학년 [불의 잔] 계승 준비 완료</span>`;
+    choicesBox.innerHTML = `
+      <button onclick="goLobby()" class="patronus-btn w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-sky-50 text-left">
+        🏛 메인 로비(서가 &amp; 도감)로 돌아가 기록 확인하기
+      </button>
+      <button onclick="copyChronicleCodeFromEnding()" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-sky-200 text-left">
+        📋 4학년 계승 코드(HC-V1-...) 복사하기
+      </button>
+      <button onclick="document.getElementById('game-screen').classList.add('hidden'); document.getElementById('title-screen').classList.remove('hidden'); renderTitlePreview();" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-300 text-left">
+        🔄 제3권 다른 분기 및 엔딩 도전하기
+      </button>
+    `;
+    document.getElementById('story-scroll-area').scrollTop = 0;
+    return;
+  }
+
+  /* 2) 자유 행동 주간 허브 */
+  if (S.currentScene === 'free_week_hub' && S.freeWeek.active) {
+    combatPanel.classList.add('hidden');
+    dlgEl.innerHTML = '';
+    freeApBadge.textContent = `⏳ 남은 행동: ${S.freeWeek.apLeft}/3`;
+    freeApBadge.classList.remove('hidden');
+
+    const weekLabels = ['9월 학기 초', '11~12월 디멘터 대비', '봄 학기 진실 추적', '보름달 결전 직전'];
+    headerDate.textContent = `자유 주간 ${S.freeWeek.weekNum}/4 · ${weekLabels[S.freeWeek.weekNum - 1]}`;
+    actLabel.textContent = `YEAR 3 FREE WEEK ${S.freeWeek.weekNum} OF 4`;
+    titleEl.textContent = `호그와트 & 호그스미드 탐색 — ${weekLabels[S.freeWeek.weekNum - 1]}`;
+    narEl.innerHTML = `<p>${S.freeWeek.introText}</p><p class="text-xs text-slate-400 font-sans">아래 장소 중 원하는 곳을 선택해 행동하세요. (같은 주간에 동일 장소는 1회만 방문 가능)</p>`;
+
+    freeGrid.innerHTML = '';
+    freeGrid.classList.remove('hidden');
+    getFreeWeekLocations(S.freeWeek.weekNum).forEach(loc => {
+      const done = S.freeWeek.visited.includes(loc.id);
+      const card = document.createElement('button');
+      card.disabled = done;
+      card.className = 'loc-card rounded-2xl p-3.5 text-left flex items-start gap-3';
+      card.innerHTML = `
+        <div class="w-11 h-11 rounded-xl bg-black/45 border border-indigo-400/35 flex items-center justify-center text-2xl shrink-0">${loc.icon}</div>
+        <div class="min-w-0">
+          <div class="text-xs sm:text-sm font-extrabold text-sky-100 flex items-center gap-1.5">
+            <span class="truncate">${loc.title}</span>
+            ${done ? '<span class="text-[10px] bg-slate-800 text-slate-400 px-1.5 py-0.5 rounded">방문 완료</span>' : ''}
+          </div>
+          <p class="text-[11px] text-slate-400 mt-0.5 leading-snug">${loc.sub}</p>
+        </div>
+      `;
+      card.onclick = loc.action;
+      freeGrid.appendChild(card);
+    });
+
+    choicesHeader.innerHTML = `<span>3학년 자유 행동 주간</span><span>남은 행동을 모두 쓰거나 바로 다음 사건으로 넘어갈 수 있습니다</span>`;
+    choicesBox.innerHTML = `
+      <button onclick="S.freeWeek.active=false; goScene(S.freeWeek.nextScene);" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs font-bold text-slate-300 text-left">
+        ⏭ 남은 행동을 쉬고 다음 사건으로 바로 넘어가기
+      </button>
+    `;
+    document.getElementById('story-scroll-area').scrollTop = 0;
+    return;
+  }
+
+  /* 3) 일반 스토리 & 전투 화면 */
+  freeGrid.classList.add('hidden');
+  freeApBadge.classList.add('hidden');
+  const scene = SCENES[S.currentScene];
+  headerDate.textContent = scene.date;
+  actLabel.textContent = scene.act;
+  titleEl.textContent = scene.title;
+  narEl.innerHTML = scene.narrative().map(p => `<p>${p}</p>`).join('');
+
+  dlgEl.innerHTML = '';
+  if (scene.dialogues) {
+    scene.dialogues().forEach(d => {
+      const box = document.createElement('div');
+      box.className = 'bg-slate-950/85 border-l-4 border-sky-400 rounded-r-xl px-4 py-2.5 shadow';
+      box.innerHTML = `
+        <div class="flex items-center gap-2 mb-0.5">
+          <span class="text-xs font-extrabold text-sky-300">${d.speaker}</span>
+          <span class="text-[10px] text-slate-400">${d.role}</span>
+        </div>
+        <p class="text-xs sm:text-sm text-slate-100 leading-relaxed">${d.text}</p>
+      `;
+      dlgEl.appendChild(box);
+    });
+  }
+
+  if (combatState) {
+    combatPanel.classList.remove('hidden');
+    document.getElementById('combat-enemy-name').textContent = combatState.name;
+    document.getElementById('combat-enemy-hp-text').textContent = `${combatState.hp}/${combatState.maxHp}`;
+    document.getElementById('combat-enemy-hp-bar').style.width = `${Math.max(0, (combatState.hp / combatState.maxHp) * 100)}%`;
+    document.getElementById('combat-enemy-intent').textContent = `⚠️ ${combatState.intent}`;
+    const st = [];
+    if (combatState.enemyBurn > 0) st.push(`🔥 화상(${combatState.enemyBurn}턴)`);
+    if (combatState.enemyBound) st.push(`⛓️ 제압됨`);
+    document.getElementById('combat-enemy-status').textContent = st.length ? st.join(' · ') : '상태: 정상';
+    document.getElementById('combat-log').innerHTML = combatState.logs.map(l => `<div>${l}</div>`).join('');
+    document.getElementById('combat-log').scrollTop = 9999;
+
+    choicesHeader.innerHTML = `<span class="text-sky-300">⚔️ 보유 주문을 선택해 시전하세요</span><span>2d6 + 숨은 기질 판정</span>`;
+    choicesBox.innerHTML = '';
+
+    const usable = S.spells.filter(sp => SPELL_DB[sp] && SPELL_DB[sp].baseDmg > 0);
+    usable.forEach(spName => {
+      const sp = SPELL_DB[spName];
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-bold text-slate-100 text-left flex items-center justify-between gap-2';
+      btn.innerHTML = `
+        <div><span class="text-sky-200">⚡ ${sp.name}</span> <span class="text-[11px] font-normal text-slate-300">— ${sp.desc}</span></div>
+        <span class="text-[10px] font-extrabold bg-indigo-950 border border-sky-400/50 text-sky-200 px-2 py-0.5 rounded shrink-0">${sp.tag}</span>
+      `;
+      btn.onclick = () => castCombatSpell(spName);
+      choicesBox.appendChild(btn);
+    });
+
+    if (combatState.allyAssist && !combatState.allyUsed) {
+      const allyBtn = document.createElement('button');
+      allyBtn.className = 'patronus-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-extrabold text-sky-50 text-left';
+      allyBtn.textContent = `🤝 동료 지원 요청: ${combatState.allyAssist.name} (전투당 1회)`;
+      allyBtn.onclick = useCombatAllyAssist;
+      choicesBox.appendChild(allyBtn);
+    }
+
+    if (S.items.some(it => it.includes('체력'))) {
+      const potBtn = document.createElement('button');
+      potBtn.className = 'choice-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-bold text-amber-200 text-left';
+      potBtn.textContent = '🍫 초콜릿 / 회복 물약 사용하기';
+      potBtn.onclick = useCombatPotion;
+      choicesBox.appendChild(potBtn);
+    }
+  } else {
+    combatPanel.classList.add('hidden');
+    choicesHeader.innerHTML = `<span>당신의 행동을 선택하세요</span><span>수호령 숙련도와 단서가 분기를 결정합니다</span>`;
+    choicesBox.innerHTML = '';
+
+    scene.choices.forEach((ch, idx) => {
+      const isDisabled = ch.disabled ? ch.disabled() : false;
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-slate-100 text-left flex items-center justify-between gap-2';
+      btn.disabled = isDisabled;
+      btn.innerHTML = `
+        <span>${idx + 1}. ${ch.text} ${isDisabled && ch.disabledHint ? `<span class="text-rose-400 text-xs">${ch.disabledHint}</span>` : ''}</span>
+        ${ch.check ? `<span class="text-[10px] font-extrabold bg-indigo-950 border border-sky-400/50 text-sky-300 px-2 py-0.5 rounded shrink-0">🎲 2d6</span>` : ''}
+      `;
+      btn.onclick = () => {
+        if (ch.check) {
+          perform2d6Check(ch.check.label, ch.check.stat, ch.onCheck);
+        } else {
+          ch.action();
+        }
+      };
+      choicesBox.appendChild(btn);
+    });
+  }
+
+  document.getElementById('story-scroll-area').scrollTop = 0;
+}
+
+/* 우측 마법사 수첩 */
+function renderNotebook() {
+  if (!S) return;
+  const relLabel = v => v >= 4 ? '깊은 유대' : v >= 2 ? '신뢰함' : v >= 1 ? '우호적' : v < 0 ? '경계함' : '보통';
+  const html = `
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3 space-y-1.5">
+      <div class="flex justify-between items-center">
+        <span class="text-sm font-black text-white">${S.playerName}</span>
+        <span class="text-[11px] font-bold text-emerald-300">♥ 체력 ${S.hp}/${S.maxHp}</span>
+      </div>
+      <p class="text-[11px] text-sky-300/90">🦌 수호령: ${S.patronusForm}</p>
+      <p class="text-[11px] text-slate-400">🪄 ${S.wand}</p>
+      <div class="flex justify-between text-[11px] text-slate-400 pt-0.5">
+        <span>✨ 패트로누스 숙련: <strong class="text-sky-200">${S.patronusMastery}단계</strong></span>
+        <span>🏆 점수: <strong class="text-amber-200">${S.housePoints}</strong></span>
+      </div>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-sky-300 block mb-1.5">✨ 보유 주문 (${S.spells.length})</span>
+      <div class="flex flex-wrap gap-1.5">
+        ${S.spells.map(sp => `<span class="text-[10.5px] bg-indigo-950/85 border border-indigo-400/40 text-sky-200 px-2 py-0.5 rounded-md">${sp}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-amber-300 block mb-1.5">🔍 3학년 사건 단서 (${S.clues.length})</span>
+      ${S.clues.length === 0
+        ? `<p class="text-[11px] text-slate-500">아직 확보한 단서가 없습니다.</p>`
+        : `<ul class="space-y-1 text-[11px] text-slate-300 list-disc pl-4">${S.clues.map(c => `<li>${c}</li>`).join('')}</ul>`}
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-emerald-300 block mb-1.5">🎒 소지품 (${S.items.length})</span>
+      <ul class="space-y-1 text-[11px] text-slate-300 list-disc pl-4">
+        ${S.items.map(it => `<li>${it}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="bg-slate-900/90 border border-slate-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-purple-300 block mb-1.5">🤝 주요 인물 관계도</span>
+      <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>해리</span><strong class="text-sky-200">${relLabel(S.relations.harry)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>헤르미온느</span><strong class="text-sky-200">${relLabel(S.relations.hermione)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>루핀 교수</span><strong class="text-sky-200">${relLabel(S.relations.lupin)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>시리우스</span><strong class="text-sky-200">${relLabel(S.relations.sirius)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>스네이프</span><strong class="text-sky-200">${relLabel(S.relations.snape)}</strong></div>
+        <div class="bg-slate-950 px-2 py-1 rounded flex justify-between"><span>해그리드</span><strong class="text-sky-200">${relLabel(S.relations.hagrid)}</strong></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('notebook-content').innerHTML = html;
+  document.getElementById('mobile-notebook-content').innerHTML = html;
+}
+
+function toggleMobileNotebook() { document.getElementById('mobile-notebook-modal').classList.toggle('hidden'); }
+
+/* ==========================================================================
+   3슬롯 저장 / 불러오기
+   ========================================================================== */
+function openSaveModal(mode) {
+  const modal = document.getElementById('save-modal');
+  const list = document.getElementById('save-slots-list');
+  document.getElementById('save-modal-title').textContent = mode === 'save' ? '💾 제3권 진행 상황 저장' : '📂 제3권 저장 기록 불러오기';
+  list.innerHTML = '';
+
+  for (let slot = 1; slot <= 3; slot++) {
+    const raw = localStorage.getItem(Y3_SAVE_PREFIX + slot);
+    const data = raw ? JSON.parse(raw) : null;
+    const card = document.createElement('div');
+    card.className = 'bg-slate-950 border border-slate-700 rounded-xl p-3.5 flex items-center justify-between gap-2';
+
+    if (data) {
+      const label = data.endingKey ? `[완결] ${ENDINGS[data.endingKey]?.title}` : (data.currentScene === 'free_week_hub' ? `자유 행동 주간 ${data.freeWeek.weekNum}/4` : (SCENES[data.currentScene]?.title || '진행 중'));
+      card.innerHTML = `
+        <div class="min-w-0">
+          <span class="text-xs font-extrabold text-sky-300 block">슬롯 ${slot} · ${data.playerName}</span>
+          <span class="text-[11px] text-slate-300 block truncate">${label}</span>
+          <span class="text-[10px] text-slate-500">${data.savedAt}</span>
+        </div>
+        <div class="flex gap-1.5 shrink-0">
+          ${S ? `<button onclick="saveToSlot(${slot})" class="bg-amber-800 hover:bg-amber-700 text-amber-100 px-2.5 py-1.5 rounded-lg text-xs font-bold">덮어쓰기</button>` : ''}
+          <button onclick="loadFromSlot(${slot})" class="bg-indigo-700 hover:bg-indigo-600 text-sky-50 px-2.5 py-1.5 rounded-lg text-xs font-bold">불러오기</button>
+        </div>
+      `;
+    } else {
+      card.innerHTML = `
+        <div>
+          <span class="text-xs font-bold text-slate-400 block">슬롯 ${slot} · 비어 있음</span>
+          <span class="text-[10.5px] text-slate-500">저장된 기록이 없습니다.</span>
+        </div>
+        ${S ? `<button onclick="saveToSlot(${slot})" class="patronus-btn text-sky-50 px-3 py-1.5 rounded-lg text-xs font-bold">여기에 저장</button>` : ''}
+      `;
+    }
+    list.appendChild(card);
+  }
+  modal.classList.remove('hidden');
+}
+
+function closeSaveModal() { document.getElementById('save-modal').classList.add('hidden'); }
+
+function saveToSlot(slot) {
+  if (!S) return;
+  localStorage.setItem(Y3_SAVE_PREFIX + slot, JSON.stringify({ ...S, savedAt: new Date().toLocaleString('ko-KR') }));
+  showToast(`💾 제3권 슬롯 ${slot}에 안전하게 저장되었습니다!`);
+  openSaveModal('save');
+}
+
+function loadFromSlot(slot) {
+  const raw = localStorage.getItem(Y3_SAVE_PREFIX + slot);
+  if (!raw) return;
+  S = JSON.parse(raw);
+  combatState = null;
+  closeSaveModal();
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  renderScene();
+  showToast(`📂 제3권 슬롯 ${slot}의 기록을 불러왔습니다.`);
+}
+
+renderTitlePreview();
+</script>
+</body>
+</html>

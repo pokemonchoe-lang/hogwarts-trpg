@@ -1,0 +1,1701 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>호그와트 연대기: 제7권 — 죽음의 성물 (1997–1998)</title>
+<script src="https://cdn.tailwindcss.com"></script>
+<link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;900&family=Noto+Serif+KR:wght@400;600;700;900&family=Noto+Sans+KR:wght@400;500;700;900&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  body {
+    font-family: 'Noto Sans KR', sans-serif;
+    background-color: #060608;
+    color: #e4e4e7;
+    margin: 0;
+    overflow: hidden;
+    user-select: none;
+    touch-action: manipulation;
+  }
+  .font-cinzel { font-family: 'Cinzel', serif; }
+  .font-serif-kr { font-family: 'Noto Serif KR', serif; }
+
+  /* 제7권 전용: 죽음의 성물 흑요석·백금·딱총나무 금빛 테마 */
+  .hallows-bg {
+    background:
+      radial-gradient(circle at 20% 12%, rgba(250, 204, 21, 0.14) 0%, transparent 45%),
+      radial-gradient(circle at 82% 84%, rgba(228, 228, 231, 0.12) 0%, transparent 50%),
+      linear-gradient(180deg, #111116 0%, #050507 100%);
+  }
+
+  .story-stage {
+    background:
+      radial-gradient(ellipse at top, rgba(39, 39, 46, 0.48) 0%, rgba(9, 9, 12, 0.97) 85%),
+      repeating-linear-gradient(0deg, rgba(255,255,255,0.012) 0px, rgba(255,255,255,0.012) 1px, transparent 1px, transparent 24px);
+    box-shadow: inset 0 0 65px rgba(0, 0, 0, 0.88);
+  }
+
+  .choice-btn {
+    background: linear-gradient(135deg, rgba(34, 34, 42, 0.92) 0%, rgba(14, 14, 18, 0.98) 100%);
+    border: 1.5px solid rgba(212, 212, 216, 0.32);
+    transition: all 0.16s cubic-bezier(0.22, 1, 0.36, 1);
+  }
+  .choice-btn:hover:not(:disabled) {
+    border-color: #fde047;
+    background: linear-gradient(135deg, rgba(63, 63, 70, 0.65) 0%, rgba(24, 24, 27, 0.98) 100%);
+    transform: translateX(4px);
+    box-shadow: 0 6px 22px rgba(250, 204, 21, 0.22);
+  }
+  .choice-btn:active:not(:disabled) { transform: scale(0.985); }
+  .choice-btn:disabled { opacity: 0.42; cursor: not-allowed; filter: grayscale(0.5); }
+
+  .elder-btn {
+    background: linear-gradient(135deg, #27272a 0%, #52525b 48%, #854d0e 100%);
+    border: 1.5px solid #fef08a;
+    box-shadow: 0 6px 24px rgba(250, 204, 21, 0.28), inset 0 1px 2px rgba(255,255,255,0.35);
+    transition: all 0.18s ease;
+  }
+  .elder-btn:hover:not(:disabled) {
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 10px 30px rgba(254, 240, 138, 0.45);
+  }
+  .elder-btn:active:not(:disabled) { transform: scale(0.97); }
+  .elder-btn:disabled { opacity: 0.42; cursor: not-allowed; filter: grayscale(0.5); }
+
+  .loc-card {
+    background: linear-gradient(155deg, rgba(32, 32, 38, 0.92), rgba(13, 13, 17, 0.98));
+    border: 1.5px solid rgba(212, 212, 216, 0.26);
+    transition: all 0.18s ease;
+  }
+  .loc-card:hover:not(:disabled) {
+    border-color: #fde047;
+    transform: translateY(-3px);
+    box-shadow: 0 10px 26px rgba(0,0,0,0.7), 0 0 18px rgba(250, 204, 21, 0.22);
+  }
+  .loc-card:disabled { opacity: 0.42; cursor: not-allowed; }
+
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  .anim-fade-up { animation: fadeUp 0.28s ease-out forwards; }
+
+  @keyframes diceSpin {
+    0% { transform: rotate(0deg) scale(0.9); }
+    25% { transform: rotate(90deg) scale(1.14); }
+    50% { transform: rotate(180deg) scale(0.95); }
+    75% { transform: rotate(270deg) scale(1.14); }
+    100% { transform: rotate(360deg) scale(1); }
+  }
+  .anim-dice { animation: diceSpin 0.2s linear infinite; }
+
+  @keyframes shakeBox {
+    0%, 100% { transform: translateX(0); }
+    20% { transform: translateX(-7px); }
+    40% { transform: translateX(7px); }
+    60% { transform: translateX(-5px); }
+    80% { transform: translateX(5px); }
+  }
+  .anim-shake { animation: shakeBox 0.38s ease-in-out; }
+
+  ::-webkit-scrollbar { width: 6px; height: 6px; }
+  ::-webkit-scrollbar-track { background: rgba(18, 18, 22, 0.6); }
+  ::-webkit-scrollbar-thumb { background: #52525b; border-radius: 3px; }
+</style>
+</head>
+<body class="hallows-bg h-[100dvh] w-screen overflow-hidden flex flex-col">
+
+  <!-- ==================== 1. 제7권 시작 및 6년 연대기 계승 화면 ==================== -->
+  <div id="title-screen" class="flex-1 flex items-center justify-center p-4 sm:p-6 overflow-y-auto">
+    <div class="max-w-xl w-full bg-zinc-950/94 backdrop-blur-md border-2 border-zinc-300/50 rounded-3xl p-6 sm:p-9 text-center shadow-2xl">
+      <div class="flex items-center justify-between mb-4">
+        <button onclick="goLobby()" class="text-xs font-bold text-zinc-400 hover:text-amber-200 flex items-center gap-1 transition">
+          ← 메인 로비로
+        </button>
+        <span class="px-3 py-1 rounded-full bg-zinc-900 border border-amber-300/50 text-amber-200 text-[11px] font-cinzel tracking-widest">
+          FINAL BOOK VII · 1997–1998
+        </span>
+      </div>
+
+      <!-- 죽음의 성물 문양 SVG -->
+      <div class="flex justify-center mb-2">
+        <svg class="w-12 h-12 text-amber-200 drop-shadow-[0_0_12px_rgba(253,224,71,0.55)]" viewBox="0 0 64 64" fill="none">
+          <polygon points="32,8 56,52 8,52" stroke="currentColor" stroke-width="2.4" fill="rgba(255,255,255,0.04)"/>
+          <circle cx="32" cy="38" r="13.5" stroke="currentColor" stroke-width="2.2"/>
+          <line x1="32" y1="8" x2="32" y2="52" stroke="currentColor" stroke-width="2.4"/>
+        </svg>
+      </div>
+      <h1 class="text-2xl sm:text-4xl font-black text-transparent bg-clip-text bg-gradient-to-b from-white via-amber-200 to-zinc-400 font-serif-kr tracking-tight mb-1.5">
+        제7권: 죽음의 성물
+      </h1>
+      <p class="text-amber-200/90 text-xs sm:text-sm font-bold mb-4">호그와트 연대기 최종장 (7학년) · 1인용 분기형 TRPG</p>
+
+      <p class="text-zinc-400 text-xs sm:text-[13px] leading-relaxed mb-5">
+        <em>"마지막으로 멸망할 적은 죽음이다."</em><br>
+        6년간 쌓아 온 모든 선택, 주문, 전우, 그리고 나비효과가 한곳에 모이는 최후의 장.<br>
+        <strong>호크룩스 추적 · 말포이 저택 · 그린고트 · 호그와트 최후의 전투 · 10종 엔딩</strong>이 기다립니다.
+      </p>
+
+      <!-- 계승 프로필 미리보기 -->
+      <div id="inherit-preview-box" class="bg-zinc-900/90 border border-amber-300/35 rounded-2xl p-4 mb-5 text-left"></div>
+
+      <div class="space-y-2.5">
+        <button id="btn-start-inherited" onclick="startFromMasterProfile()" class="elder-btn w-full py-3.5 px-6 rounded-2xl text-sm sm:text-base font-extrabold text-amber-50 tracking-wide">
+          ⚯ 6년의 연대기를 이어 최종장 시작하기
+        </button>
+
+        <div class="grid grid-cols-1 sm:grid-cols-2 gap-2.5">
+          <button onclick="openCodeImportModal()" class="py-2.5 px-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-amber-300/40 text-xs font-bold text-amber-200 transition">
+            🔑 계승 코드(HC-V1) 입력
+          </button>
+          <button onclick="openSaveModal('load')" class="py-2.5 px-4 rounded-xl bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-xs font-bold text-zinc-300 transition">
+            💾 제7권 저장 불러오기
+          </button>
+        </div>
+
+        <button onclick="startQuickBook7()" class="w-full py-2.5 px-4 rounded-xl bg-zinc-950 hover:bg-zinc-900 border border-zinc-800 text-[11.5px] font-bold text-zinc-400 hover:text-zinc-200 transition">
+          🎲 이전 기록 없이 바로 체험 (7학년 최강 프로필 자동 생성)
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 2. 메인 TRPG 플레이 화면 (태블릿 최적화 2단) ==================== -->
+  <div id="game-screen" class="hidden h-[100dvh] w-full flex flex-col overflow-hidden">
+
+    <!-- 상단 바 -->
+    <header class="h-12 shrink-0 bg-zinc-950/95 border-b border-zinc-500/35 px-3 sm:px-5 flex items-center justify-between gap-2 z-20">
+      <div class="flex items-center gap-2.5 min-w-0">
+        <button onclick="goLobby()" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-300 hover:text-amber-200 px-2.5 py-1 rounded-lg text-[11px] font-bold shrink-0">
+          🏛 로비
+        </button>
+        <span class="font-serif-kr font-black text-amber-200 text-xs sm:text-sm truncate">제7권: 죽음의 성물</span>
+        <span id="header-date-badge" class="text-[10.5px] font-bold px-2.5 py-0.5 rounded-full bg-zinc-900 text-amber-200 border border-amber-300/40 shrink-0">
+          1997년 7월
+        </span>
+      </div>
+
+      <div class="flex items-center gap-1.5 sm:gap-2 shrink-0">
+        <button onclick="toggleMobileNotebook()" class="md:hidden bg-zinc-900 border border-amber-300/40 text-amber-200 px-2.5 py-1 rounded-lg text-xs font-bold">
+          📓 수첩
+        </button>
+        <button onclick="openSaveModal('save')" class="bg-zinc-900 hover:bg-zinc-800 border border-zinc-700 text-zinc-200 px-2.5 py-1 rounded-lg text-xs font-bold transition">
+          💾 저장/로드
+        </button>
+      </div>
+    </header>
+
+    <!-- 중앙 2단 영역 -->
+    <div class="flex-1 flex min-h-0 overflow-hidden">
+
+      <!-- 좌측 메인 스테이지 -->
+      <main id="main-stage" class="flex-1 story-stage flex flex-col min-w-0 min-h-0 relative">
+
+        <!-- 챕터 & 장소 헤더 -->
+        <div class="px-4 sm:px-7 pt-3.5 pb-2.5 border-b border-zinc-800/80 flex items-center justify-between gap-2 shrink-0">
+          <div class="min-w-0">
+            <span id="scene-act-label" class="text-[10.5px] font-cinzel font-bold tracking-widest text-amber-300 uppercase block truncate">PROLOGUE</span>
+            <h2 id="scene-title" class="text-base sm:text-2xl font-bold font-serif-kr text-white mt-0.5 truncate">제목</h2>
+          </div>
+          <div class="flex items-center gap-2 shrink-0">
+            <span id="free-ap-badge" class="hidden px-3 py-1 rounded-xl bg-zinc-900 border border-amber-300/70 text-amber-200 text-xs font-extrabold">
+              ⏳ 남은 행동: 3/3
+            </span>
+            <div id="scene-house-crest" class="hidden px-3 py-1 rounded-xl border text-xs font-extrabold"></div>
+          </div>
+        </div>
+
+        <!-- 스크롤 본문 영역 -->
+        <div id="story-scroll-area" class="flex-1 overflow-y-auto px-4 sm:px-7 py-4 space-y-4">
+          <div id="last-check-banner" class="hidden rounded-2xl p-3.5 border text-xs sm:text-sm leading-relaxed anim-fade-up"></div>
+          <div id="scene-narrative" class="font-serif-kr text-sm sm:text-[15.5px] leading-[1.88] text-zinc-200 space-y-3 anim-fade-up"></div>
+          <div id="scene-dialogues" class="space-y-2.5"></div>
+          <div id="free-action-grid" class="hidden grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1"></div>
+
+          <!-- TRPG 턴제 마법 전투 패널 -->
+          <div id="combat-panel" class="hidden bg-zinc-950/94 border-2 border-amber-300/75 rounded-2xl p-4 shadow-2xl space-y-3">
+            <div class="flex flex-wrap items-center justify-between gap-2 border-b border-zinc-800 pb-2.5">
+              <div>
+                <span class="text-[10px] font-black uppercase tracking-wider text-amber-300 block">⚔️ 최종장 TRPG 마법 결전</span>
+                <h3 id="combat-enemy-name" class="text-base sm:text-lg font-extrabold text-white">적 이름</h3>
+              </div>
+              <div class="text-right">
+                <span id="combat-enemy-status" class="text-[10.5px] font-bold text-amber-300 block">상태: 정상</span>
+                <div class="flex items-center gap-2 mt-0.5">
+                  <div class="w-28 sm:w-36 h-3 bg-zinc-800 rounded-full overflow-hidden border border-amber-300/40">
+                    <div id="combat-enemy-hp-bar" class="h-full bg-gradient-to-r from-rose-600 via-amber-400 to-zinc-200 transition-all duration-300" style="width:100%"></div>
+                  </div>
+                  <span id="combat-enemy-hp-text" class="text-xs font-black text-amber-200">40/40</span>
+                </div>
+              </div>
+            </div>
+            <p id="combat-enemy-intent" class="text-xs text-amber-100/95 bg-zinc-900/90 border border-amber-500/40 rounded-xl px-3 py-2"></p>
+            <div id="combat-log" class="max-h-32 overflow-y-auto bg-black/65 rounded-xl p-2.5 text-xs text-zinc-300 space-y-1 border border-zinc-800"></div>
+          </div>
+        </div>
+
+        <!-- 하단 선택지 패널 -->
+        <div id="choices-wrapper" class="shrink-0 bg-zinc-950/95 border-t border-zinc-600/35 px-4 sm:px-7 py-3 z-10">
+          <div id="choices-header" class="text-[11px] font-bold text-amber-200/90 mb-2 flex items-center justify-between">
+            <span>당신의 행동을 선택하세요</span>
+            <span class="text-zinc-400 font-normal hidden sm:inline">7년의 모든 선택과 나비효과가 최후의 결말을 완성합니다</span>
+          </div>
+          <div id="choices-container" class="space-y-2 max-h-[34vh] overflow-y-auto pr-0.5"></div>
+        </div>
+      </main>
+
+      <!-- 우측 마법사 수첩 -->
+      <aside class="w-72 lg:w-80 shrink-0 bg-zinc-950/95 border-l border-zinc-800 flex-col min-h-0 hidden md:flex">
+        <div class="px-4 py-3 border-b border-zinc-800 bg-zinc-900/60 flex items-center justify-between">
+          <span class="text-xs font-extrabold text-amber-200 tracking-wide">📓 최종장 마법사 수첩</span>
+          <span class="text-[10px] text-zinc-400">제7권 · 1997–1998</span>
+        </div>
+        <div id="notebook-content" class="flex-1 overflow-y-auto p-3.5 space-y-3 text-xs"></div>
+      </aside>
+    </div>
+  </div>
+
+  <!-- ==================== 3. 모바일 수첩 모달 ==================== -->
+  <div id="mobile-notebook-modal" class="hidden fixed inset-0 bg-black/80 z-[60] flex items-center justify-center p-4" onclick="if(event.target===this) toggleMobileNotebook()">
+    <div class="bg-zinc-950 border-2 border-amber-300/50 rounded-2xl w-full max-w-md max-h-[82vh] flex flex-col p-4">
+      <div class="flex justify-between items-center border-b border-zinc-800 pb-2.5 mb-3">
+        <span class="text-sm font-extrabold text-amber-200">📓 최종장 마법사 수첩</span>
+        <button onclick="toggleMobileNotebook()" class="text-zinc-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <div id="mobile-notebook-content" class="flex-1 overflow-y-auto space-y-3 text-xs"></div>
+    </div>
+  </div>
+
+  <!-- ==================== 4. 2d6 TRPG 주사위 판정 오버레이 ==================== -->
+  <div id="dice-modal" class="hidden fixed inset-0 bg-black/75 backdrop-blur-sm z-[80] flex items-center justify-center p-4">
+    <div class="bg-zinc-950 border-2 border-amber-300 rounded-3xl p-6 max-w-sm w-full text-center shadow-[0_0_55px_rgba(250,204,21,0.4)]">
+      <span class="text-[11px] font-bold text-amber-200 tracking-widest uppercase block mb-1">TRPG 2d6 운명 판정</span>
+      <h3 id="dice-title" class="text-base sm:text-lg font-extrabold text-white mb-1">판정</h3>
+      <p id="dice-sub" class="text-xs text-zinc-400 mb-4">10+ 대성공 / 7~9 부분 성공 / 6 이하 실패</p>
+      <div class="flex justify-center gap-4 my-3">
+        <div id="die-1" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-zinc-700 to-zinc-950 border-2 border-amber-200 flex items-center justify-center text-3xl font-black text-white shadow-lg">🎲</div>
+        <div id="die-2" class="w-16 h-16 rounded-2xl bg-gradient-to-br from-amber-600 to-zinc-900 border-2 border-zinc-200 flex items-center justify-center text-3xl font-black text-white shadow-lg">🎲</div>
+      </div>
+      <div id="dice-result-box" class="mt-4 min-h-[48px] flex flex-col items-center justify-center">
+        <span class="text-xs text-zinc-300">운명의 주사위가 구르는 중...</span>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==================== 5. 계승 코드 붙여넣기 모달 ==================== -->
+  <div id="code-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[85] flex items-center justify-center p-4" onclick="if(event.target===this) closeCodeImportModal()">
+    <div class="bg-zinc-900 border-2 border-amber-300/60 rounded-2xl max-w-md w-full p-5 shadow-2xl space-y-3">
+      <div class="flex justify-between items-center border-b border-zinc-700 pb-2.5">
+        <h3 class="text-base font-extrabold text-amber-200">🔑 연대기 계승 코드 입력</h3>
+        <button onclick="closeCodeImportModal()" class="text-zinc-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <textarea id="code-import-textarea" rows="4" placeholder="이전 권 엔딩이나 로비에서 복사한 HC-V1-... 코드를 붙여넣으세요."
+        class="w-full bg-zinc-950 border border-zinc-700 focus:border-amber-300 rounded-xl p-3 text-xs font-mono text-white outline-none resize-none"></textarea>
+      <button onclick="applyImportedCodeAndStart()" class="elder-btn w-full py-2.5 rounded-xl text-xs sm:text-sm font-extrabold text-amber-50">
+        📥 코드 복원 후 최종장 시작하기
+      </button>
+    </div>
+  </div>
+
+  <!-- ==================== 6. 저장 / 불러오기 모달 (3슬롯) ==================== -->
+  <div id="save-modal" class="hidden fixed inset-0 bg-black/80 backdrop-blur-sm z-[85] flex items-center justify-center p-4" onclick="if(event.target===this) closeSaveModal()">
+    <div class="bg-zinc-900 border-2 border-amber-300/60 rounded-2xl max-w-md w-full p-5 shadow-2xl">
+      <div class="flex justify-between items-center border-b border-zinc-700 pb-3 mb-3">
+        <h3 id="save-modal-title" class="text-base font-extrabold text-amber-200">💾 제7권 저장 / 불러오기</h3>
+        <button onclick="closeSaveModal()" class="text-zinc-400 hover:text-white font-bold px-2">✕</button>
+      </div>
+      <div id="save-slots-list" class="space-y-2.5"></div>
+    </div>
+  </div>
+
+  <!-- 토스트 알림 -->
+  <div id="toast-box" class="hidden fixed top-14 left-1/2 -translate-x-1/2 bg-zinc-900/95 border-2 border-amber-300 text-amber-100 px-5 py-2.5 rounded-xl shadow-2xl z-[95] text-xs sm:text-sm font-bold text-center max-w-md"></div>
+
+<script>
+/* ==========================================================================
+   호그와트 연대기 제7권: 죽음의 성물 (year7.html) — 7년 대서사시 최종장
+   ========================================================================== */
+const MASTER_STORAGE_KEY = 'HOGWARTS_CHRONICLES_MASTER_V1';
+const Y7_SAVE_PREFIX = 'hogwarts_chronicles_y7_slot_';
+const sleep = ms => new Promise(r => setTimeout(r, ms));
+let toastTimer = null;
+let audioCtx = null;
+
+function goLobby() { window.location.href = 'index.html'; }
+
+function showToast(msg) {
+  const el = document.getElementById('toast-box');
+  el.textContent = msg;
+  el.classList.remove('hidden');
+  clearTimeout(toastTimer);
+  toastTimer = setTimeout(() => el.classList.add('hidden'), 3000);
+}
+
+function playTone(type) {
+  try {
+    if (!audioCtx) audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+    if (audioCtx.state === 'suspended') audioCtx.resume();
+    const now = audioCtx.currentTime;
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    if (type === 'dice') {
+      osc.type = 'square';
+      osc.frequency.setValueAtTime(260 + Math.random() * 260, now);
+      gain.gain.setValueAtTime(0.035, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.06);
+      osc.start(now); osc.stop(now + 0.07);
+    } else if (type === 'success') {
+      osc.type = 'sine';
+      osc.frequency.setValueAtTime(523, now);
+      osc.frequency.setValueAtTime(659, now + 0.09);
+      osc.frequency.setValueAtTime(784, now + 0.18);
+      osc.frequency.setValueAtTime(1046, now + 0.27);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.45);
+      osc.start(now); osc.stop(now + 0.46);
+    } else if (type === 'fail') {
+      osc.type = 'sawtooth';
+      osc.frequency.setValueAtTime(175, now);
+      osc.frequency.exponentialRampToValueAtTime(75, now + 0.3);
+      gain.gain.setValueAtTime(0.08, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.32);
+      osc.start(now); osc.stop(now + 0.33);
+    } else if (type === 'spell') {
+      osc.type = 'triangle';
+      osc.frequency.setValueAtTime(620, now);
+      osc.frequency.exponentialRampToValueAtTime(150, now + 0.24);
+      gain.gain.setValueAtTime(0.09, now);
+      gain.gain.exponentialRampToValueAtTime(0.001, now + 0.26);
+      osc.start(now); osc.stop(now + 0.27);
+    }
+  } catch (e) {}
+}
+
+/* 1~7학년 전 주문 통합 데이터베이스 */
+const SPELL_DB = {
+  '루미노스': { name: '루미노스', tag: '조명/시야', stat: 'insight', baseDmg: 4, desc: '섬광으로 적의 시선을 교란합니다.' },
+  '윙가르디움 레비오사': { name: '윙가르디움 레비오사', tag: '지형 응용', stat: 'insight', baseDmg: 6, desc: '파편과 거대한 사물을 띄워 적에게 떨어뜨립니다.' },
+  '알로호모라': { name: '알로호모라', tag: '탐색 전용', stat: 'insight', baseDmg: 0, desc: '잠긴 문을 여는 해제 주문.' },
+  '인센디오': { name: '인센디오', tag: '화염 공격', stat: 'grit', baseDmg: 8, burn: true, desc: '화염을 뿜어 지속 화상 피해를 입힙니다.' },
+  '페트리피쿠스 토탈루스': { name: '페트리피쿠스 토탈루스', tag: '전신 결박', stat: 'guile', baseDmg: 6, bind: true, desc: '적을 경직시켜 다음 턴 공격을 봉쇄합니다.' },
+  '아구아멘티': { name: '아구아멘티', tag: '수류/진정', stat: 'empathy', baseDmg: 6, healSelf: 5, desc: '거센 물줄기로 밀어내며 체력 +5 회복.' },
+  '프로테고': { name: '프로테고', tag: '방어/반사', stat: 'grit', baseDmg: 5, guard: true, desc: '방패막을 전개해 이번 턴 피해를 경감합니다.' },
+  '스투페파이': { name: '스투페파이', tag: '강력 충격', stat: 'grit', baseDmg: 10, desc: '붉은 기절 광선으로 직선 피해를 입힙니다.' },
+  '엑스펠리아르무스': { name: '엑스펠리아르무스', tag: '무장 해제 · 최종 특효', stat: 'grit', baseDmg: 12, bind: true, elderBonus: 10, desc: '지팡이의 주인을 가르는 운명의 무장 해제 주문! (최종전 치명타 특효)' },
+  '아라니아 엑수마이': { name: '아라니아 엑수마이', tag: '생물 퇴치', stat: 'insight', baseDmg: 7, desc: '어둠의 생물들을 밀어냅니다.' },
+  '리크투셈프라': { name: '리크투셈프라', tag: '교란/결투', stat: 'guile', baseDmg: 8, desc: '은빛 섬광으로 상대의 균형을 무너뜨립니다.' },
+  '피니테 인칸타템': { name: '피니테 인칸타템', tag: '저주 해제', stat: 'empathy', baseDmg: 6, healSelf: 6, guard: true, desc: '어둠의 여파를 지우고 방어하며 체력 +6 회복.' },
+  '리디큘러스': { name: '리디큘러스', tag: '공포 극복', stat: 'empathy', baseDmg: 6, desc: '공포를 떨쳐내며 적을 교란합니다.' },
+  '익스펙토 패트로눔': { name: '익스펙토 패트로눔', tag: '수호령/회복', stat: 'empathy', baseDmg: 10, healSelf: 8, desc: '찬란한 은빛 수호령으로 어둠을 몰아내고 체력 +8 회복.' },
+  '임페디멘타': { name: '임페디멘타', tag: '진행 저지', stat: 'insight', baseDmg: 9, bind: true, desc: '강력한 저지 파동으로 적을 정지시킵니다.' },
+  '아레스토 모멘텀': { name: '아레스토 모멘텀', tag: '감속/방어', stat: 'insight', baseDmg: 6, guard: true, healSelf: 5, desc: '충격을 늦춰 피해를 방어하고 체력 +5 회복.' },
+  '아씨오': { name: '아씨오', tag: '소환/기습', stat: 'insight', baseDmg: 9, desc: '원거리 사물을 소환해 적의 빈틈을 찌릅니다.' },
+  '리덕토': { name: '리덕토', tag: '파쇄 극딜', stat: 'grit', baseDmg: 13, desc: '방어막과 장애물을 산산조각 냅니다.' },
+  '레라시오': { name: '레라시오', tag: '열파 방출', stat: 'guile', baseDmg: 9, desc: '강렬한 열파로 적을 밀쳐냅니다.' },
+  '프로테고 호리빌리스': { name: '프로테고 호리빌리스', tag: '고급 방어막', stat: 'empathy', baseDmg: 7, guard: true, healSelf: 8, desc: '상급 방어막 전개 및 체력 +8 회복!' },
+  '스투페파이 맥시마': { name: '스투페파이 맥시마', tag: '강화 기절', stat: 'grit', baseDmg: 14, bind: true, desc: '고출력 기절 광선! 적을 강타하고 1턴 제압합니다.' },
+  '콘프링고': { name: '콘프링고', tag: '폭발 화염', stat: 'grit', baseDmg: 15, burn: true, desc: '강렬한 폭발 화염으로 막대한 피해와 지속 화상을 입힙니다.' },
+  '프로테고 토탈룸': { name: '프로테고 토탈룸', tag: '전장 결계', stat: 'empathy', baseDmg: 8, guard: true, healSelf: 10, desc: '아군 전체를 감싸는 최상급 수호 결계 및 체력 +10 회복!' },
+  '오클러먼시': { name: '오클러먼시', tag: '정신 장벽', stat: 'insight', baseDmg: 8, guard: true, healSelf: 8, desc: '정신을 닫아 어둠의 침투를 튕겨내고 체력 +8 회복.' },
+  '레비코르푸스': { name: '레비코르푸스', tag: '무언 결박', stat: 'guile', baseDmg: 12, bind: true, desc: '혼혈 왕자의 무언 결박! 적을 허공에 매달아 1턴 제압.' },
+  '섹툼셈프라': { name: '섹툼셈프라', tag: '검의 저주', stat: 'grit', baseDmg: 18, burn: true, desc: '보이지 않는 검으로 적을 베어내는 금지된 극딜 주문!' },
+  '불네라 사넨투르': { name: '불네라 사넨투르', tag: '고급 치유', stat: 'empathy', baseDmg: 6, guard: true, healSelf: 16, desc: '깊은 상처를 치유해 체력 +16 대량 회복 & 방어!' },
+  '파르티스 템포루스': { name: '파르티스 템포루스', tag: '화염 폭풍', stat: 'insight', baseDmg: 16, burn: true, guard: true, desc: '덤블도어의 거대한 화염 폭풍으로 적을 불태우며 방어!' },
+  /* 7학년 최후의 궁극 주문 4종 */
+  '봄바르다 맥시마': { name: '봄바르다 맥시마', tag: '성벽 파쇄 극딜', stat: 'grit', baseDmg: 20, desc: '거대한 폭발 충격파로 죽먹자 진형과 방어선을 초토화합니다!' },
+  '피에르토툼 로코모토르': { name: '피에르토툼 로코모토르', tag: '석상 군단 기동', stat: 'empathy', baseDmg: 15, guard: true, healSelf: 12, desc: '호그와트의 석상 기사를 깨워 적을 강타하고 방어막 & 체력 +12!' },
+  '피엔트파이어 제어': { name: '피엔트파이어 (저주 화염 제어)', tag: '호크룩스 파쇄', stat: 'guile', baseDmg: 22, burn: true, desc: '호크룩스마저 녹여버리는 악마의 불꽃을 정밀 제어해 치명타를 가합니다!' },
+  '프로테고 디아볼리카': { name: '프로테고 디아볼리카', tag: '최종 방어 결계', stat: 'insight', baseDmg: 14, guard: true, burn: true, healSelf: 14, desc: '푸른 수호 화염의 고리를 전개해 적을 불태우며 방어 & 체력 +14 회복!' }
+};
+
+let S = null;
+let combatState = null;
+
+function loadMaster() {
+  try {
+    const raw = localStorage.getItem(MASTER_STORAGE_KEY);
+    return raw ? JSON.parse(raw) : null;
+  } catch (e) { return null; }
+}
+
+function buildStateFromProfile(profile) {
+  const baseSpells = Array.isArray(profile.spells) && profile.spells.length
+    ? [...profile.spells]
+    : ['루미노스', '인센디오', '프로테고', '엑스펠리아르무스', '익스펙토 패트로눔', '리덕토', '스투페파이 맥시마', '프로테고 토탈룸', '불네라 사넨투르', '파르티스 템포루스'];
+
+  const rel = profile.relations || {};
+  const maxHp = Math.max(46, profile.maxHp || 46);
+  const hidden = profile.hidden || {
+    nature: { name: '무모한 개척자', primary: 'grit', secondary: 'insight', desc: '위험을 감지하면서도 배짱과 통찰로 정면 돌파를 택하는 기질' },
+    ivs: { grit: 26, insight: 25, guile: 21, empathy: 24 },
+    summerBonus: { grit: 6, insight: 5, guile: 4, empathy: 5 }
+  };
+
+  return {
+    playerName: profile.playerName || '아르투르 블랙번',
+    familyLabel: profile.familyLabel || '몰락한 옛 순수혈통 가문',
+    house: profile.house || 'gryffindor',
+    wand: profile.wand || '서양호랑가시나무 · 불사조 깃털 (11인치)',
+    hidden,
+    patronusForm: profile.flags?.patronusForm || '은빛 사자 (Silver Lion)',
+    hp: maxHp,
+    maxHp,
+    horcruxesDestroyed: 2, // 2권 일기장 + 6권 덤블도어의 반지 = 기본 2개 파괴 상태 시작!
+    hallowsKnown: 0,       // 죽음의 성물 3종 진실 도달도 (0~3)
+    resistancePower: 0,    // 호그와트 저항군 결집도
+    duelBonus: 1,
+    spells: baseSpells,
+    items: [...(profile.items || ['가문의 낡은 은화 주머니']), '헤르미온느의 구슬 백 치유 영약 (체력 +24)'],
+    clues: [],
+    relations: {
+      harry: rel.harry || 3,
+      ron: rel.ron || 2,
+      hermione: rel.hermione || 3,
+      draco: rel.draco || 1,
+      snape: rel.snape || 1,
+      neville: rel.neville || 2,
+      luna: rel.luna || 2,
+      sirius: rel.sirius || 0
+    },
+    flags: { ...(profile.flags || {}) },
+    freeWeek: { active: false, weekNum: 0, apLeft: 0, visited: [], nextScene: null, introText: '' },
+    currentScene: 'y7_prologue_seven_potters',
+    lastCheckHtml: null,
+    endingKey: null
+  };
+}
+
+function renderTitlePreview() {
+  const box = document.getElementById('inherit-preview-box');
+  const startBtn = document.getElementById('btn-start-inherited');
+  const M = loadMaster();
+
+  if (M && M.activeProfile) {
+    const p = M.activeProfile;
+    const hNames = { gryffindor: '🦁 그리핀도르', slytherin: '🐍 슬리데린', ravenclaw: '🦅 래번클로', hufflepuff: '🦡 후플푸프' };
+    const butterflies = [];
+    if (p.flags?.boundPettigrewTight) butterflies.push('⛓️ 웜테일 생포');
+    if (p.flags?.savedCedricAtMaze) butterflies.push('🌟 세드릭 생존');
+    if (p.flags?.savedSiriusAtMinistry) butterflies.push('🌟 시리우스 생존');
+    if (p.flags?.showedMercyToMalfoy) butterflies.push('🤝 말포이 구원');
+    if (p.flags?.knowsSnapeLoyal) butterflies.push('🖤 스네이프 진의');
+
+    box.innerHTML = `
+      <div class="flex items-center justify-between gap-2 mb-1.5">
+        <span class="text-[11px] font-extrabold text-amber-200">✔ 6년 연대기 계승 데이터 준비 완료</span>
+        <span class="text-[10.5px] font-bold px-2 py-0.5 rounded bg-zinc-800 border border-amber-300/50 text-amber-200">${hNames[p.house] || '호그와트'}</span>
+      </div>
+      <div class="text-sm font-black text-white">${p.playerName} <span class="text-xs font-normal text-zinc-400">(${p.familyLabel || '마법사 가문'})</span></div>
+      <p class="text-[11px] text-zinc-300 mt-1">🪄 ${p.wand || '지팡이'} · 최대 체력 ${Math.max(46, p.maxHp || 46)} · 계승 주문 ${p.spells?.length || 0}개</p>
+      <p class="text-[11px] text-amber-200/85 mt-1">${butterflies.length ? '활성 나비효과: ' + butterflies.join(' · ') : '6년간 누적된 모든 선택이 최종장에 반영됩니다.'}</p>
+    `;
+    startBtn.disabled = false;
+  } else {
+    box.innerHTML = `
+      <div class="text-xs font-bold text-amber-300 mb-1">⚠ 저장된 이전 학년 기록이 없습니다</div>
+      <p class="text-[11px] text-zinc-400 leading-relaxed">
+        제1~6권을 클리어하거나, 아래 <strong>[계승 코드 입력]</strong> 또는 <strong>[바로 체험(퀵 스타트)]</strong>으로 최종장을 시작할 수 있습니다.
+      </p>
+    `;
+    startBtn.disabled = true;
+  }
+}
+
+function startFromMasterProfile() {
+  const M = loadMaster();
+  if (!M || !M.activeProfile) {
+    showToast('⚠ 계승할 이전 기록이 없습니다. 계승 코드를 입력하거나 퀵 스타트를 이용해 주세요.');
+    return;
+  }
+  S = buildStateFromProfile(M.activeProfile);
+  launchBook7Screen();
+}
+
+function startQuickBook7() {
+  const houses = ['gryffindor', 'slytherin', 'ravenclaw', 'hufflepuff'];
+  const randomHouse = houses[Math.floor(Math.random() * houses.length)];
+  S = buildStateFromProfile({
+    playerName: '아르투르 블랙번',
+    familyLabel: '몰락한 옛 순수혈통 가문',
+    house: randomHouse,
+    wand: '서양호랑가시나무 · 불사조 깃털 (11인치)',
+    maxHp: 46,
+    spells: ['루미노스', '인센디오', '프로테고', '엑스펠리아르무스', '익스펙토 패트로눔', '리덕토', '스투페파이 맥시마', '프로테고 토탈룸', '불네라 사넨투르', '파르티스 템포루스'],
+    items: ['가문의 낡은 은화 주머니', '길 잃은 부엉이의 은빛 깃털'],
+    relations: { harry: 5, ron: 4, hermione: 5, draco: 3, snape: 3, neville: 4, luna: 4, sirius: 4 },
+    flags: {
+      trainFriendly: true, foughtTroll: true, slayedBasilisk: true,
+      savedBuckbeakAndSirius: true, savedCedricAtMaze: true, savedSiriusAtMinistry: true,
+      showedMercyToMalfoy: true, knowsSnapeLoyal: true, patronusForm: '은빛 사자 (Silver Lion)'
+    }
+  });
+  launchBook7Screen();
+  showToast('🎲 7학년 최강 퀵 스타트(주요 나비효과 활성)로 시작합니다!');
+}
+
+function launchBook7Screen() {
+  combatState = null;
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  renderScene();
+}
+
+function addSpell(name) { if (!S.spells.includes(name)) S.spells.push(name); }
+function addClue(text) { if (!S.clues.includes(text)) S.clues.push(text); }
+function addItem(text) { S.items.push(text); }
+
+function getSecretModifier(statKey) {
+  const iv = S.hidden?.ivs?.[statKey] || 22;
+  const bonus = S.hidden?.summerBonus?.[statKey] || 0;
+  const total = iv + bonus;
+  let mod = total >= 34 ? 2 : total >= 20 ? 1 : 0;
+  if (statKey === 'grit' && S.duelBonus > 0) mod += 1;
+  return mod;
+}
+
+/* ==========================================================================
+   2d6 주사위 판정 오버레이
+   ========================================================================== */
+async function perform2d6Check(label, statKey, onResolve, extraMod = 0) {
+  const modal = document.getElementById('dice-modal');
+  const d1 = document.getElementById('die-1');
+  const d2 = document.getElementById('die-2');
+  const resBox = document.getElementById('dice-result-box');
+
+  document.getElementById('dice-title').textContent = label;
+  document.getElementById('dice-sub').textContent = '10+ 대성공 / 7~9 부분 성공 / 6 이하 실패';
+  resBox.innerHTML = `<span class="text-xs text-zinc-300">운명의 주사위가 구르는 중...</span>`;
+  modal.classList.remove('hidden');
+  d1.classList.add('anim-dice');
+  d2.classList.add('anim-dice');
+
+  for (let i = 0; i < 7; i++) {
+    d1.textContent = Math.floor(Math.random() * 6) + 1;
+    d2.textContent = Math.floor(Math.random() * 6) + 1;
+    playTone('dice');
+    await sleep(75);
+  }
+
+  d1.classList.remove('anim-dice');
+  d2.classList.remove('anim-dice');
+
+  const r1 = Math.floor(Math.random() * 6) + 1;
+  const r2 = Math.floor(Math.random() * 6) + 1;
+  const mod = (statKey ? getSecretModifier(statKey) : 0) + extraMod;
+  const total = r1 + r2 + mod;
+
+  d1.textContent = r1;
+  d2.textContent = r2;
+
+  let outcome = 'fail';
+  let badgeHtml = '';
+  if (total >= 10) {
+    outcome = 'crit';
+    playTone('success');
+    badgeHtml = `<span class="text-sm font-black text-emerald-400">★ 대성공! (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  } else if (total >= 7) {
+    outcome = 'partial';
+    playTone('success');
+    badgeHtml = `<span class="text-sm font-black text-amber-300">✦ 부분 성공 (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  } else {
+    outcome = 'fail';
+    playTone('fail');
+    badgeHtml = `<span class="text-sm font-black text-rose-400">✖ 실패 (합계 ${total}${mod > 0 ? ` · 보정 +${mod}` : ''})</span>`;
+  }
+
+  resBox.innerHTML = `${badgeHtml}<span class="text-[11px] text-zinc-400 mt-1">결과를 반영합니다...</span>`;
+  await sleep(1050);
+  modal.classList.add('hidden');
+  await onResolve(outcome, total);
+}
+
+/* ==========================================================================
+   제7권 [자유 행동 주간] 4회 (호크룩스 추적 · 성물 탐구 · 궁극 주문 연마 · 저항군 결집 · 심야 첩보)
+   ========================================================================== */
+function enterFreeWeek(weekNum, nextSceneId, introText) {
+  S.freeWeek = { active: true, weekNum, apLeft: 3, visited: [], nextScene: nextSceneId, introText };
+  S.currentScene = 'free_week_hub';
+  renderScene();
+}
+
+function getFreeWeekLocations(weekNum) {
+  return [
+    {
+      id: 'horcrux_hunt',
+      icon: '🗡️',
+      title: '호크룩스 흔적 조사 & 그리핀도르의 검',
+      sub: 'R.A.B.의 비밀 · 바실리스크 독니 & 호크룩스 파괴 수단 확보',
+      action: () => runHorcruxHuntEvent(weekNum)
+    },
+    {
+      id: 'hallows_lore',
+      icon: '⚯',
+      title: '죽음의 성물 전설 탐구 (음유시인 비들 이야기)',
+      sub: '딱총나무 지팡이 · 부활의 돌 · 투명 망토의 진실 해금',
+      action: () => runHallowsLoreEvent(weekNum)
+    },
+    {
+      id: 'ultimate_magic',
+      icon: '⚡',
+      title: '최후의 결전 대비 궁극 마법 연마',
+      sub: '7학년 궁극 주문(봄바르다 맥시마·석상 기동·피엔트파이어·디아볼리카) 습득',
+      action: () => runUltimateMagicEvent(weekNum)
+    },
+    {
+      id: 'resistance_net',
+      icon: '🔥',
+      title: '호그와트 저항군(네빌·지니·루나) & 기사단 연락',
+      sub: '저항군 결집도 상승 · 최상급 회복 영약 확보 · 체력 회복',
+      action: () => runResistanceEvent(weekNum)
+    },
+    {
+      id: 'stealth_recon',
+      icon: '🕯️',
+      title: '죽먹자 점령지 은밀 정찰 (2d6 위험)',
+      sub: '성공 시 적 배치/스네이프·말포이 핵심 단서 · 실패 시 스내처 조우',
+      action: () => runStealthReconEvent(weekNum)
+    }
+  ];
+}
+
+function finishFreeAction(locId, type, text) {
+  S.freeWeek.visited.push(locId);
+  S.freeWeek.apLeft -= 1;
+  S.lastCheckHtml = { type, text };
+  if (S.freeWeek.apLeft <= 0) {
+    const next = S.freeWeek.nextScene;
+    S.freeWeek.active = false;
+    goScene(next);
+  } else {
+    renderScene();
+  }
+}
+
+function runHorcruxHuntEvent(weekNum) {
+  if (weekNum === 1) {
+    addClue('R.A.B.의 정체: 그리몰드 광장에서 집요정 크리처의 증언을 통해, 가짜 로켓을 바꿔치기한 R.A.B.가 시리우스의 동생 [레굴루스 블랙]이며 진짜 로켓은 엄브릿지가 뺏어갔음을 알아냈다!');
+    finishFreeAction('horcrux_hunt', 'crit', '🗡️ 크리처의 눈물 어린 증언을 통해 진짜 [슬리데린의 로켓]이 마법부의 돌로레스 엄브릿지 목에 걸려 있음을 확인했습니다!');
+  } else if (weekNum === 2) {
+    S.horcruxesDestroyed += 1;
+    S.flags.destroyedLocket = true;
+    addClue('딘의 숲의 기적: 은빛 암사슴 패트로누스가 인도한 얼음 연못에서 [그리핀도르의 검]을 건져 올려 슬리데린의 로켓을 파괴했다!');
+    finishFreeAction('horcrux_hunt', 'crit', '🗡️ 딘의 숲 얼음 호수에서 [그리핀도르의 검]을 되찾아 론·해리와 함께 [슬리데린의 로켓]을 산산조각 냈습니다! (호크룩스 파괴 +1)');
+  } else if (weekNum === 3) {
+    addClue('그린고트 벨라트릭스 금고: 말포이 저택에서 벨라트릭스가 그리핀도르의 검을 보고 미친 듯이 경악한 이유는, 그녀의 금고 안에 [후플푸프의 잔]이 숨겨져 있기 때문이다!');
+    finishFreeAction('horcrux_hunt', 'crit', '🗡️ 고블린 그립훅과 협상하며 벨라트릭스 금고 속에 잠든 [후플푸프의 잔]의 위치를 확신했습니다!');
+  } else {
+    addClue('회색 숙녀의 고백: 래번클로의 유령 헬레나 래번클로로부터 톰 리들이 [래번클로의 보관]을 훔쳐 호그와트 "모든 것이 숨겨지는 방(필요의 방)"에 두었음을 알아냈다!');
+    S.flags.knowsDiademLocation = true;
+    finishFreeAction('horcrux_hunt', 'crit', '🗡️ 호그와트 성 안의 마지막 호크룩스—[래번클로의 보관]이 7층 필요의 방에 숨겨져 있음을 확인했습니다!');
+  }
+}
+
+function runHallowsLoreEvent(weekNum) {
+  S.hallowsKnown = Math.min(3, S.hallowsKnown + 1);
+  if (weekNum === 1) {
+    addClue('성물 #1 [투명 망토]: 죽음의 눈을 피하는 진정한 투명 망토는 대대로 포터 가문에 전해져 내려온 바로 해리의 망토다.');
+    finishFreeAction('hallows_lore', 'info', '⚯ 덤블도어가 남긴 <음유시인 비들 이야기>에서 삼각형·원·직선 문양과 첫 번째 성물 [투명 망토]의 단서를 해독했습니다! (성물 진실 1/3)');
+  } else if (weekNum === 2) {
+    addClue('성물 #2 [부활의 돌]: 골든 스니치 안에 숨겨진 곤트 가문의 검은 돌이 바로 죽은 이의 영혼을 불러오는 두 번째 성물이다.');
+    finishFreeAction('hallows_lore', 'info', '⚯ 제노필리우스 러브굿의 설명을 통해 [부활의 돌]과 "끝날 때 열린다"는 스니치의 비밀을 깨달았습니다! (성물 진실 2/3)');
+  } else if (weekNum === 3) {
+    addClue('성물 #3 [딱총나무 지팡이]: 지팡이 제작자 올리밴더의 증언 — 지팡이는 주인을 선택하며, 덤블도어를 무장 해제시킨 드레이코의 지팡이를 빼앗은 자가 진정한 주인이다!');
+    S.flags.knowsElderWandTruth = true;
+    finishFreeAction('hallows_lore', 'crit', '⚯ 올리밴더에게서 [딱총나무 지팡이]의 소유권 법칙을 완벽히 파악했습니다! 볼드모트는 절대 그 지팡이의 진정한 주인이 아닙니다! (성물 진실 3/3)');
+  } else {
+    S.flags.masteredHallowsTruth = true;
+    S.hp = S.maxHp;
+    finishFreeAction('hallows_lore', 'crit', '⚯ 죽음의 성물 세 가지의 진정한 의미—죽음을 정복하는 것이 아니라 두려움 없이 받아들이는 용기—를 깨달았습니다! (체력 완전 회복)');
+  }
+}
+
+function runUltimateMagicEvent(weekNum) {
+  if (weekNum === 1) {
+    addSpell('봄바르다 맥시마');
+    finishFreeAction('ultimate_magic', 'crit', '⚡ 성벽마저 무너뜨리는 최상급 폭발 주문 [봄바르다 맥시마]를 완벽히 터득했습니다!');
+  } else if (weekNum === 2) {
+    addSpell('피엔트파이어 제어');
+    finishFreeAction('ultimate_magic', 'crit', '⚡ 호크룩스마저 녹여버리는 금지된 악마의 불꽃 [피엔트파이어 제어]를 극한의 집중력으로 길들였습니다!');
+  } else if (weekNum === 3) {
+    addSpell('프로테고 디아볼리카');
+    finishFreeAction('ultimate_magic', 'crit', '⚡ 푸른 수호 화염의 고리로 적을 불태우고 아군을 지키는 최상급 방어 결계 [프로테고 디아볼리카]를 습득했습니다!');
+  } else {
+    addSpell('피에르토툼 로코모토르');
+    S.duelBonus = 2;
+    finishFreeAction('ultimate_magic', 'crit', '⚡ 맥고나걸 교수와 함께 호그와트의 모든 갑옷과 석상 기사를 깨우는 [피에르토툼 로코모토르]를 터득했습니다! (전투 보정 +2)');
+  }
+}
+
+function runResistanceEvent(weekNum) {
+  S.resistancePower += 1;
+  S.hp = Math.min(S.maxHp, S.hp + 10);
+  if (weekNum === 1) {
+    addItem('몰리 위즐리의 비상 치유 영약 (체력 +24)');
+    finishFreeAction('resistance_net', 'info', '🔥 비밀 라디오 <포터워치> 방송을 통해 리 조던·루핀·킹슬리와 암호를 맞추며 저항군 연락망을 구축했습니다. (저항군 결집 +1)');
+  } else if (weekNum === 2) {
+    S.relations.neville += 2;
+    S.relations.luna += 2;
+    addItem('호그와트 저항군 특제 비약 (체력 +26)');
+    finishFreeAction('resistance_net', 'crit', '🔥 카로우 남매의 폭정에 맞서 호그와트 필요의 방에서 지하 저항군을 이끄는 네빌·지니·루나와 비밀리에 접선했습니다! (저항군 결집 +1)');
+  } else if (weekNum === 3) {
+    addItem('플뢰르의 조개 껍데기 오두막 회복약 (체력 +28)');
+    finishFreeAction('resistance_net', 'info', '🔥 바닷가 조개 껍데기 오두막에서 빌·플뢰르, 그리고 불사조 기사단 동지들과 최후의 반격 작전을 수립했습니다. (체력 +10)');
+  } else {
+    S.resistancePower += 1;
+    S.hp = S.maxHp;
+    const savedNames = [];
+    if (S.flags.savedCedricAtMaze) savedNames.push('세드릭 디고리');
+    if (S.flags.savedSiriusAtMinistry) savedNames.push('시리우스 블랙');
+    finishFreeAction('resistance_net', 'crit', `🔥 호그스 헤드의 아리애나 초상화 비밀 통로를 통해 D.A., 불사조 기사단${savedNames.length ? ', 그리고 살아남은 ' + savedNames.join('·') : ''}이 필요의 방에 총집결했습니다!`);
+  }
+}
+
+function runStealthReconEvent(weekNum) {
+  perform2d6Check('죽먹자 점령지 은밀 정찰', 'guile', (outcome) => {
+    if (outcome === 'crit') {
+      S.resistancePower += 1;
+      const notes = [
+        '타부 경보: "볼드모트"라는 이름을 입에 올리는 순간 방어 결계가 깨지고 스내처가 출동하는 타부 마법이 걸려 있다!',
+        '스네이프 교장의 행보: 호그와트 교장이 된 스네이프가 사실은 학생들을 카로우 남매로부터 몰래 보호하고 금지된 숲 징계로 돌려보내고 있었다!',
+        '나기니의 보호막: 볼드모트가 마지막 호크룩스인 거대한 뱀 [나기니]를 마법의 구체로 감싸 자기 곁에 두기 시작했다!',
+        '호그와트 성벽 배치: 죽음을 먹는 자 군단과 거인족, 아크로맨투라가 오늘 자정 호그와트 북쪽 다리와 성문을 총공격한다!'
+      ];
+      addClue(notes[weekNum - 1]);
+      if (weekNum === 2) S.flags.sawSnapeProtectingStudents = true;
+      addItem('정찰 중 확보한 최상급 보혈 영약 (체력 +24)');
+      finishFreeAction('stealth_recon', 'crit', `🕯️ 완벽한 은신 정찰 성공! — ${notes[weekNum - 1]}`);
+    } else if (outcome === 'partial') {
+      addClue(`점령지 첩보 #${weekNum}: 죽먹자들의 순찰 경로를 파악해 아군 이동로를 확보했다.`);
+      S.hp = Math.max(12, S.hp - 4);
+      finishFreeAction('stealth_recon', 'partial', '🕯️ 첩보는 챙겼지만 스내처 추격대를 따돌리느라 체력 -4를 소모했습니다.');
+    } else {
+      S.hp = Math.max(10, S.hp - 8);
+      finishFreeAction('stealth_recon', 'fail', '🕯️ 스내처 순찰대와 마주쳐 격렬한 도주전을 벌였습니다! (체력 -8)');
+    }
+  });
+}
+
+/* ==========================================================================
+   제7권: 죽음의 성물 전체 스토리 시나리오 트리
+   ========================================================================== */
+const SCENES = {
+  /* -------------------- [프롤로그] 7명의 포터 & 빌·플뢰르의 결혼식 -------------------- */
+  y7_prologue_seven_potters: {
+    date: '1997년 7월 말 · 프리벳가 상공 & 버로우 결혼식',
+    act: 'PROLOGUE · THE SEVEN POTTERS',
+    title: '일곱 명의 해리 포터와 무너진 마법부',
+    narrative: () => [
+      `1997년 7월, 해리의 보호 마법이 풀리기 직전. 불사조 기사단은 폴리주스 마법약으로 일곱 명의 해리를 만들어 프리벳가를 탈출하는 <strong>[7명의 포터 작전]</strong>을 감행합니다. 그러나 밤하늘을 가르며 날아오르자마자 수십 명의 죽음을 먹는 자들이 매복 공격을 퍼붓습니다!`,
+      `간신히 버로우에 모여 빌과 플뢰르의 결혼식을 올리던 며칠 뒤, 천막 한가운데 킹슬리 샤클볼트의 은빛 스라소니 패트로누스가 날아들어 절망적인 소식을 전합니다. <em>"마법부가 함락되었다. 스크림저 장관이 살해당했다. 그들이 오고 있다."</em>`
+    ],
+    dialogues: () => [
+      { speaker: '해리 포터', role: '호크룩스 원정대', text: `"${S.playerName}, 이제 학교로 돌아갈 수 없어. 남은 호크룩스를 모두 찾아 파괴하지 않으면 이 전쟁은 끝나지 않아. 함께 가 줄래?"` },
+      { speaker: '헤르미온느 그레인저', role: '호크룩스 원정대', text: '"작은 구슬 백에 필요한 책과 텐트, 치유약은 다 챙겨 뒀어. 지금 당장 순간이동해야 해!"' }
+    ],
+    choices: [
+      {
+        text: '지팡이를 높이 들고 결혼식장을 습격한 죽먹자 선봉대를 저지하며 해리·론·헤르미온느의 탈출을 엄호한다! (전투 1)',
+        action: () => {
+          startCombat({
+            name: '결혼식장 기습 죽음을 먹는 자 선봉대',
+            hp: 30, maxHp: 30,
+            atkMin: 5, atkMax: 8,
+            intent: '검은 연기와 함께 내려앉은 죽음을 먹는 자들이 결혼식 천막을 불태우며 저주를 쏩니다!',
+            allyAssist: {
+              name: S.flags.savedSiriusAtMinistry ? '시리우스 블랙 & 킹슬리 샤클볼트' : '리무스 루핀 & 킹슬리 샤클볼트',
+              msg: '기사단 정예가 합동 방어막과 기절 광선으로 적을 휩쓸며 13 피해를 가하고 탈출로를 열었습니다!',
+              dmg: 13,
+              heal: 8
+            },
+            onWin: () => {
+              S.flags.foughtWedding = true;
+              S.resistancePower += 1;
+              S.lastCheckHtml = { type: 'crit', text: '하객들을 무사히 대피시키고 해리·론·헤르미온느와 함께 런던 토트넘 코트 로드로 순간이동하는 데 성공했습니다!' };
+              enterFreeWeek(1, 'y7_act1_ministry', '전쟁 초기 은신처(그리몰드 광장 12번지)에서의 자유 행동 주간(3 AP)입니다. R.A.B.의 단서와 궁극 주문을 준비하세요.');
+            }
+          });
+        }
+      },
+      {
+        text: '[처세 판정] 연막과 교란 주문으로 하객들을 분산시킨 뒤 즉시 해리 일행과 함께 그리몰드 광장으로 순간이동한다.',
+        check: { label: '결혼식장 기민한 비상 탈출', stat: 'guile' },
+        onCheck: (outcome) => {
+          if (outcome === 'fail') {
+            S.hp = Math.max(15, S.hp - 6);
+            S.lastCheckHtml = { type: 'fail', text: '스플린칭(순간이동 부상)으로 체력 -6을 입었지만 무사히 그리몰드 광장에 도착했습니다.' };
+          } else {
+            S.lastCheckHtml = { type: 'crit', text: '완벽한 타이밍에 순간이동해 단 하나의 흔적도 남기지 않고 은신처로 복귀했습니다!' };
+          }
+          enterFreeWeek(1, 'y7_act1_ministry', '그리몰드 광장 12번지 자유 행동 주간(3 AP)이 시작됩니다.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [1막] 마법부 잠입 & 슬리데린의 로켓 탈취 -------------------- */
+  y7_act1_ministry: {
+    date: '1997년 9월 · 죽먹자가 점령한 마법부',
+    act: 'ACT I · MAGIC IS MIGHT',
+    title: '[제1대분기] "마법은 힘이다" — 엄브릿지의 법정 잠입',
+    narrative: () => [
+      `폴리주스 마법약으로 마법부 직원으로 변장해 잠입한 마법부 아트리움. 거대한 검은 석상 아래 머글 태생 마법사들이 디멘터의 감시 속에 재판을 받고 있고, 그 재판장 석상에 앉은 <strong>돌로레스 엄브릿지</strong>의 목에 진짜 호크룩스—<strong>살라자르 슬리데린의 황금 로켓</strong>—이 빛나고 있습니다!`,
+      `법정 안으로 디멘터들의 한기가 스며드는 순간, 로켓을 빼앗고 붙잡힌 머글 태생 마법사들까지 구출해야 합니다!`
+    ],
+    choices: [
+      {
+        text: '[주문: 익스펙토 패트로눔 & 스투페파이] 엄브릿지를 단숨에 기절시켜 로켓을 낚아채고, 은빛 수호령으로 법정의 디멘터들을 몰아낸다!',
+        check: { label: '마법부 법정 기습 탈취 & 구출', stat: 'empathy', extraMod: () => (S.spells.includes('익스펙토 패트로눔') ? 2 : 0) },
+        onCheck: (outcome) => {
+          S.flags.stoleLocketMinistry = true;
+          S.resistancePower += 1;
+          if (outcome === 'fail') {
+            S.hp = Math.max(14, S.hp - 6);
+            S.lastCheckHtml = { type: 'partial', text: '야클리의 추격을 받으며 체력 -6을 입었지만, 슬리데린의 로켓을 손에 넣고 머글 태생 마법사들을 모두 탈출시켰습니다!' };
+          } else {
+            S.lastCheckHtml = { type: 'crit', text: `🦌 [${S.patronusForm}] 수호령이 법정을 눈부시게 비추며 디멘터를 쫓아냈고, 슬리데린의 로켓을 완벽히 탈취했습니다!` };
+          }
+          enterFreeWeek(2, 'y7_act2_malfoy_manor', '겨울 은신처와 저항군 활동 주간(자유 주간 2 · 3 AP)입니다! 딘의 숲에서 그리핀도르의 검을 찾고 로켓을 파괴하세요!');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [2막] 말포이 저택의 위기 (나비효과 대폭발!) -------------------- */
+  y7_act2_malfoy_manor: {
+    date: '1998년 3월 · 윌트셔 말포이 저택',
+    act: 'ACT II · MALFOY MANOR',
+    title: '[제2대분기] 말포이 저택의 지하 감옥과 도비의 귀환',
+    narrative: () => {
+      const malfoyEffect = S.flags.showedMercyToMalfoy
+        ? `얼굴이 부어오른 해리를 확인하러 불려 온 <strong>드레이코 말포이</strong>가 당신과 시선이 마주치자, 6학년 화장실에서의 자비를 떠올리며 <em>"확실하지 않아요… 모르겠어요…"</em>라며 끝까지 당신들의 정체를 숨겨 줍니다!`
+        : `스내처들에게 붙잡혀 끌려온 말포이 저택 대홀. 벨라트릭스가 헤르미온느를 심문하며 그리핀도르의 검의 출처를 캐묻고 있습니다!`;
+      const wormtailEffect = S.flags.boundPettigrewTight
+        ? `3학년 때 당신이 웜테일을 생포해 아즈카반에 보낸 나비효과 덕분에, 지하 감옥의 경비가 훨씬 허술하여 탈출의 틈이 크게 열렸습니다!`
+        : `지하 감옥에 갇힌 당신과 해리·론·루나·올리밴더 앞에, 은빛 의수를 단 웜테일이 내려와 목을 조르려 하지만 해리의 빚을 떠올리고 잠시 주춤합니다!`;
+      return [
+        malfoyEffect,
+        wormtailEffect,
+        `바로 그 순간, 퍽 하는 소리와 함께 자유로운 집요정 <strong>도비</strong>가 지하 감옥에 나타나 루나와 올리밴더를 먼저 대피시키고, 이제 대홀의 벨라트릭스 포위망을 뚫고 탈출할 차례입니다!`
+      ];
+    },
+    choices: [
+      {
+        text: '대홀로 뛰어 올라가 벨라트릭스를 밀어내고 헤르미온느와 도비를 지켜내며 돌파한다! (전투 2)',
+        action: () => {
+          startCombat({
+            name: '벨라트릭스 레스트랭 & 말포이 저택 경비대',
+            hp: S.flags.showedMercyToMalfoy ? 30 : 36,
+            maxHp: S.flags.showedMercyToMalfoy ? 30 : 36,
+            atkMin: 5, atkMax: 9,
+            intent: '광기에 사로잡힌 벨라트릭스가 은빛 단검과 저주를 난사하며 포위합니다!',
+            allyAssist: {
+              name: S.flags.showedMercyToMalfoy ? '집요정 도비 & 흔들리는 드레이코 말포이' : '자유로운 집요정 도비 (샹들리에 낙하)',
+              msg: S.flags.showedMercyToMalfoy
+                ? '도비가 거대한 샹들리에를 떨어뜨리고, 말포이가 망설이다 지팡이를 일부러 놓쳐 주며 15 피해를 가하고 탈출 각을 열었습니다!'
+                : '도비가 "도비는 자유로운 집요정이에요!"라며 거대한 크리스탈 샹들리에를 떨어뜨려 13 피해를 가했습니다!',
+              dmg: S.flags.showedMercyToMalfoy ? 15 : 13,
+              heal: 8
+            },
+            onWin: () => {
+              S.flags.escapedMalfoyManor = true;
+              if (S.flags.showedMercyToMalfoy) {
+                S.flags.savedDobby = true;
+                S.lastCheckHtml = { type: 'crit', text: '✨ 말포이가 벨라트릭스의 단검 투척을 찰나에 방해한 덕분에, 자유로운 집요정 [도비]마저 무사히 살아남아 조개 껍데기 오두막으로 탈출했습니다!' };
+              } else {
+                S.lastCheckHtml = { type: 'partial', text: '헤르미온느와 모두를 구해 조개 껍데기 오두막으로 탈출했지만, 벨라트릭스의 단검에 맞은 자유로운 집요정 도비를 바닷가 모래밭에 눈물로 묻어 주어야 했습니다.' };
+              }
+              enterFreeWeek(3, 'y7_act3_gringotts', '조개 껍데기 오두막 자유 행동 주간(3 AP)입니다! 그린고트 금고 침입을 앞두고 올리밴더의 지팡이 비밀과 궁극 주문을 완성하세요.');
+            }
+          });
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [3막] 그린고트 침입 & 아이언벨리 용 탈출 -------------------- */
+  y7_act3_gringotts: {
+    date: '1998년 5월 1일 · 다이애건 앨리 그린고트 지하 금고',
+    act: 'ACT III · GRINGOTTS BREAK-IN',
+    title: '[제3대분기] 벨라트릭스 금고와 눈먼 백색 용의 비상',
+    narrative: () => [
+      `고블린 그립훅의 안내로 벨라트릭스의 지하 심층 금고에 잠입했습니다! 손대는 모든 황금이 불타오르며 무한 증식하는 제미노 저주 속에서, 마침내 또 하나의 호크룩스—<strong>헬가 후플푸프의 황금 잔</strong>—을 손에 넣었습니다!`,
+      `그러나 경보가 울리며 무장 고블린과 죽먹자들이 밀려듭니다! 출구를 막아선 것은 수십 년간 지하에 갇혀 시력을 잃은 거대한 백색 용, <strong>우크라이나 아이언벨리</strong>입니다!`
+    ],
+    choices: [
+      {
+        text: '[배짱 판정] "리덕토!" 용의 쇠사슬을 끊어내고, 거대한 용의 등 위로 뛰어올라 그린고트 대리석 천장을 뚫고 런던 하늘로 탈출한다!',
+        check: { label: '아이언벨리 용 기승 & 천장 돌파', stat: 'grit', extraMod: () => (S.flags.broomPractice ? 2 : 0) },
+        onCheck: (outcome) => {
+          S.horcruxesDestroyed += 1; // 후플푸프의 잔 확보(비밀의 방 독니로 파괴 예정)
+          S.flags.robbedGringotts = true;
+          if (outcome === 'fail') {
+            S.hp = Math.max(15, S.hp - 6);
+            S.lastCheckHtml = { type: 'partial', text: '천장 파편에 스쳐 체력 -6을 입었지만, 백색 용이 자유의 날개를 펼치며 [후플푸프의 잔]과 함께 런던 상공으로 탈출했습니다!' };
+          } else {
+            S.lastCheckHtml = { type: 'crit', text: '🐉 전설로 남을 그린고트 탈출! 백색 용의 등을 타고 하늘을 가르며 [후플푸프의 잔]을 확보했습니다! (호크룩스 +1)' };
+          }
+          enterFreeWeek(4, 'y7_act4_hogwarts_return', '호그와트 최후의 밤 직전, 마지막 자유 행동 주간(3 AP)입니다! 래번클로의 보관 위치, 성물 3종의 진실, 석상 기동 주문을 최종 점검하세요.');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [4막] 호그와트 귀환 & 최후의 전투 개막 -------------------- */
+  y7_act4_hogwarts_return: {
+    date: '1998년 5월 2일 밤 · 호그와트 대연회장 & 성벽',
+    act: 'ACT IV · THE BATTLE OF HOGWARTS',
+    title: '호그와트의 종소리 — 7년의 모든 전우가 모이다',
+    narrative: () => {
+      const reunions = [];
+      if (S.flags.savedCedricAtMaze) reunions.push('<strong>세드릭 디고리</strong>가 후플푸프 방어선을 이끌고');
+      if (S.flags.savedSiriusAtMinistry) reunions.push('<strong>시리우스 블랙</strong>이 루핀과 나란히 성문을 지키며');
+      if (S.flags.savedDobby) reunions.push('자유로운 집요정 <strong>도비</strong>가 주방의 집요정들을 지휘하고');
+      const reunionText = reunions.length
+        ? `당신이 지난 6년간 지켜 낸 기적의 나비효과가 빛납니다 — ${reunions.join(', ')} 당신의 곁에 섰습니다!`
+        : `맥고나걸 교수, 네빌, 루나, 지니, 불사조 기사단, 그리고 호그와트의 모든 졸업생들이 성벽 위로 모였습니다.`;
+
+      return [
+        `볼드모트가 그린고트 도난을 알아채고 마침내 모든 죽음을 먹는 자 군단을 이끌고 호그와트로 진군합니다. 성 전체를 감싸는 거대한 수호 결계가 펼쳐지고, 맥고나걸 교수가 <em>"피에르토툼 로코모토르!"</em>를 외치자 수백 기의 갑옷 석상이 깨어나 호그와트를 지키기 위해 행진합니다.`,
+        reunionText,
+        `지금 당신은 해리·론·헤르미온느와 함께 7층 필요의 방에서 <strong>래번클로의 보관</strong>을 파괴하고, 비밀의 방 독니로 <strong>후플푸프의 잔</strong>마저 없애며 호크룩스 파괴를 마무리 지었습니다. 이제 밤하늘을 찢는 볼드모트의 목소리가 울려 퍼집니다.`
+      ];
+    },
+    dialogues: () => [
+      { speaker: '세베루스 스네이프 (비명 지르는 오두막의 마지막 기억)', role: '가장 용감했던 사람', text: S.flags.knowsSnapeLoyal ? '"네가 이미 알고 있었군… 은빛 암사슴을 기억해라. Always…"' : '"내 눈을 봐라… 이 기억을 펜시브에 담아 전해 다오…"' },
+      { speaker: '로드 볼드모트', role: '어둠의 마왕', text: '"한 시간의 휴전을 주겠다. 해리 포터, 금지된 숲으로 나와 죽음을 맞이하라."' }
+    ],
+    choices: [
+      {
+        text: '[최후의 결전] 네빌과 함께 [나기니]를 베어 마지막 호크룩스를 파괴하고, 대연회장에서 볼드모트와 최후의 결전을 벌인다!',
+        action: () => {
+          S.horcruxesDestroyed += 2; // 보관 + 나기니 파괴
+          goScene('y7_act5_final_boss');
+        }
+      },
+      {
+        text: '[히든 · 죽음의 성물 각성 루트] 성물 3종의 진실과 딱총나무 지팡이의 소유권을 완벽히 간파하고, 대연회장 한가운데서 볼드모트의 오만을 정면으로 무너뜨린다!',
+        disabled: () => !(S.hallowsKnown >= 3 || S.flags.knowsElderWandTruth),
+        disabledHint: '(성물 진실 3/3 또는 딱총나무 지팡이 진실 필요)',
+        action: () => {
+          S.horcruxesDestroyed += 2;
+          S.flags.invokedHallowsTruth = true;
+          goScene('y7_act5_final_boss');
+        }
+      }
+    ]
+  },
+
+  /* -------------------- [5막] 최후의 보스전: 로드 볼드모트 & 대연회장의 여명 -------------------- */
+  y7_act5_final_boss: {
+    date: '1998년 5월 2일 새벽 · 호그와트 대연회장',
+    act: 'ACT V · THE FLAW IN THE PLAN',
+    title: '[최종 보스전] 대연회장의 여명 — 최후의 지팡이 격돌',
+    narrative: () => [
+      `금지된 숲에서 죽음의 저주를 스스로 받아들이고도 살아 돌아온 해리 포터가 투명 망토를 벗어던지자 대연회장이 경악과 환호로 뒤덮입니다. 네빌 롱바텀이 기숙사 배정 모자에서 꺼낸 그리핀도르의 검으로 마지막 호크룩스 <strong>나기니</strong>를 베어 넘기며, 이제 볼드모트는 평범한 필멸의 존재가 되었습니다!`,
+      `동이 터 오는 대연회장 한가운데, 모든 수하를 잃고 분노로 이글거리는 <strong>로드 볼드모트</strong>가 딱총나무 지팡이를 치켜듭니다. 1991년 6월 비 오는 오후에서 시작된 당신의 7년 연대기가 지금 마지막 주문 한 번으로 완결됩니다!`
+    ],
+    choices: [
+      {
+        text: '해리와 나란히 서서 지팡이를 치켜들고, 로드 볼드모트와 최후의 결전을 치른다! (최종 보스전)',
+        action: () => {
+          const bossHp = S.flags.invokedHallowsTruth ? 34 : 42;
+          startCombat({
+            name: '로드 볼드모트 (최후의 어둠의 마왕)',
+            hp: bossHp, maxHp: bossHp,
+            atkMin: 6, atkMax: 10,
+            isFinalBoss: true,
+            intent: '딱총나무 지팡이에서 섬뜩한 녹색 섬광(아바다 케다브라)이 터져 나오려 합니다! ([엑스펠리아르무스] 최종 특효!)',
+            allyAssist: {
+              name: '해리 포터 & 7년의 모든 전우들',
+              msg: '해리의 "엑스펠리아르무스!"와 호그와트 전우들의 함성이 대연회장을 뒤흔들며 딱총나무 지팡이의 주문을 역반사해 18 피해 & 체력 +12 회복!',
+              dmg: 18,
+              heal: 12
+            },
+            onWin: () => {
+              resolveGrandEnding();
+            }
+          });
+        }
+      }
+    ]
+  }
+};
+
+/* ==========================================================================
+   10종 최종 멀티 엔딩 판정 & 19년 뒤(2017년) 에필로그 생성
+   ========================================================================== */
+const ENDINGS = {
+  y7_miracle_timeline: {
+    badge: 'GRAND FINALE 1/10 · 완벽한 기적 (올-세이브 진엔딩)',
+    title: '운명을 바꾼 호그와트의 기적',
+    summary: '당신은 지난 7년간 세드릭 디고리, 시리우스 블랙, 집요정 도비, 그리고 드레이코 말포이의 영혼까지 지켜내며 마법 세계의 가장 어두운 예언들을 모두 뒤집었습니다. 여명이 비추는 대연회장에서, 살아남은 모든 전우들이 당신의 이름을 부르며 부둥켜안았습니다.',
+    epilogue19: '19년 뒤인 2017년 9월 1일, 킹스크로스역 9와 4분의 3 승강장. 붉은 증기기관차 옆에는 세드릭과 시리우스, 해리와 론, 헤르미온느, 그리고 미소 짓는 드레이코까지—당신이 지켜 낸 모든 얼굴들이 새 세대의 아이들을 배웅하고 있습니다. 모든 것이 평화로웠습니다.'
+  },
+  y7_master_of_hallows: {
+    badge: 'GRAND FINALE 2/10 · 죽음의 성물 진엔딩',
+    title: '죽음의 성물의 진실을 깨달은 현자',
+    summary: '딱총나무 지팡이, 부활의 돌, 투명 망토의 진정한 법칙을 꿰뚫어 본 당신은 대연회장에서 볼드모트의 마지막 오만을 완벽히 무너뜨렸습니다. 힘에 탐닉하지 않고 성물의 비밀을 봉인한 당신은 덤블도어의 진정한 정신적 후계자가 되었습니다.',
+    epilogue19: '19년 뒤, 당신은 호그와트 교장실(또는 마법부 미스터리 부서의 최고 현자)에서 다음 세대에게 "진정한 힘은 지배가 아닌 이해에 있다"고 가르치며, 창밖으로 붉은 열차가 들어오는 풍경을 바라봅니다.'
+  },
+  y7_golden_fourth: {
+    badge: 'GRAND FINALE 3/10 · 정통 진엔딩',
+    title: '황금 삼총사와 함께한 네 번째 전설',
+    summary: '1991년 급행열차 복도에서 어깨를 스쳤던 그날부터 1998년 대연회장의 마지막 섬광까지. 당신은 해리, 론, 헤르미온느의 곁을 끝까지 지켜내어 어둠의 마왕의 시대를 끝장낸 [호그와트의 네 번째 전설]로 역사에 영원히 기록되었습니다.',
+    epilogue19: '19년 뒤, 킹스크로스역 9와 4분의 3 승강장. 개구리 초콜릿 카드 속에 당신과 해리·론·헤르미온느의 이름이 나란히 실린 세상에서, 당신은 오랜 친구들과 웃으며 아이들을 호그와트로 떠나보냅니다.'
+  },
+  y7_snape_legacy: {
+    badge: 'GRAND FINALE 4/10 · 혼혈 왕자 히든 엔딩',
+    title: '은빛 암사슴의 진실을 증언한 자',
+    summary: '누구보다 먼저 세베루스 스네이프의 고통스러운 충성과 진의를 이해했던 당신. 전쟁이 끝난 뒤 당신은 스네이프 교수의 초상화를 호그와트 교장실 가장 빛나는 자리에 걸어 주었고, 세상은 비로소 가장 용감했던 이중첩자의 이름을 기억하게 되었습니다.',
+    epilogue19: '19년 뒤, 호그와트 지하실과 교장실을 오가는 당신의 서재에는 낡은 <상급 마법약 제조법> 한 권이 소중히 보관되어 있습니다.'
+  },
+  y7_malfoy_redemption: {
+    badge: 'GRAND FINALE 5/10 · 슬리데린·구원 엔딩',
+    title: '증오의 사슬을 끊어낸 화해의 다리',
+    summary: '슬리데린과 그리핀도르, 순수혈통과 머글 태생 사이의 오랜 증오를 자비로 끊어낸 당신. 말포이 저택에서 당신을 도왔던 드레이코 말포이와 함께, 전후 마법 사회의 편견을 허무는 새로운 시대를 열었습니다.',
+    epilogue19: '19년 뒤, 승강장 너머에서 드레이코가 당신을 향해 진심 어린 고갯짓으로 인사를 건넵니다. 두 가문의 아이들은 더 이상 과거의 증오를 물려받지 않습니다.'
+  },
+  y7_resistance_general: {
+    badge: 'GRAND FINALE 6/10 · D.A. 저항군 사령관 엔딩',
+    title: '호그와트를 지켜낸 불굴의 저항군 대장',
+    summary: '필요의 방에서 시작된 덤블도어의 군대를 끝까지 이끌어 호그와트 성벽을 지켜낸 당신. 네빌, 루나, 지니와 함께 어둠에 점령된 학교를 되찾아낸 그날의 함성은 호그와트 천 년 역사상 가장 위대한 승리로 남았습니다.',
+    epilogue19: '19년 뒤, 마법부 오러국과 호그와트 방어술을 이끄는 전설적인 지휘관이 된 당신을 보며 신입생들은 눈을 반짝입니다.'
+  },
+  y7_headmaster_path: {
+    badge: 'GRAND FINALE 7/10 · 학자/교육자 엔딩',
+    title: '새로운 호그와트를 세운 대마법사',
+    summary: '무너진 성탑을 복구하고 수많은 주문을 완벽히 통달한 당신은, 전쟁 이후 호그와트에 남아 차세대 마법사들을 길러내는 위대한 교수이자 훗날 교장의 길을 걷게 됩니다.',
+    epilogue19: '19년 뒤, 9월 1일 대연회장 단상에 선 당신은 새로 입학하는 1학년생들에게 기숙사 배정 모자를 씌워 주며 1991년의 자신을 떠올립니다.'
+  },
+  y7_slytherin_new_dawn: {
+    badge: 'GRAND FINALE 8/10 · 슬리데린 전용 엔딩',
+    title: '에메랄드 깃발의 명예를 되찾은 자',
+    summary: '어둠의 마왕의 그늘에 가려졌던 슬리데린 기숙사의 진정한 긍지와 지혜를 증명해 보인 당신. 최후의 결전에서 호그와트를 지켜낸 슬리데린 영웅으로서 기숙사의 새 역사를 썼습니다.',
+    epilogue19: '19년 뒤, 이제 누구도 슬리데린에 배정받는 것을 두려워하지 않습니다. 당신의 이름이 그 가장 빛나는 증거이기 때문입니다.'
+  },
+  y7_ravenclaw_sage: {
+    badge: 'GRAND FINALE 9/10 · 래번클로/통찰 엔딩',
+    title: '7년의 모든 비밀을 기록한 연대기 작가',
+    summary: '1학년 마법사의 돌부터 7학년 호크룩스와 죽음의 성물까지—모든 진실을 꿰뚫어 본 당신의 기록은 훗날 <호그와트 현대사>의 가장 위대한 정본으로 남았습니다.',
+    epilogue19: '19년 뒤, 당신이 써 내려간 두꺼운 연대기 책이 호그와트 도서관 한가운데 황금빛으로 빛나고 있습니다.'
+  },
+  y7_peaceful_dawn: {
+    badge: 'GRAND FINALE 10/10 · 여명의 생존자 엔딩',
+    title: '긴 어둠 끝에 맞이한 찬란한 아침',
+    summary: '수많은 시련과 상처를 딛고 마침내 전쟁의 끝까지 살아남은 당신. 부서진 호그와트 성벽 너머로 떠오르는 5월의 따뜻한 아침 해를 바라보며, 비로소 평범하고 소중한 일상이 돌아왔음을 실감합니다.',
+    epilogue19: '19년 뒤, 평화로운 9와 4분의 3 승강장. 붉은 기차가 증기를 뿜으며 출발하는 소리와 함께, 당신의 위대한 7년 연대기가 아름답게 막을 내립니다.'
+  }
+};
+
+function resolveGrandEnding() {
+  const savedCount = (S.flags.savedCedricAtMaze ? 1 : 0) + (S.flags.savedSiriusAtMinistry ? 1 : 0) + (S.flags.showedMercyToMalfoy ? 1 : 0);
+  if (savedCount >= 2 && S.flags.savedDobby) {
+    triggerEnding('y7_miracle_timeline');
+  } else if (S.flags.invokedHallowsTruth && S.flags.masteredHallowsTruth) {
+    triggerEnding('y7_master_of_hallows');
+  } else if (S.flags.knowsSnapeLoyal && S.flags.sawSnapeProtectingStudents) {
+    triggerEnding('y7_snape_legacy');
+  } else if (S.flags.showedMercyToMalfoy && S.relations.draco >= 4) {
+    triggerEnding('y7_malfoy_redemption');
+  } else if (S.resistancePower >= 4) {
+    triggerEnding('y7_resistance_general');
+  } else if (S.spells.length >= 14) {
+    triggerEnding('y7_headmaster_path');
+  } else if (S.house === 'slytherin') {
+    triggerEnding('y7_slytherin_new_dawn');
+  } else if (S.house === 'ravenclaw' && S.clues.length >= 4) {
+    triggerEnding('y7_ravenclaw_sage');
+  } else if (S.relations.harry >= 4 && S.relations.hermione >= 4) {
+    triggerEnding('y7_golden_fourth');
+  } else {
+    triggerEnding('y7_peaceful_dawn');
+  }
+}
+
+/* ==========================================================================
+   주문 선택형 TRPG 전투 엔진 (최종전 엑스펠리아르무스 특효 + 동료 지원)
+   ========================================================================== */
+function startCombat(config) {
+  combatState = {
+    ...config,
+    guarding: false,
+    enemyBurn: 0,
+    enemyBound: false,
+    allyUsed: false,
+    logs: [`⚔️ ${config.name}와(과)의 결전이 시작되었습니다!`]
+  };
+  renderScene();
+}
+
+async function castCombatSpell(spellName) {
+  if (!combatState) return;
+  const sp = SPELL_DB[spellName];
+  if (!sp) return;
+  const c = combatState;
+
+  await perform2d6Check(`주문 시전: ${sp.name}`, sp.stat, (outcome) => {
+    playTone('spell');
+    const mult = outcome === 'crit' ? 1.45 : outcome === 'partial' ? 1.0 : 0.45;
+    let dmg = Math.max(2, Math.round(sp.baseDmg * mult));
+
+    if (sp.elderBonus && c.isFinalBoss) {
+      dmg += sp.elderBonus;
+      c.logs.push(`⚡ [운명의 무장 해제!] 딱총나무 지팡이가 진정한 주인을 거부하며 볼드모트에게 막대한 역충격(+${sp.elderBonus})을 가했습니다!`);
+    }
+
+    c.hp = Math.max(0, c.hp - dmg);
+    c.logs.push(`⚡ [${sp.name}] 적중! 적에게 ${dmg} 피해!`);
+
+    if (sp.burn && outcome !== 'fail') {
+      c.enemyBurn = 2;
+      c.logs.push(`🔥 맹렬한 화염/출혈이 2턴간 지속 피해를 입힙니다!`);
+    }
+    if (sp.bind && outcome !== 'fail') {
+      c.enemyBound = true;
+      c.logs.push(`⛓️ 완벽한 제압! 적의 이번 턴 공격이 봉쇄됩니다!`);
+    }
+    if (sp.guard) {
+      c.guarding = true;
+      c.logs.push(`🛡️ 최상급 수호 결계 전개! 이번 턴 받는 피해가 대폭 경감됩니다.`);
+    }
+    if (sp.healSelf) {
+      S.hp = Math.min(S.maxHp, S.hp + sp.healSelf);
+      c.logs.push(`✨ 회복 마법으로 체력 +${sp.healSelf} 회복!`);
+    }
+
+    finishEnemyCombatTurn();
+  });
+}
+
+function useCombatAllyAssist() {
+  if (!combatState || !combatState.allyAssist || combatState.allyUsed) return;
+  const c = combatState;
+  const a = c.allyAssist;
+  c.allyUsed = true;
+  playTone('success');
+  c.hp = Math.max(0, c.hp - a.dmg);
+  if (a.heal) S.hp = Math.min(S.maxHp, S.hp + a.heal);
+  c.logs.push(`🤝 [전우 총공세 · ${a.name}] ${a.msg}`);
+  finishEnemyCombatTurn();
+}
+
+function useCombatPotion() {
+  if (!combatState) return;
+  const idx = S.items.findIndex(it => it.includes('체력'));
+  if (idx === -1) return;
+  const used = S.items.splice(idx, 1)[0];
+  const match = used.match(/\+(\d+)/);
+  const healVal = match ? parseInt(match[1], 10) : 24;
+  S.hp = Math.min(S.maxHp, S.hp + healVal);
+  playTone('success');
+  combatState.logs.push(`🧪 [${used}] 사용! 체력 +${healVal} 회복.`);
+  finishEnemyCombatTurn();
+}
+
+function finishEnemyCombatTurn() {
+  const c = combatState;
+  if (!c) return;
+
+  if (c.enemyBurn > 0 && c.hp > 0) {
+    c.hp = Math.max(0, c.hp - 4);
+    c.enemyBurn -= 1;
+    c.logs.push(`🔥 지속 화염/출혈 피해로 적 체력 -4!`);
+  }
+
+  if (c.hp <= 0) {
+    const winCb = c.onWin;
+    combatState = null;
+    playTone('success');
+    winCb();
+    return;
+  }
+
+  if (c.enemyBound) {
+    c.enemyBound = false;
+    c.logs.push(`⛓️ 적이 제압되어 이번 턴 공격하지 못했습니다!`);
+    renderScene();
+    return;
+  }
+
+  let eDmg = Math.floor(Math.random() * (c.atkMax - c.atkMin + 1)) + c.atkMin;
+  if (c.guarding) {
+    eDmg = Math.max(1, eDmg - 7);
+    c.guarding = false;
+    c.logs.push(`🛡️ 최상급 방어 결계로 저주를 막아내어 피해가 ${eDmg}로 줄었습니다!`);
+  } else {
+    c.logs.push(`💥 적의 반격! 체력이 ${eDmg} 감소했습니다.`);
+  }
+  S.hp = Math.max(1, S.hp - eDmg);
+
+  const stageEl = document.getElementById('main-stage');
+  stageEl.classList.remove('anim-shake');
+  void stageEl.offsetWidth;
+  stageEl.classList.add('anim-shake');
+  renderScene();
+}
+
+/* ==========================================================================
+   메인 로비(index.html) 마스터 저장소 7년 완결 동기화
+   ========================================================================== */
+function syncToMasterStorage(endingKey) {
+  let master = loadMaster() || {
+    version: 'HC-V1',
+    updatedAt: null,
+    activeProfile: null,
+    completedYears: [],
+    unlockedEndings: {}
+  };
+
+  master.updatedAt = new Date().toLocaleString('ko-KR');
+  master.activeProfile = {
+    playerName: S.playerName,
+    familyLabel: S.familyLabel,
+    house: S.house,
+    wand: S.wand,
+    currentYear: 7,
+    graduated: true,
+    maxHp: S.maxHp,
+    spells: [...S.spells],
+    items: S.items.filter(it => !it.includes('체력')),
+    relations: { ...S.relations },
+    flags: { ...S.flags, patronusForm: S.patronusForm, graduatedHogwarts: true },
+    hidden: S.hidden
+  };
+
+  [1, 2, 3, 4, 5, 6, 7].forEach(y => { if (!master.completedYears.includes(y)) master.completedYears.push(y); });
+  if (endingKey && ENDINGS[endingKey]) {
+    master.unlockedEndings[endingKey] = {
+      year: 7,
+      title: ENDINGS[endingKey].title,
+      unlockedAt: new Date().toLocaleDateString('ko-KR')
+    };
+  }
+
+  localStorage.setItem(MASTER_STORAGE_KEY, JSON.stringify(master));
+  return master;
+}
+
+function encodeMasterCode(obj) {
+  const json = JSON.stringify(obj);
+  const bytes = new TextEncoder().encode(json);
+  let bin = '';
+  bytes.forEach(b => bin += String.fromCharCode(b));
+  return 'HC-V1-' + btoa(bin);
+}
+
+function decodeMasterCode(codeStr) {
+  const clean = codeStr.trim();
+  if (!clean.startsWith('HC-V1-')) throw new Error('invalid');
+  const bin = atob(clean.slice(6));
+  const bytes = new Uint8Array(bin.length);
+  for (let i = 0; i < bin.length; i++) bytes[i] = bin.charCodeAt(i);
+  return JSON.parse(new TextDecoder().decode(bytes));
+}
+
+function copyChronicleCodeFromEnding() {
+  const M = loadMaster();
+  if (!M) return;
+  const code = encodeMasterCode(M);
+  navigator.clipboard?.writeText(code).then(() => {
+    showToast('📋 7년 완결 영구 기념 계승 코드(HC-V1-...)가 복사되었습니다!');
+  }).catch(() => prompt('아래 7년 완결 코드를 복사해 보관하세요:', code));
+}
+
+function openCodeImportModal() {
+  document.getElementById('code-import-textarea').value = '';
+  document.getElementById('code-modal').classList.remove('hidden');
+}
+function closeCodeImportModal() { document.getElementById('code-modal').classList.add('hidden'); }
+
+function applyImportedCodeAndStart() {
+  const raw = document.getElementById('code-import-textarea').value;
+  try {
+    const parsed = decodeMasterCode(raw);
+    if (!parsed || !parsed.activeProfile) throw new Error('no profile');
+    localStorage.setItem(MASTER_STORAGE_KEY, JSON.stringify(parsed));
+    closeCodeImportModal();
+    S = buildStateFromProfile(parsed.activeProfile);
+    launchBook7Screen();
+    showToast('✨ 계승 코드에서 6년 연대기 캐릭터를 성공적으로 복원했습니다!');
+  } catch (e) {
+    showToast('❌ 유효하지 않은 계승 코드입니다. 코드 전체가 맞는지 확인해 주세요.');
+  }
+}
+
+function triggerEnding(endingKey) {
+  S.endingKey = endingKey;
+  S.currentScene = 'ending_screen';
+  syncToMasterStorage(endingKey);
+  playTone('success');
+  renderScene();
+}
+
+/* ==========================================================================
+   메인 화면 렌더링
+   ========================================================================== */
+function goScene(sceneId) {
+  S.currentScene = sceneId;
+  renderScene();
+}
+
+function renderScene() {
+  if (!S) return;
+  renderNotebook();
+
+  const headerDate = document.getElementById('header-date-badge');
+  const actLabel = document.getElementById('scene-act-label');
+  const titleEl = document.getElementById('scene-title');
+  const narEl = document.getElementById('scene-narrative');
+  const dlgEl = document.getElementById('scene-dialogues');
+  const freeGrid = document.getElementById('free-action-grid');
+  const freeApBadge = document.getElementById('free-ap-badge');
+  const checkBanner = document.getElementById('last-check-banner');
+  const combatPanel = document.getElementById('combat-panel');
+  const choicesBox = document.getElementById('choices-container');
+  const choicesHeader = document.getElementById('choices-header');
+  const crestEl = document.getElementById('scene-house-crest');
+
+  const hs = {
+    gryffindor: ['🦁 그리핀도르', 'bg-red-950 border-amber-400 text-amber-200'],
+    slytherin: ['🐍 슬리데린', 'bg-emerald-950 border-emerald-400 text-emerald-200'],
+    ravenclaw: ['🦅 래번클로', 'bg-blue-950 border-blue-400 text-blue-200'],
+    hufflepuff: ['🦡 후플푸프', 'bg-amber-950 border-yellow-400 text-yellow-200']
+  }[S.house] || ['🦉 호그와트', 'bg-zinc-800 border-zinc-500 text-zinc-200'];
+  crestEl.textContent = hs[0];
+  crestEl.className = `px-3 py-1 rounded-xl border text-xs font-extrabold ${hs[1]}`;
+  crestEl.classList.remove('hidden');
+
+  if (S.lastCheckHtml) {
+    const styles = {
+      crit: 'bg-amber-950/55 border-amber-300/70 text-amber-100',
+      partial: 'bg-zinc-900/90 border-amber-500/60 text-amber-200',
+      fail: 'bg-rose-950/70 border-rose-500/70 text-rose-200',
+      info: 'bg-zinc-900/90 border-zinc-400/45 text-zinc-100'
+    };
+    checkBanner.className = `rounded-2xl p-3.5 border text-xs sm:text-sm leading-relaxed anim-fade-up ${styles[S.lastCheckHtml.type] || styles.info}`;
+    checkBanner.innerHTML = S.lastCheckHtml.text;
+    checkBanner.classList.remove('hidden');
+    S.lastCheckHtml = null;
+  } else {
+    checkBanner.classList.add('hidden');
+  }
+
+  /* 1) 최종 그랜드 엔딩 & 19년 뒤 에필로그 화면 */
+  if (S.currentScene === 'ending_screen' && S.endingKey) {
+    const endObj = ENDINGS[S.endingKey];
+    combatPanel.classList.add('hidden');
+    freeGrid.classList.add('hidden');
+    freeApBadge.classList.add('hidden');
+    dlgEl.innerHTML = '';
+
+    headerDate.textContent = '1998년 5월 2일 · 7년 대장정 완결';
+    actLabel.textContent = endObj.badge;
+    titleEl.textContent = endObj.title;
+
+    const { nature, ivs } = S.hidden;
+    narEl.innerHTML = `
+      <p>${endObj.summary}</p>
+      <div class="bg-zinc-900/90 border-l-4 border-amber-300 rounded-r-2xl p-4 my-3">
+        <span class="text-[11px] font-cinzel font-bold text-amber-300 tracking-widest uppercase block mb-1">EPILOGUE · NINETEEN YEARS LATER (2017.09.01)</span>
+        <p class="text-sm text-amber-50/95 leading-relaxed">${endObj.epilogue19}</p>
+      </div>
+      <div class="bg-zinc-950/95 border-2 border-amber-300/65 rounded-2xl p-4 mt-3 space-y-2.5 font-sans">
+        <div class="text-xs font-extrabold text-amber-300 tracking-wider uppercase">⚯ 호그와트 연대기 (1991–1998) 7년 완결 총결산</div>
+        <p class="text-xs text-zinc-200"><strong>${S.playerName}</strong> (${hs[0]}) · 수호령: <strong class="text-amber-200">${S.patronusForm}</strong> · 타고난 성격: <strong class="text-amber-200">[${nature.name}]</strong></p>
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-2 text-center text-xs">
+          <div class="bg-zinc-900 p-2 rounded-xl border border-zinc-700"><span class="text-zinc-400 block">총 습득 주문</span><strong class="text-amber-200 text-sm">${S.spells.length}종</strong></div>
+          <div class="bg-zinc-900 p-2 rounded-xl border border-zinc-700"><span class="text-zinc-400 block">성물 진실</span><strong class="text-amber-200 text-sm">${S.hallowsKnown}/3</strong></div>
+          <div class="bg-zinc-900 p-2 rounded-xl border border-zinc-700"><span class="text-zinc-400 block">저항군 결집</span><strong class="text-emerald-300 text-sm">${S.resistancePower}</strong></div>
+          <div class="bg-zinc-900 p-2 rounded-xl border border-zinc-700"><span class="text-zinc-400 block">최종 체력</span><strong class="text-sky-300 text-sm">${S.maxHp}</strong></div>
+        </div>
+        <p class="text-[11px] text-emerald-300 pt-1 font-bold">✔ 호그와트 7년 전 과정 수료 완료! 메인 로비(index.html) 도감에 영구 기록되었습니다.</p>
+      </div>
+    `;
+
+    choicesHeader.innerHTML = `<span>호그와트 연대기 (1991–1998) 전 7권 완결</span><span>플레이해 주셔서 감사합니다!</span>`;
+    choicesBox.innerHTML = `
+      <button onclick="goLobby()" class="elder-btn w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-extrabold text-amber-50 text-left">
+        🏛 메인 로비(7년 연대기 서가 &amp; 엔딩 도감)로 돌아가기
+      </button>
+      <button onclick="copyChronicleCodeFromEnding()" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-amber-200 text-left">
+        📋 7년 완결 영구 기념 계승 코드(HC-V1-...) 복사하기
+      </button>
+      <button onclick="document.getElementById('game-screen').classList.add('hidden'); document.getElementById('title-screen').classList.remove('hidden'); renderTitlePreview();" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs sm:text-sm font-bold text-zinc-300 text-left">
+        🔄 제7권 다른 결말(10종 멀티 엔딩) 도전하기
+      </button>
+    `;
+    document.getElementById('story-scroll-area').scrollTop = 0;
+    return;
+  }
+
+  /* 2) 자유 행동 주간 허브 */
+  if (S.currentScene === 'free_week_hub' && S.freeWeek.active) {
+    combatPanel.classList.add('hidden');
+    dlgEl.innerHTML = '';
+    freeApBadge.textContent = `⏳ 남은 행동: ${S.freeWeek.apLeft}/3`;
+    freeApBadge.classList.remove('hidden');
+
+    const weekLabels = ['그리몰드 은신처', '겨울 호크룩스 추적', '조개 껍데기 오두막', '호그와트 최후의 밤 준비'];
+    headerDate.textContent = `자유 주간 ${S.freeWeek.weekNum}/4 · ${weekLabels[S.freeWeek.weekNum - 1]}`;
+    actLabel.textContent = `YEAR 7 FREE WEEK ${S.freeWeek.weekNum} OF 4`;
+    titleEl.textContent = `전시 비밀 작전 — ${weekLabels[S.freeWeek.weekNum - 1]}`;
+    narEl.innerHTML = `<p>${S.freeWeek.introText}</p><p class="text-xs text-zinc-400 font-sans">아래 작전 중 원하는 곳을 선택해 행동하세요. (같은 주간에 동일 작전은 1회만 수행 가능)</p>`;
+
+    freeGrid.innerHTML = '';
+    freeGrid.classList.remove('hidden');
+    getFreeWeekLocations(S.freeWeek.weekNum).forEach(loc => {
+      const done = S.freeWeek.visited.includes(loc.id);
+      const card = document.createElement('button');
+      card.disabled = done;
+      card.className = 'loc-card rounded-2xl p-3.5 text-left flex items-start gap-3';
+      card.innerHTML = `
+        <div class="w-11 h-11 rounded-xl bg-black/55 border border-amber-300/35 flex items-center justify-center text-2xl shrink-0">${loc.icon}</div>
+        <div class="min-w-0">
+          <div class="text-xs sm:text-sm font-extrabold text-amber-100 flex items-center gap-1.5">
+            <span class="truncate">${loc.title}</span>
+            ${done ? '<span class="text-[10px] bg-zinc-800 text-zinc-400 px-1.5 py-0.5 rounded">완료</span>' : ''}
+          </div>
+          <p class="text-[11px] text-zinc-400 mt-0.5 leading-snug">${loc.sub}</p>
+        </div>
+      `;
+      card.onclick = loc.action;
+      freeGrid.appendChild(card);
+    });
+
+    choicesHeader.innerHTML = `<span>7학년 자유 행동 주간</span><span>남은 행동을 모두 쓰거나 바로 다음 작전으로 넘어갈 수 있습니다</span>`;
+    choicesBox.innerHTML = `
+      <button onclick="S.freeWeek.active=false; goScene(S.freeWeek.nextScene);" class="choice-btn w-full py-2.5 px-4 rounded-xl text-xs font-bold text-zinc-300 text-left">
+        ⏭ 남은 행동을 쉬고 다음 스토리 사건으로 바로 넘어가기
+      </button>
+    `;
+    document.getElementById('story-scroll-area').scrollTop = 0;
+    return;
+  }
+
+  /* 3) 일반 스토리 & 전투 화면 */
+  freeGrid.classList.add('hidden');
+  freeApBadge.classList.add('hidden');
+  const scene = SCENES[S.currentScene];
+  headerDate.textContent = scene.date;
+  actLabel.textContent = scene.act;
+  titleEl.textContent = scene.title;
+  narEl.innerHTML = scene.narrative().map(p => `<p>${p}</p>`).join('');
+
+  dlgEl.innerHTML = '';
+  if (scene.dialogues) {
+    scene.dialogues().forEach(d => {
+      const box = document.createElement('div');
+      box.className = 'bg-zinc-950/90 border-l-4 border-amber-300 rounded-r-xl px-4 py-2.5 shadow';
+      box.innerHTML = `
+        <div class="flex items-center gap-2 mb-0.5">
+          <span class="text-xs font-extrabold text-amber-200">${d.speaker}</span>
+          <span class="text-[10px] text-zinc-400">${d.role}</span>
+        </div>
+        <p class="text-xs sm:text-sm text-zinc-100 leading-relaxed">${d.text}</p>
+      `;
+      dlgEl.appendChild(box);
+    });
+  }
+
+  if (combatState) {
+    combatPanel.classList.remove('hidden');
+    document.getElementById('combat-enemy-name').textContent = combatState.name;
+    document.getElementById('combat-enemy-hp-text').textContent = `${combatState.hp}/${combatState.maxHp}`;
+    document.getElementById('combat-enemy-hp-bar').style.width = `${Math.max(0, (combatState.hp / combatState.maxHp) * 100)}%`;
+    document.getElementById('combat-enemy-intent').textContent = `⚠️ ${combatState.intent}`;
+    const st = [];
+    if (combatState.enemyBurn > 0) st.push(`🔥 화염/출혈(${combatState.enemyBurn}턴)`);
+    if (combatState.enemyBound) st.push(`⛓️ 제압됨`);
+    document.getElementById('combat-enemy-status').textContent = st.length ? st.join(' · ') : '상태: 정상';
+    document.getElementById('combat-log').innerHTML = combatState.logs.map(l => `<div>${l}</div>`).join('');
+    document.getElementById('combat-log').scrollTop = 9999;
+
+    choicesHeader.innerHTML = `<span class="text-amber-200">⚔️ 보유한 모든 주문을 선택해 시전하세요</span><span>2d6 + 숨은 기질 판정</span>`;
+    choicesBox.innerHTML = '';
+
+    const usable = S.spells.filter(sp => SPELL_DB[sp] && SPELL_DB[sp].baseDmg > 0);
+    usable.forEach(spName => {
+      const sp = SPELL_DB[spName];
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-bold text-zinc-100 text-left flex items-center justify-between gap-2';
+      btn.innerHTML = `
+        <div><span class="text-amber-200">⚡ ${sp.name}</span> <span class="text-[11px] font-normal text-zinc-300">— ${sp.desc}</span></div>
+        <span class="text-[10px] font-extrabold bg-zinc-900 border border-amber-300/50 text-amber-200 px-2 py-0.5 rounded shrink-0">${sp.tag}</span>
+      `;
+      btn.onclick = () => castCombatSpell(spName);
+      choicesBox.appendChild(btn);
+    });
+
+    if (combatState.allyAssist && !combatState.allyUsed) {
+      const allyBtn = document.createElement('button');
+      allyBtn.className = 'elder-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-extrabold text-amber-50 text-left';
+      allyBtn.textContent = `🤝 전우 총공세 요청: ${combatState.allyAssist.name} (전투당 1회)`;
+      allyBtn.onclick = useCombatAllyAssist;
+      choicesBox.appendChild(allyBtn);
+    }
+
+    if (S.items.some(it => it.includes('체력'))) {
+      const potBtn = document.createElement('button');
+      potBtn.className = 'choice-btn w-full py-2.5 px-3.5 rounded-xl text-xs sm:text-sm font-bold text-emerald-200 text-left';
+      potBtn.textContent = '🧪 보유한 치유 영약 사용하기';
+      potBtn.onclick = useCombatPotion;
+      choicesBox.appendChild(potBtn);
+    }
+  } else {
+    combatPanel.classList.add('hidden');
+    choicesHeader.innerHTML = `<span>당신의 행동을 선택하세요</span><span>7년의 모든 인연과 진실이 최종 엔딩을 결정합니다</span>`;
+    choicesBox.innerHTML = '';
+
+    scene.choices.forEach((ch, idx) => {
+      const isDisabled = ch.disabled ? ch.disabled() : false;
+      const btn = document.createElement('button');
+      btn.className = 'choice-btn w-full py-3 px-4 rounded-xl text-xs sm:text-sm font-bold text-zinc-100 text-left flex items-center justify-between gap-2';
+      btn.disabled = isDisabled;
+      btn.innerHTML = `
+        <span>${idx + 1}. ${ch.text} ${isDisabled && ch.disabledHint ? `<span class="text-rose-400 text-xs">${ch.disabledHint}</span>` : ''}</span>
+        ${ch.check ? `<span class="text-[10px] font-extrabold bg-zinc-900 border border-amber-300/50 text-amber-200 px-2 py-0.5 rounded shrink-0">🎲 2d6</span>` : ''}
+      `;
+      btn.onclick = () => {
+        if (ch.check) {
+          const ex = typeof ch.check.extraMod === 'function' ? ch.check.extraMod() : 0;
+          perform2d6Check(ch.check.label, ch.check.stat, ch.onCheck, ex);
+        } else {
+          ch.action();
+        }
+      };
+      choicesBox.appendChild(btn);
+    });
+  }
+
+  document.getElementById('story-scroll-area').scrollTop = 0;
+}
+
+/* 우측 마법사 수첩 */
+function renderNotebook() {
+  if (!S) return;
+  const relLabel = v => v >= 4 ? '깊은 유대' : v >= 2 ? '신뢰함' : v >= 1 ? '우호적' : v < 0 ? '경계함' : '보통';
+  const html = `
+    <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-3 space-y-1.5">
+      <div class="flex justify-between items-center">
+        <span class="text-sm font-black text-white">${S.playerName}</span>
+        <span class="text-[11px] font-bold text-emerald-300">♥ 체력 ${S.hp}/${S.maxHp}</span>
+      </div>
+      <p class="text-[11px] text-amber-200/90">🦌 수호령: ${S.patronusForm}</p>
+      <div class="flex justify-between text-[11px] text-zinc-400 pt-0.5">
+        <span>⚯ 성물 진실: <strong class="text-amber-200">${S.hallowsKnown}/3</strong></span>
+        <span>🔥 저항군 결집: <strong class="text-emerald-300">${S.resistancePower}</strong></span>
+      </div>
+      <div class="text-[11px] text-zinc-400">
+        🗡️ 파괴된 호크룩스: <strong class="text-rose-300">${Math.min(7, S.horcruxesDestroyed)} / 7</strong>
+      </div>
+    </div>
+
+    <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-amber-200 block mb-1.5">✨ 보유 주문 (${S.spells.length})</span>
+      <div class="flex flex-wrap gap-1.5">
+        ${S.spells.map(sp => `<span class="text-[10.5px] bg-zinc-950 border border-amber-300/35 text-amber-100 px-2 py-0.5 rounded-md">${sp}</span>`).join('')}
+      </div>
+    </div>
+
+    <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-amber-300 block mb-1.5">🔍 7학년 핵심 진실 (${S.clues.length})</span>
+      ${S.clues.length === 0
+        ? `<p class="text-[11px] text-zinc-500">아직 확보한 기록이 없습니다.</p>`
+        : `<ul class="space-y-1 text-[11px] text-zinc-300 list-disc pl-4">${S.clues.map(c => `<li>${c}</li>`).join('')}</ul>`}
+    </div>
+
+    <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-emerald-300 block mb-1.5">🎒 소지품 (${S.items.length})</span>
+      <ul class="space-y-1 text-[11px] text-zinc-300 list-disc pl-4">
+        ${S.items.map(it => `<li>${it}</li>`).join('')}
+      </ul>
+    </div>
+
+    <div class="bg-zinc-900/90 border border-zinc-800 rounded-xl p-3">
+      <span class="text-[11px] font-extrabold text-purple-300 block mb-1.5">🤝 최후의 전우 관계도</span>
+      <div class="grid grid-cols-2 gap-1.5 text-[11px]">
+        <div class="bg-zinc-950 px-2 py-1 rounded flex justify-between"><span>해리</span><strong class="text-amber-200">${relLabel(S.relations.harry)}</strong></div>
+        <div class="bg-zinc-950 px-2 py-1 rounded flex justify-between"><span>헤르미온느</span><strong class="text-amber-200">${relLabel(S.relations.hermione)}</strong></div>
+        <div class="bg-zinc-950 px-2 py-1 rounded flex justify-between"><span>네빌</span><strong class="text-emerald-300">${relLabel(S.relations.neville)}</strong></div>
+        <div class="bg-zinc-950 px-2 py-1 rounded flex justify-between"><span>루나</span><strong class="text-sky-300">${relLabel(S.relations.luna)}</strong></div>
+        <div class="bg-zinc-950 px-2 py-1 rounded flex justify-between"><span>말포이</span><strong class="text-amber-200">${relLabel(S.relations.draco)}</strong></div>
+        <div class="bg-zinc-950 px-2 py-1 rounded flex justify-between"><span>스네이프</span><strong class="text-amber-200">${relLabel(S.relations.snape)}</strong></div>
+      </div>
+    </div>
+  `;
+  document.getElementById('notebook-content').innerHTML = html;
+  document.getElementById('mobile-notebook-content').innerHTML = html;
+}
+
+function toggleMobileNotebook() { document.getElementById('mobile-notebook-modal').classList.toggle('hidden'); }
+
+/* ==========================================================================
+   3슬롯 저장 / 불러오기
+   ========================================================================== */
+function openSaveModal(mode) {
+  const modal = document.getElementById('save-modal');
+  const list = document.getElementById('save-slots-list');
+  document.getElementById('save-modal-title').textContent = mode === 'save' ? '💾 제7권 진행 상황 저장' : '📂 제7권 저장 기록 불러오기';
+  list.innerHTML = '';
+
+  for (let slot = 1; slot <= 3; slot++) {
+    const raw = localStorage.getItem(Y7_SAVE_PREFIX + slot);
+    const data = raw ? JSON.parse(raw) : null;
+    const card = document.createElement('div');
+    card.className = 'bg-zinc-950 border border-zinc-700 rounded-xl p-3.5 flex items-center justify-between gap-2';
+
+    if (data) {
+      const label = data.endingKey ? `[완결] ${ENDINGS[data.endingKey]?.title}` : (data.currentScene === 'free_week_hub' ? `자유 행동 주간 ${data.freeWeek.weekNum}/4` : (SCENES[data.currentScene]?.title || '진행 중'));
+      card.innerHTML = `
+        <div class="min-w-0">
+          <span class="text-xs font-extrabold text-amber-200 block">슬롯 ${slot} · ${data.playerName}</span>
+          <span class="text-[11px] text-zinc-300 block truncate">${label}</span>
+          <span class="text-[10px] text-zinc-500">${data.savedAt}</span>
+        </div>
+        <div class="flex gap-1.5 shrink-0">
+          ${S ? `<button onclick="saveToSlot(${slot})" class="bg-amber-800 hover:bg-amber-700 text-amber-100 px-2.5 py-1.5 rounded-lg text-xs font-bold">덮어쓰기</button>` : ''}
+          <button onclick="loadFromSlot(${slot})" class="bg-zinc-700 hover:bg-zinc-600 text-amber-100 px-2.5 py-1.5 rounded-lg text-xs font-bold">불러오기</button>
+        </div>
+      `;
+    } else {
+      card.innerHTML = `
+        <div>
+          <span class="text-xs font-bold text-zinc-400 block">슬롯 ${slot} · 비어 있음</span>
+          <span class="text-[10.5px] text-zinc-500">저장된 기록이 없습니다.</span>
+        </div>
+        ${S ? `<button onclick="saveToSlot(${slot})" class="elder-btn text-amber-50 px-3 py-1.5 rounded-lg text-xs font-bold">여기에 저장</button>` : ''}
+      `;
+    }
+    list.appendChild(card);
+  }
+  modal.classList.remove('hidden');
+}
+
+function closeSaveModal() { document.getElementById('save-modal').classList.add('hidden'); }
+
+function saveToSlot(slot) {
+  if (!S) return;
+  localStorage.setItem(Y7_SAVE_PREFIX + slot, JSON.stringify({ ...S, savedAt: new Date().toLocaleString('ko-KR') }));
+  showToast(`💾 제7권 슬롯 ${slot}에 안전하게 저장되었습니다!`);
+  openSaveModal('save');
+}
+
+function loadFromSlot(slot) {
+  const raw = localStorage.getItem(Y7_SAVE_PREFIX + slot);
+  if (!raw) return;
+  S = JSON.parse(raw);
+  combatState = null;
+  closeSaveModal();
+  document.getElementById('title-screen').classList.add('hidden');
+  document.getElementById('game-screen').classList.remove('hidden');
+  renderScene();
+  showToast(`📂 제7권 슬롯 ${slot}의 기록을 불러왔습니다.`);
+}
+
+renderTitlePreview();
+</script>
+</body>
+</html>
